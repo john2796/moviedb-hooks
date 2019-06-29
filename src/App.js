@@ -1,26 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useSelector } from 'react-redux';
+import { AppStyle } from './AppStyle';
+import { addOne } from './store/actions/movieAction';
 
-function App() {
+import NavBar from './components/Navbar/Navbar';
+import Footer from './components/Footer/Footer';
+import Main from './components/Main/Main';
+import Header from './components/Header/Header';
+
+export default function App() {
+  const { counter } = useSelector(state => state.movieReducer);
+  console.log(counter);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppStyle>
+      <NavBar />
+      <Header />
+      <Main />
+      <Footer />
+      <h1>{counter}</h1>
+    </AppStyle>
   );
 }
-
-export default App;

@@ -1,68 +1,95 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# 2019 _ MOVIEDB(19) 
 
-## Available Scripts
+### Things Todo 
+- [ ] Setup all tech/dependencies, that I will be using and cleanup files 
+- [ ]  Install Airbnb and hooks linting
+        - `eslint --init`
+        - `npm i eslint-plugin-react-hooks`
+- [ ] Add css reset , styled-components then comeback to styling after logic is completed 
+  1. `useSelector()` = Allows you to extract data from the Redux store && EQUIVALENT to the mapStateToProps argument to connect , you may call useSelector multiple times within a single function compnent . Each call to useSelector() creates an individual subscription to the Redux store
+ Use the shallowEqual function from React-Redux as the equalityFn argument to useSelector(),
+ 2. `useDispatch()` = This hook returns a reference to the dispatch function from the Redux store. You may use it to dispatch actions as needed.
+ example:
+ ```
+ import React from 'react'
+import { useDispatch } from 'react-redux'
 
-In the project directory, you can run:
+export const CounterComponent = ({ value }) => {
+  const dispatch = useDispatch()
 
-### `npm start`
+  return (
+    <div>
+      <span>{value}</span>
+      <button onClick={() => dispatch({ type: 'increment-counter' })}>
+        Increment counter
+      </button>
+    </div>
+  )
+}
+ ``` 
+ 3. `useCallback` = When passing a callback using dispatch to a child component, it is recommended to memoize it with useCallback, since otherwise child components may render unnecessarily due to the changed reference.
+ example:
+ ```
+import React, { useCallback } from 'react'
+import { useDispatch } from 'react-redux'
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+export const CounterComponent = ({ value }) => {
+  const dispatch = useDispatch()
+  const incrementCounter = useCallback(
+    () => dispatch({ type: 'increment-counter' }),
+    [dispatch]
+  )
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+  return (
+    <div>
+      <span>{value}</span>
+      <MyIncrementButton onIncrement={incrementCounter} />
+    </div>
+  )
+}
 
-### `npm test`
+export const MyIncrementButton = React.memo(({ onIncrement }) => (
+  <button onClick={onIncrement}>Increment counter</button>
+))
+ ```
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] 
+- [ ] Add Test later
+- [ ] deploy with netlify , update logo and add _redirect 
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+### API Info
+const UPCOMING =
+  "https://api.themoviedb.org/3/movie/upcoming?api_key=64c2b191aa0739bffd252c8287ae39c1&language=en-US&page=1";
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+const POPULAR =
+  "https://api.themoviedb.org/3/movie/popular?api_key=64c2b191aa0739bffd252c8287ae39c1&language=en-US&page=1";
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+const GENRES =
+  "https://api.themoviedb.org/3/genre/movie/list?api_key=64c2b191aa0739bffd252c8287ae39c1&language=en-US";
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+const NOW_PLAYING =
+  "https://api.themoviedb.org/3/movie/now_playing?api_key=64c2b191aa0739bffd252c8287ae39c1&language=en-US&page=1";
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+const TOP_RATED =
+  "https://api.themoviedb.org/3/movie/top_rated?api_key=64c2b191aa0739bffd252c8287ae39c1&language=en-US&page=1";
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### Author
+- John Benedict Miranda
