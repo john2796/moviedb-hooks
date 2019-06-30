@@ -1,4 +1,11 @@
-/* = Import GOOGLE fonts
+/*-------------------------------------------------*/
+/*                React-slick-style
+/*-------------------------------------------------*/
+@import "~slick-carousel/slick/slick.css";
+@import "~slick-carousel/slick/slick-theme.css";
+
+/*-------------------------------------------------*/
+/*                IMPORT GOOGLE fonts
 /*-------------------------------------------------*/
 
 /* VARIABLES ======> */

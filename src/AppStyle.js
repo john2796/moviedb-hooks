@@ -7,4 +7,5 @@ export const AppStyle = styled.div`
     max-width: 90%;
     width: 900px;
     margin: 0 auto;
+  }
 `;
