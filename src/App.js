@@ -1,18 +1,20 @@
 import React from 'react';
+
+import { Route, Switch } from 'react-router-dom';
 import { AppStyle } from './AppStyle';
 
-import NavBar from './components/Navbar/Navbar';
-import Footer from './components/Footer/Footer';
-import Main from './components/Main/Main';
-import Header from './components/Header/Header';
+import Home from './components/routes/Home';
+import Search from './components/routes/Search';
+import Login from './components/routes/Login';
 
 export default function App() {
   return (
     <AppStyle>
-      <NavBar />
-      <Header />
-      <Main />
-      <Footer />
+      <Switch>
+        <Route exact path="/search" component={Search} />
+        <Route exact path="/login" component={Login} />
+        <Route path="/" component={Home} />
+      </Switch>
     </AppStyle>
   );
 }

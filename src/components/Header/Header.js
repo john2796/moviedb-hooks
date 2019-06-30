@@ -26,7 +26,7 @@ export default function Header() {
     autoplaySpeed: 10000,
   };
   if (isLoading) {
-    return <div>LOADING ...</div>;
+    return <div style={{ paddingTop: 650 }}>LOADING ...</div>;
   }
   return (
     <HeaderStyle>

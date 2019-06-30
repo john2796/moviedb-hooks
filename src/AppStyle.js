@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const AppStyle = styled.div`
   color: white;
 
+  /* -------------------------->  global style   <--------------------------- */
   .container {
     max-width: 90%;
     width: 900px;

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const NavBarStyle = styled.div`
+  /* --------------------------> navbar style <--------------------------- */
   ul {
     display: flex;
     justify-content: space-between;
@@ -8,8 +9,12 @@ export const NavBarStyle = styled.div`
     padding: 30px 0;
     span {
       display: flex;
-      li {
-        margin-left: 25px;
+    }
+    li {
+      margin-left: 25px;
+      a {
+        color: white;
+        text-decoration: none;
       }
     }
   }
