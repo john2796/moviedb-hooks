@@ -1,12 +1,12 @@
 /* eslint-disable camelcase */
-import React, { useEffect } from 'react';
+import React, { useEffect, memo } from 'react';
 import Slider from 'react-slick';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { HeaderStyle } from './HeaderStyle';
 import { getNowPlaying } from '../../store/actions/movieAction';
 
-export default function Header() {
+const Header = () => {
   const { nowPlaying, isLoading } = useSelector(state => state.movieReducer);
   const dispatch = useDispatch();
 
@@ -26,7 +26,7 @@ export default function Header() {
     autoplaySpeed: 10000,
   };
   if (isLoading) {
-    return <div style={{ paddingTop: 650 }}>LOADING ...</div>;
+    return <div style={{ paddingTop: 650 }}>LOADING ... Header !!!</div>;
   }
   return (
     <HeaderStyle>
@@ -62,4 +62,6 @@ export default function Header() {
       </div>
     </HeaderStyle>
   );
-}
+};
+
+export default memo(Header);
