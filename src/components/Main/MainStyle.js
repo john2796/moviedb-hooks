@@ -20,7 +20,8 @@ export const MoviesStyle = styled.div`
       min-height: 200px;
     }
     .carousel-item {
-      margin-right: 100px;
+      min-height: 350px;
+      /* margin-right: 100px; */
     }
   }
 `;

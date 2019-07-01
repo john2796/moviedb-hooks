@@ -8,12 +8,12 @@ const Main = () => (
   <MainStyle>
     <div className="container">
       <div className="movie-and-shows-wrap">
-        <Link to="/movies">Movies</Link>
+        <Link to="/">Movies</Link>
         <Link to="/shows">Shows</Link>
       </div>
 
-      <Route path="/movies" component={Movies} />
-      <Route path="/shows" component={Shows} />
+      <Route exact path="/" component={Movies} />
+      <Route exact path="/shows" component={Shows} />
     </div>
   </MainStyle>
 );

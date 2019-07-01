@@ -11,6 +11,9 @@ import {
   GET_POPULAR_START,
   GET_POPULAR_SUCCESS,
   GET_POPULAR_FAILURE,
+  GET_SINGLE_MOVIE_START,
+  GET_SINGLE_MOVIE_SUCCESS,
+  GET_SINGLE_MOVIE_FAILURE,
 } from '../actions/movieAction';
 
 const initialState = {
@@ -20,10 +23,12 @@ const initialState = {
   nowPlaying: [],
   upcoming: [],
   popular: [],
+  movie: [],
 };
 
 export default function movieReducer(state = initialState, action) {
   switch (action.type) {
+    // ------------------------------------ GET_TOP_RATED ------------------------------------
     case GET_TOP_RATED_START:
       return {
         ...state,
@@ -41,6 +46,7 @@ export default function movieReducer(state = initialState, action) {
         isLoading: false,
         errors: action.payload,
       };
+    // ------------------------------------ GET_NOW_PLAYING ------------------------------------
     case GET_NOW_PLAYING_START:
       return {
         ...state,
@@ -58,6 +64,7 @@ export default function movieReducer(state = initialState, action) {
         isLoading: false,
         errors: action.payload,
       };
+    // ------------------------------------ GET_UPCOMING ------------------------------------
     case GET_UPCOMING_START:
       return {
         ...state,
@@ -75,6 +82,7 @@ export default function movieReducer(state = initialState, action) {
         isLoading: false,
         errors: action.payload,
       };
+    // ------------------------------------ GET_POPULAR ------------------------------------
     case GET_POPULAR_START:
       return {
         ...state,
@@ -92,6 +100,25 @@ export default function movieReducer(state = initialState, action) {
         isLoading: false,
         errors: action.payload,
       };
+    // ------------------------------------ GET_POPULAR ------------------------------------
+    case GET_SINGLE_MOVIE_START:
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case GET_SINGLE_MOVIE_SUCCESS:
+      return {
+        ...state,
+        movie: action.payload,
+        isLoading: false,
+      };
+    case GET_SINGLE_MOVIE_FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+        errors: action.payload,
+      };
+    // ------------------------------------ RETURN STATE ------------------------------------
     default:
       return state;
   }

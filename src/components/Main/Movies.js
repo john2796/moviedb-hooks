@@ -1,7 +1,9 @@
+/* eslint-disable camelcase */
 import React, { useEffect, memo } from 'react';
 import Slider from 'react-slick';
 
 import { useSelector, useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { MoviesStyle } from './MainStyle';
 import { getAllMovies } from '../../store/actions/movieAction';
 
@@ -15,6 +17,9 @@ const Movies = () => {
     dispatch(getAllMovies());
   }, [dispatch]);
 
+  // setData to localStorage
+  // if data has been cached render that instead
+
   const settings = {
     infinite: true,
     speed: 350,
@@ -23,7 +28,6 @@ const Movies = () => {
     adaptiveHeight: true,
     mobileFirst: true,
   };
-  console.log(popular, upcoming, nowPlaying, topRated);
 
   return (
     <MoviesStyle>
@@ -35,11 +39,11 @@ const Movies = () => {
             const imageUrl = `https://image.tmdb.org/t/p/w1280${poster_path}`;
             return (
               <div key={id} className="carousel-item">
-                <div>
+                <Link to={`/movie/${title}`}>
                   <img src={imageUrl} alt={title} />
                   <h4>{title}</h4>
                   <p>Genre goes here</p>
-                </div>
+                </Link>
               </div>
             );
           })}
@@ -54,11 +58,11 @@ const Movies = () => {
             const imageUrl = `https://image.tmdb.org/t/p/w1280${poster_path}`;
             return (
               <div key={id} className="carousel-item">
-                <div>
+                <Link to={`/movie/${title}`}>
                   <img src={imageUrl} alt={title} />
                   <h4>{title}</h4>
                   <p>Genre goes here</p>
-                </div>
+                </Link>
               </div>
             );
           })}
@@ -73,11 +77,11 @@ const Movies = () => {
             const imageUrl = `https://image.tmdb.org/t/p/w1280${poster_path}`;
             return (
               <div key={id} className="carousel-item">
-                <div>
+                <Link to={`/movie/${title}`}>
                   <img src={imageUrl} alt={title} />
                   <h4>{title}</h4>
                   <p>Genre goes here</p>
-                </div>
+                </Link>
               </div>
             );
           })}
@@ -92,11 +96,11 @@ const Movies = () => {
             const imageUrl = `https://image.tmdb.org/t/p/w1280${poster_path}`;
             return (
               <div key={id} className="carousel-item">
-                <div>
+                <Link to={`/movie/${title}`}>
                   <img src={imageUrl} alt={title} />
                   <h4>{title}</h4>
                   <p>Genre goes here</p>
-                </div>
+                </Link>
               </div>
             );
           })}
@@ -105,13 +109,5 @@ const Movies = () => {
     </MoviesStyle>
   );
 };
-export default memo(Movies);
-/*
-Fetch the following :
-1 upcoming
-2 popular
-3 nowplaying
-4 top rated
 
-then create carousel
-*/
+export default memo(Movies);
