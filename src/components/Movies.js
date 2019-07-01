@@ -4,8 +4,8 @@ import Slider from 'react-slick';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { MoviesStyle } from './MainStyle';
-import { getAllMovies } from '../../store/actions/movieAction';
+import { getAllMovies } from '../store/actions/movieAction';
+import { MoviesStyle } from './styles/MainStyle';
 
 const Movies = () => {
   const {
@@ -17,14 +17,11 @@ const Movies = () => {
     dispatch(getAllMovies());
   }, [dispatch]);
 
-  // setData to localStorage
-  // if data has been cached render that instead
-
   const settings = {
     infinite: true,
     speed: 350,
-    slidesToShow: 5,
-    slidesToScroll: 1,
+    slidesToShow: 6,
+    slidesToScroll: 6,
     adaptiveHeight: true,
     mobileFirst: true,
   };
@@ -33,7 +30,7 @@ const Movies = () => {
     <MoviesStyle>
       {/* =========================== upcoming ============================= */}
       <div className="carousel-wrap">
-        <h3>upcoming</h3>
+        <h3 className="ch-1">upcoming</h3>
         <Slider {...settings}>
           {upcoming.map(({ title, poster_path, id }) => {
             const imageUrl = `https://image.tmdb.org/t/p/w1280${poster_path}`;
@@ -41,8 +38,6 @@ const Movies = () => {
               <div key={id} className="carousel-item">
                 <Link to={`/movie/${title}`}>
                   <img src={imageUrl} alt={title} />
-                  <h4>{title}</h4>
-                  <p>Genre goes here</p>
                 </Link>
               </div>
             );
@@ -60,8 +55,6 @@ const Movies = () => {
               <div key={id} className="carousel-item">
                 <Link to={`/movie/${title}`}>
                   <img src={imageUrl} alt={title} />
-                  <h4>{title}</h4>
-                  <p>Genre goes here</p>
                 </Link>
               </div>
             );
@@ -79,8 +72,6 @@ const Movies = () => {
               <div key={id} className="carousel-item">
                 <Link to={`/movie/${title}`}>
                   <img src={imageUrl} alt={title} />
-                  <h4>{title}</h4>
-                  <p>Genre goes here</p>
                 </Link>
               </div>
             );
@@ -98,8 +89,6 @@ const Movies = () => {
               <div key={id} className="carousel-item">
                 <Link to={`/movie/${title}`}>
                   <img src={imageUrl} alt={title} />
-                  <h4>{title}</h4>
-                  <p>Genre goes here</p>
                 </Link>
               </div>
             );

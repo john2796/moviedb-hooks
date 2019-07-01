@@ -3,10 +3,10 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { AppStyle } from './AppStyle';
 
-import Home from './components/routes/Home';
 import Search from './components/routes/Search';
 import Login from './components/routes/Login';
-import Movie from './components/Movie/Movie';
+import Movie from './components/Movie';
+import Home from './components/routes/Home';
 
 export default function App() {
   return (

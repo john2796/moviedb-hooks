@@ -14,6 +14,9 @@ import {
   GET_SINGLE_MOVIE_START,
   GET_SINGLE_MOVIE_SUCCESS,
   GET_SINGLE_MOVIE_FAILURE,
+  GET_SINGLE_QUERY_START,
+  GET_SINGLE_QUERY_SUCCESS,
+  GET_SINGLE_QUERY_FAILURE,
 } from '../actions/movieAction';
 
 const initialState = {
@@ -24,6 +27,7 @@ const initialState = {
   upcoming: [],
   popular: [],
   movie: [],
+  trailerQuery: [],
 };
 
 export default function movieReducer(state = initialState, action) {
@@ -113,6 +117,24 @@ export default function movieReducer(state = initialState, action) {
         isLoading: false,
       };
     case GET_SINGLE_MOVIE_FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+        errors: action.payload,
+      };
+    // ------------------------------------ GET_POPULAR ------------------------------------
+    case GET_SINGLE_QUERY_START:
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case GET_SINGLE_QUERY_SUCCESS:
+      return {
+        ...state,
+        trailerQuery: action.payload,
+        isLoading: false,
+      };
+    case GET_SINGLE_QUERY_FAILURE:
       return {
         ...state,
         isLoading: false,

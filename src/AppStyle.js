@@ -5,7 +5,7 @@ export const AppStyle = styled.div`
 
   /* -------------------------->  global style   <--------------------------- */
   .container {
-    max-width: 90%;
+    max-width: 96%;
     width: 900px;
     margin: 0 auto;
   }

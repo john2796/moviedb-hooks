@@ -1,5 +1,5 @@
 {
-  "name": "static-build-example-react",
+  "name": "moviedb",
   "version": 2,
   "builds": [
     {

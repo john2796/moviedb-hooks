@@ -1,9 +1,9 @@
 import React from 'react';
 
-import NavBar from '../Navbar/Navbar';
-import Header from '../Header/Header';
-import Main from '../Main/Main';
-import Footer from '../Footer/Footer';
+import NavBar from '../Navbar';
+import Main from '../Main';
+import Header from '../Header';
+import Footer from '../Footer';
 
 export default function Home() {
   return (

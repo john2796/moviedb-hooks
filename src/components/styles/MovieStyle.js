@@ -15,15 +15,20 @@ export const MovieStyle = styled.div`
       }
     }
     .sp-content {
-      padding-top: 50vh;
       .sp-inner {
-        padding-left: 5%;
-        padding-bottom: 30vh; 
         background: linear-gradient(to bottom rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 94%);
       }
     }
     .sp-flex {
-      border: 1px solid pink;
+      .player-wrap {
+        position: relative;
+        padding-top: 56.25%; /* 720 / 1280 = 0.5625 */
+      }
+      .react-player {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
       img {
         width: 380px;
         height: 400px;
@@ -35,5 +40,7 @@ export const MovieStyle = styled.div`
         margin: 10px 0;
       }
     }
+    /* sp-flex ends here <--- */
   }
+  /* sp-movie-wrap ends here <---- */
 `;

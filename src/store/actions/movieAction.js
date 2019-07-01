@@ -12,7 +12,6 @@ export const getTopRated = () => async (dispatch) => {
   try {
     dispatch({ type: GET_TOP_RATED_START });
     const response = await axios(TOP_RATED);
-
     dispatch({ type: GET_TOP_RATED_SUCCESS, payload: response.data.results });
   } catch (error) {
     dispatch({ type: GET_TOP_RATED_FAILURE, payload: error });
@@ -87,10 +86,28 @@ export const getSingleMovie = title => async (dispatch) => {
     dispatch({ type: GET_SINGLE_MOVIE_FAILURE, payload: error });
   }
 };
+// ------------------------------------ GET_SINGLE_QUERy ------------------------------------
+
+export const GET_SINGLE_QUERY_START = 'GET_SINGLE_QUERY_START';
+export const GET_SINGLE_QUERY_SUCCESS = 'GET_SINGLE_QUERY_SUCCESS';
+export const GET_SINGLE_QUERY_FAILURE = 'GET_SINGLE_QUERY_FAILURE';
+
+export const getSingleQuery = () => async (dispatch) => {
+  try {
+    dispatch({ type: GET_SINGLE_QUERY_START });
+    const response = await axios(
+      'https://api.themoviedb.org/3/movie/429617/videos?api_key=64c2b191aa0739bffd252c8287ae39c1&language=en-US',
+    );
+    dispatch({ type: GET_SINGLE_QUERY_SUCCESS, payload: response.data.results });
+  } catch (error) {
+    dispatch({ type: GET_SINGLE_QUERY_FAILURE, payload: error });
+  }
+};
 
 // ------------------------------------  Dispatch All Movies ------------------------------------
 export const getAllMovies = () => (dispatch) => {
   dispatch(getPopular());
   dispatch(getUpcoming());
+  dispatch(getNowPlaying());
   dispatch(getTopRated());
 };
