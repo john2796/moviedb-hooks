@@ -8,7 +8,7 @@ import { getSingleQuery } from '../store/actions/movieAction';
 
 const Header = () => {
   const { trailerQuery } = useSelector(state => state.movieReducer);
-  const [hover, setHover] = useState(true);
+  const [headerHover, setHeaderHover] = useState(false);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -16,11 +16,10 @@ const Header = () => {
   }, [dispatch]);
 
   const handleScroll = () => {
-    // console.log(window.scrollY);
     if (window.scrollY < 500) {
-      setHover(true);
+      setHeaderHover(false);
     } else {
-      setHover(false);
+      setHeaderHover(false);
     }
   };
   useEffect(() => {
@@ -29,7 +28,6 @@ const Header = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   });
-  console.log(hover);
 
   const trailer = trailerQuery.length && trailerQuery[2];
   return (
@@ -40,7 +38,8 @@ const Header = () => {
           className="react-player"
           width="100%"
           height="100%"
-          playing={hover}
+          playing={headerHover}
+          volume={0.2}
         />
       </div>
     </HeaderStyle>
