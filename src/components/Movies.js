@@ -1,28 +1,65 @@
-import React from 'react';
-import Slider from 'react-slick';
-import PropTypes from 'prop-types';
+import React, { memo } from 'react';
+import { useSelector } from 'react-redux';
 
-function Movies({ state }) {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 6,
-    slidesToScroll: 4,
-    arrows: false,
-  };
+import MoviesSlider from './MoviesSlider';
+import Tabs from './Tabs';
+
+function Movies() {
+  const {
+    popular,
+    topRated,
+    nowPlaying,
+    upcoming,
+    popularTV,
+    topRatedTV,
+    airingToday,
+    onAirTV,
+  } = useSelector(state => state.movieReducer);
   return (
-    <Slider {...settings}>
-      {state.map(item => (
-        <div key={item.id}>
-          <img src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} alt="" />
+    <>
+      <section className="movie-wrap container">
+        <div className="title-view-wrap">
+          <h3>in theater</h3>
+          <span>view all</span>
         </div>
-      ))}
-    </Slider>
+        <Tabs>
+          <div label="#popular" state="popular">
+            <MoviesSlider state={popular} />
+          </div>
+          <div label="#coming soon" state="upcoming">
+            <MoviesSlider state={upcoming} />
+          </div>
+          <div label="#top rated" state="topRated">
+            <MoviesSlider state={topRated} />
+          </div>
+          <div label="#most-reviewed" state="nowPlaying">
+            <MoviesSlider state={nowPlaying} />
+          </div>
+        </Tabs>
+      </section>
+
+      <section className="onTV-wrap container">
+        <div className="title-view-wrap">
+          <h3>on tv</h3>
+          <span>view all</span>
+        </div>
+        <Tabs>
+          <div label="#popular" state="popularTV">
+            <MoviesSlider state={popularTV} />
+          </div>
+          <div label="#airing today" state="airingToday">
+            <MoviesSlider state={airingToday} />
+          </div>
+          <div label="#top rated" state="topRatedTV">
+            <MoviesSlider state={topRatedTV} />
+          </div>
+          <div label="#on the air" state="onAirTV">
+            <MoviesSlider state={onAirTV} />
+          </div>
+        </Tabs>
+      </section>
+    </>
   );
 }
 
-Movies.propTypes = {
-  state: PropTypes.instanceOf(Array).isRequired,
-};
-export default Movies;
+export default memo(Movies);
