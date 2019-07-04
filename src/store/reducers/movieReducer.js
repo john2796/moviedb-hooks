@@ -17,7 +17,15 @@ import {
   GET_SINGLE_QUERY_START,
   GET_SINGLE_QUERY_SUCCESS,
   GET_SINGLE_QUERY_FAILURE,
-  GET_CURRENT_TAB_SUCCESS,
+  GET_POPULAR_TV_START,
+  GET_POPULAR_TV_SUCCESS,
+  GET_POPULAR_TV_FAILURE,
+  GET_TOP_RATED_TV_START,
+  GET_TOP_RATED_TV_SUCCESS,
+  GET_TOP_RATED_TV_FAILURE,  
+  GET_ONTHEAIR_TV_START,
+  GET_ONTHEAIR_TV_SUCCESS,
+  GET_ONTHEAIR_TV_FAILURE,
 } from '../actions/movieAction';
 
 const initialState = {
@@ -29,12 +37,15 @@ const initialState = {
   popular: [],
   movie: [],
   trailerQuery: [],
-  activeTab: '',
+  popularTV: [],
+  topRatedTV: [],
+  airingToday: [],
+  onAirTV: [],
 };
 
 export default function movieReducer(state = initialState, action) {
   switch (action.type) {
-    // ------------------------------------ GET_TOP_RATED ------------------------------------
+    // ----------------- GET_TOP_RATED -----------------
     case GET_TOP_RATED_START:
       return {
         ...state,
@@ -52,7 +63,7 @@ export default function movieReducer(state = initialState, action) {
         isLoading: false,
         errors: action.payload,
       };
-    // ------------------------------------ GET_NOW_PLAYING ------------------------------------
+    // ----------------- GET_NOW_PLAYING -----------------
     case GET_NOW_PLAYING_START:
       return {
         ...state,
@@ -70,7 +81,7 @@ export default function movieReducer(state = initialState, action) {
         isLoading: false,
         errors: action.payload,
       };
-    // ------------------------------------ GET_UPCOMING ------------------------------------
+    // ----------------- GET_UPCOMING -----------------
     case GET_UPCOMING_START:
       return {
         ...state,
@@ -88,7 +99,7 @@ export default function movieReducer(state = initialState, action) {
         isLoading: false,
         errors: action.payload,
       };
-    // ------------------------------------ GET_POPULAR ------------------------------------
+    // ----------------- GET_POPULAR -----------------
     case GET_POPULAR_START:
       return {
         ...state,
@@ -106,7 +117,7 @@ export default function movieReducer(state = initialState, action) {
         isLoading: false,
         errors: action.payload,
       };
-    // ------------------------------------ GET_POPULAR ------------------------------------
+    // ----------------- GET_POPULAR -----------------
     case GET_SINGLE_MOVIE_START:
       return {
         ...state,
@@ -124,7 +135,7 @@ export default function movieReducer(state = initialState, action) {
         isLoading: false,
         errors: action.payload,
       };
-    // ------------------------------------ GET_POPULAR ------------------------------------
+    // --------------------- GET_POPULAR ---------------------
     case GET_SINGLE_QUERY_START:
       return {
         ...state,
@@ -142,13 +153,80 @@ export default function movieReducer(state = initialState, action) {
         isLoading: false,
         errors: action.payload,
       };
-    // ------------------------------------  ACtIVE TAB ------------------------------------
-    case GET_CURRENT_TAB_SUCCESS:
+    // --------------------- GET_POPULAR_TV_ SHOWS ---------------------
+    case GET_POPULAR_TV_START:
       return {
         ...state,
-        activeTab: action.payload,
+        isLoading: true,
       };
-    // ------------------------------------ RETURN STATE ------------------------------------
+    case GET_POPULAR_TV_SUCCESS:
+      return {
+        ...state,
+        popularTV: action.payload,
+        isLoading: false,
+      };
+    case GET_POPULAR_TV_FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+        errors: action.payload,
+      };
+    // --------------------- GET_TOP_RATED_ SHOWS ---------------------
+    case GET_TOP_RATED_TV_START:
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case GET_TOP_RATED_TV_SUCCESS:
+      return {
+        ...state,
+        topRatedTV: action.payload,
+        isLoading: false,
+      };
+    case GET_TOP_RATED_TV_FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+        errors: action.payload,
+      };
+    // --------------------- GET_AIRING_TODAY_TV SHOWS ---------------------
+    case GET_AIRING_TODAY_TV_START:
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case GET_AIRING_TODAY_TV_SUCCESS:
+      return {
+        ...state,
+        airingToday: action.payload,
+        isLoading: false,
+      };
+    case GET_AIRING_TODAY_TV_FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+        errors: action.payload,
+      };
+    // --------------------- GET_ONTHEAIR_TV SHOWS ---------------------
+    case GET_ONTHEAIR_TV_START:
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case GET_ONTHEAIR_TV_SUCCESS:
+      return {
+        ...state,
+        onAirTV: action.payload,
+        isLoading: false,
+      };
+    case GET_ONTHEAIR_TV_FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+        errors: action.payload,
+      };
+
+    // ---------------------- RETURN STATE ----------------------
     default:
       return state;
   }

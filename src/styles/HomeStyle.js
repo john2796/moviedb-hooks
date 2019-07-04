@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { relative } from 'path';
 import homev2 from '../assets/homev2.jpg';
 
 export const HomeStyle = styled.div`
@@ -38,14 +37,6 @@ export const HomeStyle = styled.div`
     display: flex;
     justify-content: space-between;
   }
-  nav.main-nav {
-    margin-bottom: 50px;
-    position: relative;
-  }
-  nav.main-nav a {
-    margin: 25px 25px 25px 0;
-    display: inline-block;
-  }
   .slick-dots {
     position: absolute;
     top: -96px;
@@ -68,6 +59,19 @@ export const HomeStyle = styled.div`
   }
   .onTV-wrap {
     margin-top: 130px;
+  }
+  .tab-list {
+    padding-left: 0;
+  }
+
+  .tab-list-item {
+    display: inline-block;
+    list-style: none;
+    margin-bottom: 40px;
+    padding: 0.5rem 0.75rem;
+  }
+  .tab-list-active {
+    color: var(--yellowGreen);
   }
   /* -------------------------------------------
                  FOOTER

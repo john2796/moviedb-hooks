@@ -108,14 +108,84 @@ export const getSingleQuery = () => async (dispatch) => {
   }
 };
 
-// ------------------------------------ GET_CURRENT_TAB ------------------------------------
+// ------------------------------------ GET POPULAR TV SHOWS ------------------------------------
 
-export const GET_CURRENT_TAB_SUCCESS = 'GET_CURRENT_TAB_SUCCESS';
-export const getCurrentTab = tabName => ({ type: GET_CURRENT_TAB_SUCCESS, payload: tabName });
+const POPULAR_TV = 'https://api.themoviedb.org/3/tv/popular?api_key=64c2b191aa0739bffd252c8287ae39c1&language=en-US&page=1';
+export const GET_POPULAR_TV_START = 'GET_POPULAR_TV_START';
+export const GET_POPULAR_TV_SUCCESS = 'GET_POPULAR_TV_SUCCESS';
+export const GET_POPULAR_TV_FAILURE = 'GET_POPULAR_TV_FAILURE';
+
+export const getPopularTv = () => async (dispatch) => {
+  try {
+    dispatch({ type: GET_POPULAR_TV_START });
+    const response = await axios(POPULAR_TV);
+    const filtered = response.data.results.filter((_, idx) => idx <= 7);
+    dispatch({ type: GET_POPULAR_TV_SUCCESS, payload: filtered });
+  } catch (error) {
+    dispatch({ type: GET_POPULAR_TV_FAILURE, payload: error });
+  }
+};
+// ------------------------------------ GET TOP_RATED TV SHOWS ------------------------------------
+
+const TOP_RATED_TV = 'https://api.themoviedb.org/3/tv/top_rated?api_key=64c2b191aa0739bffd252c8287ae39c1&language=en-US&page=1';
+export const GET_TOP_RATED_TV_START = 'GET_TOP_RATED_TV_START';
+export const GET_TOP_RATED_TV_SUCCESS = 'GET_TOP_RATED_TV_SUCCESS';
+export const GET_TOP_RATED_TV_FAILURE = 'GET_TOP_RATED_TV_FAILURE';
+
+export const getTopRatedTv = () => async (dispatch) => {
+  try {
+    dispatch({ type: GET_TOP_RATED_TV_START });
+    const response = await axios(TOP_RATED_TV);
+    const filtered = response.data.results.filter((_, idx) => idx <= 7);
+    dispatch({ type: GET_TOP_RATED_TV_SUCCESS, payload: filtered });
+  } catch (error) {
+    dispatch({ type: GET_TOP_RATED_TV_FAILURE, payload: error });
+  }
+};
+
+// ------------------------------------ GET AIRING_TODAY TV SHOWS --------------------------------
+const AIRING_TODAY_TV = 'https://api.themoviedb.org/3/tv/airing_today?api_key=64c2b191aa0739bffd252c8287ae39c1&language=en-US&page=1';
+export const GET_AIRING_TODAY_TV_START = 'GET_AIRING_TODAY_TV_START';
+export const GET_AIRING_TODAY_TV_SUCCESS = 'GET_AIRING_TODAY_TV_SUCCESS';
+export const GET_AIRING_TODAY_TV_FAILURE = 'GET_AIRING_TODAY_TV_FAILURE';
+
+export const getAiringTodayTV = () => async (dispatch) => {
+  try {
+    dispatch({ type: GET_AIRING_TODAY_TV_START });
+    const response = await axios(AIRING_TODAY_TV);
+    const filtered = response.data.results.filter((_, idx) => idx <= 7);
+    dispatch({ type: GET_AIRING_TODAY_TV_SUCCESS, payload: filtered });
+  } catch (error) {
+    dispatch({ type: GET_AIRING_TODAY_TV_FAILURE, payload: error });
+  }
+};
+// ------------------------------------ GET ONTHEAIR TV SHOWS ------------------------------------
+
+const ONTHEAIR_TV = 'https://api.themoviedb.org/3/tv/on_the_air?api_key=64c2b191aa0739bffd252c8287ae39c1&language=en-US&page=1';
+export const GET_ONTHEAIR_TV_START = 'GET_ONTHEAIR_TV_START';
+export const GET_ONTHEAIR_TV_SUCCESS = 'GET_ONTHEAIR_TV_SUCCESS';
+export const GET_ONTHEAIR_TV_FAILURE = 'GET_COMING_SOON_TV_FAILURE';
+
+export const getOntheAir = () => async (dispatch) => {
+  try {
+    dispatch({ type: GET_ONTHEAIR_TV_START });
+    const response = await axios(ONTHEAIR_TV);
+    const filtered = response.data.results.filter((_, idx) => idx <= 7);
+    dispatch({ type: GET_ONTHEAIR_TV_SUCCESS, payload: filtered });
+  } catch (error) {
+    dispatch({ type: GET_ONTHEAIR_TV_FAILURE, payload: error });
+  }
+};
+
 // ------------------------------------  Dispatch All Movies ------------------------------------
 export const getAllMovies = () => (dispatch) => {
   dispatch(getPopular());
   dispatch(getUpcoming());
   dispatch(getNowPlaying());
   dispatch(getTopRated());
+};
+
+export const getPopularTVandMovies = () => (dispatch) => {
+  dispatch(getPopular());
+  dispatch(getPopularTv());
 };

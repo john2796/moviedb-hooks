@@ -1,7 +1,8 @@
 import React from 'react';
 import Slider from 'react-slick';
+import PropTypes from 'prop-types';
 
-export default function Movies({ state }) {
+function Movies({ state }) {
   const settings = {
     dots: true,
     infinite: true,
@@ -20,3 +21,8 @@ export default function Movies({ state }) {
     </Slider>
   );
 }
+
+Movies.propTypes = {
+  state: PropTypes.instanceOf(Array).isRequired,
+};
+export default Movies;
