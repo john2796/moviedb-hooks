@@ -10,8 +10,13 @@
 
 /* VARIABLES ======> */
 :root {
-  --black: #131313;
-  --red: #ff5252;
+  --black: #020d18;
+  --red: #dd033f;
+  --aTag: #abb7c4;
+  --btnText: #fcebef;
+  --cArrow: #cacdd0;
+  --yellowGreen: #dcf836;
+  --white: #ffffff;
 }
 
 /*-------------------------------------------------*/
@@ -157,9 +162,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: var(--black);
   text-rendering: optimizeLegibility;
   font-size: 1.6rem;
+  color: var(--white);
+  background: var(--black);
 }
 img {
   width: 100%;
@@ -170,3 +176,15 @@ code {
     monospace;
 }
 /* ----------------- css reset ends here ! ----------------- */
+body::-webkit-scrollbar {
+  width: 1rem;
+}
+
+body::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: var(--yellowGreen);
+  outline: 1px solid var(--red);
+}

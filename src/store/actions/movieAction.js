@@ -12,7 +12,8 @@ export const getTopRated = () => async (dispatch) => {
   try {
     dispatch({ type: GET_TOP_RATED_START });
     const response = await axios(TOP_RATED);
-    dispatch({ type: GET_TOP_RATED_SUCCESS, payload: response.data.results });
+    const filtered = response.data.results.filter((_, idx) => idx <= 7);
+    dispatch({ type: GET_TOP_RATED_SUCCESS, payload: filtered });
   } catch (error) {
     dispatch({ type: GET_TOP_RATED_FAILURE, payload: error });
   }
@@ -29,7 +30,8 @@ export const getNowPlaying = () => async (dispatch) => {
   try {
     dispatch({ type: GET_NOW_PLAYING_START });
     const response = await axios(NOW_PLAYING);
-    dispatch({ type: GET_NOW_PLAYING_SUCCESS, payload: response.data.results });
+    const filtered = response.data.results.filter((_, idx) => idx <= 7);
+    dispatch({ type: GET_NOW_PLAYING_SUCCESS, payload: filtered });
   } catch (error) {
     dispatch({ type: GET_NOW_PLAYING_FAILURE, payload: error });
   }
@@ -46,7 +48,8 @@ export const getUpcoming = () => async (dispatch) => {
   try {
     dispatch({ type: GET_UPCOMING_START });
     const response = await axios(UPCOMING);
-    dispatch({ type: GET_UPCOMING_SUCCESS, payload: response.data.results });
+    const filtered = response.data.results.filter((_, idx) => idx <= 7);
+    dispatch({ type: GET_UPCOMING_SUCCESS, payload: filtered });
   } catch (error) {
     dispatch({ type: GET_UPCOMING_FAILURE, payload: error });
   }
@@ -63,7 +66,8 @@ export const getPopular = () => async (dispatch) => {
   try {
     dispatch({ type: GET_POPULAR_START });
     const response = await axios(POPULAR);
-    dispatch({ type: GET_POPULAR_SUCCESS, payload: response.data.results });
+    const filtered = response.data.results.filter((_, idx) => idx <= 7);
+    dispatch({ type: GET_POPULAR_SUCCESS, payload: filtered });
   } catch (error) {
     dispatch({ type: GET_POPULAR_FAILURE, payload: error });
   }
@@ -104,6 +108,10 @@ export const getSingleQuery = () => async (dispatch) => {
   }
 };
 
+// ------------------------------------ GET_CURRENT_TAB ------------------------------------
+
+export const GET_CURRENT_TAB_SUCCESS = 'GET_CURRENT_TAB_SUCCESS';
+export const getCurrentTab = tabName => ({ type: GET_CURRENT_TAB_SUCCESS, payload: tabName });
 // ------------------------------------  Dispatch All Movies ------------------------------------
 export const getAllMovies = () => (dispatch) => {
   dispatch(getPopular());

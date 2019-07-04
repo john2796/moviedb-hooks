@@ -17,6 +17,7 @@ import {
   GET_SINGLE_QUERY_START,
   GET_SINGLE_QUERY_SUCCESS,
   GET_SINGLE_QUERY_FAILURE,
+  GET_CURRENT_TAB_SUCCESS,
 } from '../actions/movieAction';
 
 const initialState = {
@@ -28,6 +29,7 @@ const initialState = {
   popular: [],
   movie: [],
   trailerQuery: [],
+  activeTab: '',
 };
 
 export default function movieReducer(state = initialState, action) {
@@ -139,6 +141,12 @@ export default function movieReducer(state = initialState, action) {
         ...state,
         isLoading: false,
         errors: action.payload,
+      };
+    // ------------------------------------  ACtIVE TAB ------------------------------------
+    case GET_CURRENT_TAB_SUCCESS:
+      return {
+        ...state,
+        activeTab: action.payload,
       };
     // ------------------------------------ RETURN STATE ------------------------------------
     default:
