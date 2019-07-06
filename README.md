@@ -1,13 +1,5 @@
 # 2019 _ MOVIEDB(19) 
 
-### Things Todo 
-- [ ] Setup all tech/dependencies, that I will be using and cleanup files 
-- [ ]  Install Airbnb and hooks linting
-        - `eslint --init`
-        - `npm i eslint-plugin-react-hooks`
-- [ ] Add css reset , styled-components then comeback to styling after logic is completed 
-
-
 1. `useSelector()` = Allows you to extract data from the Redux store && EQUIVALENT to the mapStateToProps argument to connect , you may call useSelector multiple times within a single function compnent . Each call to useSelector() creates an individual subscription to the Redux store
  Use the shallowEqual function from React-Redux as the equalityFn argument to useSelector(),
 
