@@ -58,75 +58,80 @@ const dummyTrailer = [
 ];
 function Trailer() {
   const [currTrailer, setCurrTrailer] = useState('https://www.youtube.com/watch?v=1Q8fG0TtVAY');
-  const [clickable, setClickable] = useState(true);
-  console.log(clickable);
 
-  const onSliderChange = (newIndex) => {
-    console.log(newIndex);
-  };
   const settings = {
     infinite: true,
     slidesToShow: 5,
     slidesToScroll: 1,
     vertical: true,
     verticalSwiping: true,
-    afterChange: onSliderChange,
-    beforeChange: () => setClickable(false),
+    swipeToSlide: true,
+    focusOnSelect: true,
+    afterChange(currentSlide) {
+      console.log('after change', currentSlide);
+      const { key } = dummyTrailer[currentSlide];
+      // console.log(dummyTrailer[currentSlide]);
+      setCurrTrailer(`https://www.youtube.com/watch?v=${key}`);
+    },
   };
 
   return (
-    <section className="darkbg">
-      <div className="celeb-trailer-wrap container">
-        {/* ----- trailer carousel -------- */}
-        <div className="trailer">
-          <div className="title-wrap">
-            <h3>in theater</h3>
-            <p>view all</p>
-          </div>
-          <div className="trailer-carousel">
-            <div className="youtube">
-              <div className="player-wrapper">
-                <ReactPlayer
-                  className="react-player"
-                  url={currTrailer}
-                  width="100%"
-                  height="100%"
-                  controls
-                />
+    <>
+      <section className="darkbg">
+        <div className="celeb-trailer-wrap container">
+          {/* ----- trailer carousel -------- */}
+          <div className="trailer">
+            <div className="title-wrap">
+              <h3>in theater</h3>
+              <p>view all</p>
+            </div>
+            <div className="trailer-carousel">
+              <div className="youtube">
+                <div className="player-wrapper">
+                  <ReactPlayer
+                    className="react-player"
+                    url={currTrailer}
+                    width="100%"
+                    height="100%"
+                    controls
+                  />
+                </div>
+              </div>
+              <div className="control lightBg">
+                <Slider {...settings} className="trailer-slideWrap">
+                  {dummyTrailer.map(item => (
+                    <div
+                      className="slide-item"
+                      key={item.id}
+                      onClick={() => setCurrTrailer(`{https://www.youtube.com/watch?v=${item.key}}`)
+                      }
+                    >
+                      <div
+                        className="slide-bg"
+                        style={{
+                          backgroundImage: `url(https://image.tmdb.org/t/p/w500/${
+                            item.poster_path
+                          })`,
+                        }}
+                      />
+                      <h6>
+                        {item.name}
+                        <span className="time">{item.time}</span>
+                      </h6>
+                    </div>
+                  ))}
+                </Slider>
               </div>
             </div>
-            <div className="control lightBg">
-              <Slider {...settings} className="trailer-slideWrap">
-                {dummyTrailer.map(item => (
-                  <div
-                    className="slide-item"
-                    key={item.id}
-                    onClick={() => setCurrTrailer(`{https://www.youtube.com/watch?v=${item.key}}`)}
-                  >
-                    <div
-                      className="slide-bg"
-                      style={{
-                        backgroundImage: `url(https://image.tmdb.org/t/p/w500/${item.poster_path})`,
-                      }}
-                    />
-                    <h6>
-                      {item.name}
-                      <span className="time">{item.time}</span>
-                    </h6>
-                  </div>
-                ))}
-              </Slider>
-            </div>
+          </div>
+          {/* ----- right side of trailer section ----- */}
+          <div className="spotLight">
+            <h4>spotlight celebrities</h4>
+            <p>contents</p>
           </div>
         </div>
-
-        {/* ----- right side of trailer section ----- */}
-        <div className="spotLight">
-          <h4>spotlight celebrities</h4>
-          <p>contents</p>
-        </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
 

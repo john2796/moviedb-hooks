@@ -180,7 +180,7 @@ code {
 }
 /* ----------------- css reset ends here ! ----------------- */
 body::-webkit-scrollbar {
-  width: 1rem;
+  width: 10px;
 }
 
 body::-webkit-scrollbar-track {
