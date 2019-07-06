@@ -19,7 +19,7 @@ function Movies() {
     <>
       <section className="movie-wrap container">
         <div className="title-view-wrap">
-          <h3>in theater</h3>
+          <h2>in theater</h2>
           <span>view all</span>
         </div>
         <Tabs>
@@ -40,7 +40,7 @@ function Movies() {
 
       <section className="onTV-wrap container">
         <div className="title-view-wrap">
-          <h3>on tv</h3>
+          <h2>on tv</h2>
           <span>view all</span>
         </div>
         <Tabs>

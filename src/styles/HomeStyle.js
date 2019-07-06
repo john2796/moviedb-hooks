@@ -49,9 +49,7 @@ export const HomeStyle = styled.div`
     }
   }
   .slick-dots li.slick-active button:before {
-    opacity: 1;
     color: var(--yellowGreen);
-    font-size: 12px;
   }
   .slick-dots li button:before {
     opacity: 1;
@@ -86,14 +84,39 @@ export const HomeStyle = styled.div`
   }
   .trailer {
     width: 75%;
-    margin-right: 5%;
+    margin-right: 10rem;
     .title-wrap {
       display: flex;
       justify-content: space-between;
     }
   }
   .spotLight {
-    width: 20%;
+    width: 25%;
+    .spotlight-content {
+      display: flex;
+      align-items: center;
+      margin: 30px 0;
+      h6 {
+        margin-bottom: 4px;
+        &:hover {
+          color: var(--yellowGreen);
+        }
+      }
+      span {
+        font-family: 'Dosis', sans-serif;
+        font-size: 1.4rem;
+        color: var(--pTag);
+        text-transform: uppercase;
+        font-weight: 400;
+      }
+      img {
+        width: 70px;
+        height: 70px;
+        border-radius: 3px;
+        object-fit: cover;
+        margin-right: 20px;
+      }
+    }
   }
   .trailer-carousel {
     display: flex;
@@ -107,7 +130,8 @@ export const HomeStyle = styled.div`
       position: initial;
     }
     .slick-slider {
-      width: 300px;
+      min-width: 300px;
+      width: 100%;
     }
     .slick-slider .slick-track,
     .slick-slider .slick-list {
@@ -132,10 +156,11 @@ export const HomeStyle = styled.div`
         background-position: top;
         background-size: cover;
       }
-      h6 {
+      h4.desc {
         width: 100%;
         margin: 0 20px;
         text-align: left;
+        cursor: pointer;
       }
     }
   }
@@ -143,7 +168,7 @@ export const HomeStyle = styled.div`
     min-width: 600px;
     .player-wrapper {
       position: relative;
-      padding-top: 80.25%; /* Player ratio: 100 / (1280 / 720) */
+      padding-top: 81.25%; /* Player ratio: 100 / (1280 / 720) */
     }
     .react-player {
       position: absolute;

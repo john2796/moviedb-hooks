@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const GlobalStyle = styled.div`
   .container {
-    width: 1170px;
+    width: 1250px;
     margin-right: auto;
     margin-left: auto;
     padding-left: 15px;
@@ -14,15 +14,52 @@ export const GlobalStyle = styled.div`
     text-transform: uppercase;
     font-size: 1.5rem;
   }
-  .selectedLink {
-    color: var(--yellowGreen);
-  }
-  h3 {
-    color: white;
-    font-size: 2.5rem;
-    font-weight: 700;
+  h2 {
+    font-family: 'Dosis', sans-serif;
+    font-size: 2.4rem;
+    color: var(--white);
+    font-weight: bold;
     text-transform: uppercase;
     margin-bottom: 20px;
+  }
+
+  /* spotlight celeb title */
+  .sb-title {
+    font-family: 'Dosis', sans-serif;
+    font-size: 1.8rem;
+    color: var(--white);
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #405266;
+  }
+  h4 {
+    font-family: 'Dosis', sans-serif;
+    font-size: 1.4rem;
+    color: var(--white);
+    font-weight: bold;
+  }
+
+  /* movie trailer title and spotlight celebrities*/
+  h6 {
+    font-family: 'Dosis', sans-serif;
+    font-size: 1.4rem;
+    color: var(--white);
+    font-weight: bold;
+    cursor: pointer;
+  }
+  p {
+    color: var(--pTag);
+    font-size: 1.4rem;
+  }
+
+  /* movie vertical carousel */
+  .time {
+    display: block;
+    font-size: 1rem;
+    margin-top: 4px;
+    font-weight: 100;
   }
   .darkbg {
     background: var(--darkGray);
@@ -30,18 +67,7 @@ export const GlobalStyle = styled.div`
   .lightBg {
     background: var(--lightGray);
   }
-  /* movie trailer title */
-  h6 {
-    font-size: 1.2rem;
-    font-weight: 600;
-    line-height: 1.2;
-  }
-  /* movie vertical carousel */
-  .time {
-    display: block;
-    font-size: 1rem;
-    margin-top: 4px;
-    font-weight: 100;
-    color: gray;
+  .selectedLink {
+    color: var(--yellowGreen);
   }
 `;

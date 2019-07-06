@@ -1,8 +1,10 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useState } from 'react';
+import React, { useState, useEffect, memo } from 'react';
 import Slider from 'react-slick';
 import ReactPlayer from 'react-player';
+import { useDispatch, useSelector } from 'react-redux';
+import { getTrendingPeople } from '../store/actions/movieAction';
 
 const dummyTrailer = [
   {
@@ -57,7 +59,13 @@ const dummyTrailer = [
   },
 ];
 function Trailer() {
+  const { trendingPeople } = useSelector(state => state.movieReducer);
   const [currTrailer, setCurrTrailer] = useState('https://www.youtube.com/watch?v=1Q8fG0TtVAY');
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getTrendingPeople());
+  }, [dispatch]);
 
   const settings = {
     infinite: true,
@@ -68,9 +76,7 @@ function Trailer() {
     swipeToSlide: true,
     focusOnSelect: true,
     afterChange(currentSlide) {
-      console.log('after change', currentSlide);
       const { key } = dummyTrailer[currentSlide];
-      // console.log(dummyTrailer[currentSlide]);
       setCurrTrailer(`https://www.youtube.com/watch?v=${key}`);
     },
   };
@@ -82,7 +88,7 @@ function Trailer() {
           {/* ----- trailer carousel -------- */}
           <div className="trailer">
             <div className="title-wrap">
-              <h3>in theater</h3>
+              <h2>in theater</h2>
               <p>view all</p>
             </div>
             <div className="trailer-carousel">
@@ -114,10 +120,10 @@ function Trailer() {
                           })`,
                         }}
                       />
-                      <h6>
+                      <h4 className="desc">
                         {item.name}
-                        <span className="time">{item.time}</span>
-                      </h6>
+                        <p className="time">{item.time}</p>
+                      </h4>
                     </div>
                   ))}
                 </Slider>
@@ -126,8 +132,16 @@ function Trailer() {
           </div>
           {/* ----- right side of trailer section ----- */}
           <div className="spotLight">
-            <h4>spotlight celebrities</h4>
-            <p>contents</p>
+            <h4 className="sb-title">Spotlight Celebrities</h4>
+            {trendingPeople.map(item => (
+              <div className="spotlight-content" key={item.id}>
+                <img src={`https://image.tmdb.org/t/p/w500${item.profile_path}`} alt={item.name} />
+                <div>
+                  <h6>{item.name}</h6>
+                  <span>ACTOR</span>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -135,4 +149,4 @@ function Trailer() {
   );
 }
 
-export default Trailer;
+export default memo(Trailer);

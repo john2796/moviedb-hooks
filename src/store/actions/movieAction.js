@@ -177,6 +177,24 @@ export const getOntheAir = () => async (dispatch) => {
   }
 };
 
+// ------------------------------------ GET TRENDING PEOPLE ------------------------------------
+
+const TRENDING_PEOPLE = 'https://api.themoviedb.org/3/trending/person/day?api_key=64c2b191aa0739bffd252c8287ae39c1';
+export const GET_TRENDING_PEOPLE_START = 'GET_TRENDING_PEOPLE_START';
+export const GET_TRENDING_PEOPLE_SUCCESS = 'GET_TRENDING_PEOPLE_SUCCESS';
+export const GET_TRENDING_PEOPLE_FAILURE = 'GET_COMING_SOON_TV_FAILURE';
+
+export const getTrendingPeople = () => async (dispatch) => {
+  try {
+    dispatch({ type: GET_TRENDING_PEOPLE_START });
+    const response = await axios(TRENDING_PEOPLE);
+    const filtered = response.data.results.filter((_, idx) => idx <= 3);
+    dispatch({ type: GET_TRENDING_PEOPLE_SUCCESS, payload: filtered });
+  } catch (error) {
+    dispatch({ type: GET_TRENDING_PEOPLE_FAILURE, payload: error });
+  }
+};
+
 // ------------------------------------  Dispatch All Movies ------------------------------------
 export const getAllMovies = () => (dispatch) => {
   dispatch(getPopular());

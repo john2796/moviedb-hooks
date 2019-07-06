@@ -22,13 +22,16 @@ import {
   GET_POPULAR_TV_FAILURE,
   GET_TOP_RATED_TV_START,
   GET_TOP_RATED_TV_SUCCESS,
-  GET_TOP_RATED_TV_FAILURE,  
+  GET_TOP_RATED_TV_FAILURE,
   GET_ONTHEAIR_TV_START,
   GET_ONTHEAIR_TV_SUCCESS,
   GET_ONTHEAIR_TV_FAILURE,
   GET_AIRING_TODAY_TV_START,
   GET_AIRING_TODAY_TV_SUCCESS,
   GET_AIRING_TODAY_TV_FAILURE,
+  GET_TRENDING_PEOPLE_START,
+  GET_TRENDING_PEOPLE_SUCCESS,
+  GET_TRENDING_PEOPLE_FAILURE,
 } from '../actions/movieAction';
 
 const initialState = {
@@ -44,6 +47,7 @@ const initialState = {
   topRatedTV: [],
   airingToday: [],
   onAirTV: [],
+  trendingPeople: [],
 };
 
 export default function movieReducer(state = initialState, action) {
@@ -223,6 +227,24 @@ export default function movieReducer(state = initialState, action) {
         isLoading: false,
       };
     case GET_ONTHEAIR_TV_FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+        errors: action.payload,
+      };
+    // --------------------- GET_TRENDING_PEOPLE SHOWS ---------------------
+    case GET_TRENDING_PEOPLE_START:
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case GET_TRENDING_PEOPLE_SUCCESS:
+      return {
+        ...state,
+        trendingPeople: action.payload,
+        isLoading: false,
+      };
+    case GET_TRENDING_PEOPLE_FAILURE:
       return {
         ...state,
         isLoading: false,
