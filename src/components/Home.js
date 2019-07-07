@@ -1,18 +1,16 @@
 import React, { memo } from 'react';
-import { HomeStyle } from '../styles/HomeStyle';
 
-import Header from './Header';
 import Main from './Main';
+import Header from './Header';
+import Footer from './Footer';
 
 function Home() {
   return (
-    <HomeStyle>
+    <>
       <Header />
       <Main />
-      <footer>
-        <p>footer</p>
-      </footer>
-    </HomeStyle>
+      <Footer />
+    </>
   );
 }
 export default memo(Home);

@@ -1,16 +1,14 @@
 import React from 'react';
-
-import { Route, Switch } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 import Home from './components/Home';
-import { GlobalStyle } from './styles/GlobalStyle';
+import SingleMovie from './components/SingleMovie';
 
 export default function App() {
   return (
-    <GlobalStyle>
-      <Switch>
-        <Route path="/" component={Home} />
-      </Switch>
-    </GlobalStyle>
+    <>
+      <Route exact path="/" component={Home} />
+      <Route exact path="/movie/:label/:id" component={SingleMovie} />
+    </>
   );
 }

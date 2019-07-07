@@ -1,8 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import Slider from 'react-slick';
 import PropTypes from 'prop-types';
 
-function MoviesSlider({ state }) {
+function MoviesSlider({ state, label }) {
   const settings = {
     dots: true,
     infinite: true,
@@ -11,12 +13,13 @@ function MoviesSlider({ state }) {
     slidesToScroll: 5,
     arrows: false,
   };
+
   return (
     <Slider {...settings}>
       {state.map(item => (
-        <div key={item.id}>
+        <Link to={`/movie/${label}/${item.id}`} key={item.id}>
           <img src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} alt="" />
-        </div>
+        </Link>
       ))}
     </Slider>
   );

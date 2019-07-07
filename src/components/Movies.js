@@ -24,16 +24,16 @@ function Movies() {
         </div>
         <Tabs>
           <div label="#popular" state="popular">
-            <MoviesSlider state={popular} />
+            <MoviesSlider label="popular" state={popular} />
           </div>
           <div label="#coming soon" state="upcoming">
-            <MoviesSlider state={upcoming} />
+            <MoviesSlider label="upcoming" state={upcoming} />
           </div>
           <div label="#top rated" state="topRated">
-            <MoviesSlider state={topRated} />
+            <MoviesSlider state={topRated} label="topRated" />
           </div>
           <div label="#most-reviewed" state="nowPlaying">
-            <MoviesSlider state={nowPlaying} />
+            <MoviesSlider state={nowPlaying} label="nowPlaying" />
           </div>
         </Tabs>
       </section>
@@ -45,16 +45,16 @@ function Movies() {
         </div>
         <Tabs>
           <div label="#popular" state="popularTV">
-            <MoviesSlider state={popularTV} />
+            <MoviesSlider state={popularTV} label="popularTV" />
           </div>
           <div label="#airing today" state="airingToday">
-            <MoviesSlider state={airingToday} />
+            <MoviesSlider state={airingToday} label="airingToday" />
           </div>
           <div label="#top rated" state="topRatedTV">
-            <MoviesSlider state={topRatedTV} />
+            <MoviesSlider state={topRatedTV} label="topRatedTV" />
           </div>
           <div label="#on the air" state="onAirTV">
-            <MoviesSlider state={onAirTV} />
+            <MoviesSlider state={onAirTV} label="onAirTV" />
           </div>
         </Tabs>
       </section>

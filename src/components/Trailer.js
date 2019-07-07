@@ -84,9 +84,9 @@ function Trailer() {
   return (
     <>
       <section className="darkbg">
-        <div className="celeb-trailer-wrap container">
+        <div className="main-flex container">
           {/* ----- trailer carousel -------- */}
-          <div className="trailer">
+          <div className="main-left-section">
             <div className="title-wrap">
               <h2>in theater</h2>
               <p>view all</p>
@@ -131,10 +131,10 @@ function Trailer() {
             </div>
           </div>
           {/* ----- right side of trailer section ----- */}
-          <div className="spotLight">
+          <div className="main-right-section">
             <h4 className="sb-title">Spotlight Celebrities</h4>
             {trendingPeople.map(item => (
-              <div className="spotlight-content" key={item.id}>
+              <div className="mr-content" key={item.id}>
                 <img src={`https://image.tmdb.org/t/p/w500${item.profile_path}`} alt={item.name} />
                 <div>
                   <h6>{item.name}</h6>

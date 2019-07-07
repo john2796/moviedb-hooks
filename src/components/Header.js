@@ -1,5 +1,8 @@
 import React from 'react';
+import '../SCSS/header.scss';
 import Slider from 'react-slick';
+
+import Navbar from './Navbar';
 
 function Header() {
   const settings = {
@@ -11,20 +14,8 @@ function Header() {
   };
   return (
     <div className="bg-overlay">
+      <Navbar />
       <header className="container">
-        <nav className="header-nav">
-          <span>
-            <a href="/">logo</a>
-            <a href="/">home</a>
-            <a href="/movies">movies</a>
-            <a href="/celeb">celebrities</a>
-            <a href="/news">news</a>
-          </span>
-          <span>
-            <a href="/login">login</a>
-            <a href="/signUp">sign up</a>
-          </span>
-        </nav>
         <Slider {...settings}>
           <div className="slider-wrap">
             <div className="slider-item">

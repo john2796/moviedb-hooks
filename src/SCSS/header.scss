@@ -1,0 +1,24 @@
+/* -------------------------------------------
+                 HEADER 
+------------------------------------------- */
+.bg-overlay {
+  background-image: url("../assets/homev2.jpg");
+  background-position: center;
+  background-size: cover;
+}
+.slider-item {
+  display: flex;
+  height: 500px;
+  align-items: center;
+  justify-content: space-between;
+}
+/* -------------------------------------------
+                 NAV
+------------------------------------------- */
+nav.header-nav {
+  display: flex;
+  justify-content: space-between;
+  a {
+    margin-right: 25px;
+  }
+}
