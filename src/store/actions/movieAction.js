@@ -195,6 +195,106 @@ export const getTrendingPeople = () => async (dispatch) => {
   }
 };
 
+// ------------------------------------ GET MOVIE BY ID  ------------------------------------
+export const GET_MOVIE_BYID_START = 'GET_MOVIE_BYID_START';
+export const GET_MOVIE_BYID_SUCCESS = 'GET_MOVIE_BYID_SUCCESS';
+export const GET_MOVIE_BYID_FAILURE = 'GET_MOVIE_BYID_FAILURE';
+
+export const getMovieById = id => async (dispatch) => {
+  try {
+    dispatch({ type: GET_MOVIE_BYID_START });
+    const response = await axios(
+      `https://api.themoviedb.org/3/movie/${id}?api_key=64c2b191aa0739bffd252c8287ae39c1&language=en-US`,
+    );
+    dispatch({ type: GET_MOVIE_BYID_SUCCESS, payload: response.data });
+  } catch (error) {
+    dispatch({ type: GET_MOVIE_BYID_FAILURE, payload: error });
+  }
+};
+
+// ----------- THINGS NEEDED FOR SINGLE PAGE MOVIE ----------------
+
+// -------------------------- GET SINGLE PAGE MOVIE REVIEWS  ----------------------------
+export const GET_SP_REVIEWS_START = 'GET_SP_REVIEWS_START';
+export const GET_SP_REVIEWS_SUCCESS = 'GET_SP_REVIEWS_SUCCESS';
+export const GET_SP_REVIEWS_FAILURE = 'GET_SP_REVIEWS_FAILURE';
+
+export const getSpReviews = id => async (dispatch) => {
+  try {
+    dispatch({ type: GET_SP_REVIEWS_START });
+    const response = await axios(
+      `https://api.themoviedb.org/3/movie/${id}/reviews?api_key=64c2b191aa0739bffd252c8287ae39c1&language=en-US&page=1`,
+    );
+    dispatch({ type: GET_SP_REVIEWS_SUCCESS, payload: response.data.results });
+  } catch (error) {
+    dispatch({ type: GET_SP_REVIEWS_FAILURE, payload: error });
+  }
+};
+// -------------------------- GET SINGLE PAGE MOVIE CAST  ----------------------------
+export const GET_SP_CAST_START = 'GET_SP_CAST_START';
+export const GET_SP_CAST_SUCCESS = 'GET_SP_CAST_SUCCESS';
+export const GET_SP_CAST_FAILURE = 'GET_SP_CAST_FAILURE';
+
+export const getSpCast = id => async (dispatch) => {
+  try {
+    dispatch({ type: GET_SP_CAST_START });
+    const response = await axios(
+      `https://api.themoviedb.org/3/movie/${id}/credits?api_key=64c2b191aa0739bffd252c8287ae39c1`,
+    );
+    dispatch({ type: GET_SP_CAST_SUCCESS, payload: response.data });
+  } catch (error) {
+    dispatch({ type: GET_SP_CAST_FAILURE, payload: error });
+  }
+};
+// -------------------------- GET SINGLE PAGE MOVIE MEDIA&MOVIES  ----------------------------
+export const GET_SP_MEDIA_MOVIE_START = 'GET_SP_MEDIA_MOVIE_START';
+export const GET_SP_MEDIA_MOVIE_SUCCESS = 'GET_SP_MEDIA_MOVIE_SUCCESS';
+export const GET_SP_MEDIA_MOVIE_FAILURE = 'GET_SP_MEDIA_MOVIE_FAILURE';
+
+export const getSpMediaMovies = id => async (dispatch) => {
+  try {
+    dispatch({ type: GET_SP_MEDIA_MOVIE_START });
+    const response = await axios(
+      ` https://api.themoviedb.org/3/movie/${id}/videos?api_key=64c2b191aa0739bffd252c8287ae39c1&language=en-US`,
+    );
+    dispatch({ type: GET_SP_MEDIA_MOVIE_SUCCESS, payload: response.data });
+  } catch (error) {
+    dispatch({ type: GET_SP_MEDIA_MOVIE_FAILURE, payload: error });
+  }
+};
+// ------------------- GET SINGLE PAGE MOVIE RELATED MOVIES  ------------------
+export const GET_SP_RELATED_MOVIES_START = 'GET_SP_RELATED_MOVIES_START';
+export const GET_SP_RELATED_MOVIES_SUCCESS = 'GET_SP_RELATED_MOVIES_SUCCESS';
+export const GET_SP_RELATED_MOVIES_FAILURE = 'GET_SP_RELATED_MOVIES_FAILURE';
+
+export const getSpRelatedMovies = id => async (dispatch) => {
+  try {
+    dispatch({ type: GET_SP_RELATED_MOVIES_START });
+    const response = await axios(
+      `https://api.themoviedb.org/3/movie/${id}/similar?api_key=64c2b191aa0739bffd252c8287ae39c1&language=en-US&page=1`,
+    );
+    dispatch({ type: GET_SP_RELATED_MOVIES_SUCCESS, payload: response.data });
+  } catch (error) {
+    dispatch({ type: GET_SP_RELATED_MOVIES_FAILURE, payload: error });
+  }
+};
+// ------------------- GET SINGLE PAGE MOVIE KEYWORDS  ------------------
+export const GET_SP_KEYWORD_START = 'GET_SP_KEYWORD_START';
+export const GET_SP_KEYWORD_SUCCESS = 'GET_SP_KEYWORD_SUCCESS';
+export const GET_SP_KEYWORD_FAILURE = 'GET_SP_KEYWORD_FAILURE';
+
+export const getSpKeyword = id => async (dispatch) => {
+  try {
+    dispatch({ type: GET_SP_KEYWORD_START });
+    const response = await axios(
+      `https://api.themoviedb.org/3/movie/${id}/keywords?api_key=64c2b191aa0739bffd252c8287ae39c1`,
+    );
+    dispatch({ type: GET_SP_KEYWORD_SUCCESS, payload: response.data });
+  } catch (error) {
+    dispatch({ type: GET_SP_KEYWORD_FAILURE, payload: error });
+  }
+};
+
 // ------------------------------------  Dispatch All Movies ------------------------------------
 export const getAllMovies = () => (dispatch) => {
   dispatch(getPopular());

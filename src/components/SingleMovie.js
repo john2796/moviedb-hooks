@@ -1,9 +1,8 @@
+/* eslint-disable camelcase */
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
-import {
-  getPopular, getUpcoming, getNowPlaying, getTopRated,
-} from '../store/actions/movieAction';
+import { getMovieById } from '../store/actions/movieAction';
 
 import '../SCSS/singlePageMovie.scss';
 import Navbar from './Navbar';
@@ -12,39 +11,19 @@ import Tabs from './Tabs';
 import SpmOverview from './SpmOverview';
 
 function SingleMovie({ match }) {
-  const {
-    popular,
-    topRated,
-    nowPlaying,
-    upcoming,
-    popularTV,
-    topRatedTV,
-    airingToday,
-    onAirTV,
-  } = useSelector(state => state.movieReducer);
+  const { spMovie, isLoading } = useSelector(state => state.movieReducer);
   const dispatch = useDispatch();
-  useEffect(() => {
-    const actions = {
-      popular: getPopular,
-      upcoming: getUpcoming,
-      nowPlaying: getNowPlaying,
-      topRated: getTopRated,
-    };
-    const { label } = match.params;
-    dispatch(actions[label]());
-  }, [dispatch, match.params]);
 
-  const state = {
-    popular,
-    topRated,
-    nowPlaying,
-    upcoming,
-    popularTV,
-    topRatedTV,
-    airingToday,
-    onAirTV,
-  };
-  const m = state[match.params.label].find(item => item.id === Number(match.params.id));
+  useEffect(() => {
+    dispatch(getMovieById(Number(match.params.id)));
+  }, [dispatch, match.params.id]);
+
+  const {
+    poster_path, name, title, release_date, vote_average,
+  } = spMovie;
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
   return (
     <div className="single-page-movie">
       <div className="spm-bg">
@@ -54,15 +33,15 @@ function SingleMovie({ match }) {
       <div className="spm-wrap">
         {/* ------------------ left section ------------------ */}
         <div className="spm-left">
-          <img src={`https://image.tmdb.org/t/p/w500${m && m.poster_path}`} alt={m && m.name} />
+          <img src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt={name} />
           <button type="button">watch trailer</button>
           <button type="button">buy ticket</button>
         </div>
         {/* ------------------ right section ------------------ */}
         <div className="spm-right">
           <h2>
-            {m && m.title}
-            <span>{m && m.release_date}</span>
+            {title}
+            <span>{release_date}</span>
           </h2>
           <p>add to favorite</p>
           <p>share</p>
@@ -70,7 +49,7 @@ function SingleMovie({ match }) {
           <div className="spm-rate">
             <p>
               <span>star icon</span>
-              {`${m && m.vote_average}/10`}
+              {`${vote_average}/10`}
               <span>56 reviews</span>
             </p>
             <p>
@@ -81,7 +60,7 @@ function SingleMovie({ match }) {
           {/* ------------------Tabs  ------------------ */}
           <Tabs>
             <div label="overview" state="">
-              <SpmOverview movie={m} />
+              <SpmOverview movie={spMovie} />
             </div>
             <div label="reviews" state="">
               <p>reviews</p>
@@ -99,6 +78,7 @@ function SingleMovie({ match }) {
         </div>
         {/* end of spm right */}
       </div>
+
       <Footer />
     </div>
   );

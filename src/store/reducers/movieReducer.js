@@ -32,6 +32,9 @@ import {
   GET_TRENDING_PEOPLE_START,
   GET_TRENDING_PEOPLE_SUCCESS,
   GET_TRENDING_PEOPLE_FAILURE,
+  GET_MOVIE_BYID_START,
+  GET_MOVIE_BYID_SUCCESS,
+  GET_MOVIE_BYID_FAILURE,
 } from '../actions/movieAction';
 
 const initialState = {
@@ -48,6 +51,7 @@ const initialState = {
   airingToday: [],
   onAirTV: [],
   trendingPeople: [],
+  spMovie: [],
 };
 
 export default function movieReducer(state = initialState, action) {
@@ -245,6 +249,24 @@ export default function movieReducer(state = initialState, action) {
         isLoading: false,
       };
     case GET_TRENDING_PEOPLE_FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+        errors: action.payload,
+      };
+    // --------------------- GET_MOVIE_BYID SHOWS ---------------------
+    case GET_MOVIE_BYID_START:
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case GET_MOVIE_BYID_SUCCESS:
+      return {
+        ...state,
+        spMovie: action.payload,
+        isLoading: false,
+      };
+    case GET_MOVIE_BYID_FAILURE:
       return {
         ...state,
         isLoading: false,
