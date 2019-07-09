@@ -257,7 +257,7 @@ export const getSpMediaMovies = id => async (dispatch) => {
     const response = await axios(
       ` https://api.themoviedb.org/3/movie/${id}/videos?api_key=64c2b191aa0739bffd252c8287ae39c1&language=en-US`,
     );
-    dispatch({ type: GET_SP_MEDIA_MOVIE_SUCCESS, payload: response.data });
+    dispatch({ type: GET_SP_MEDIA_MOVIE_SUCCESS, payload: response.data.results });
   } catch (error) {
     dispatch({ type: GET_SP_MEDIA_MOVIE_FAILURE, payload: error });
   }
@@ -306,4 +306,13 @@ export const getAllMovies = () => (dispatch) => {
 export const getPopularTVandMovies = () => (dispatch) => {
   dispatch(getPopular());
   dispatch(getPopularTv());
+};
+
+export const getSpOverviewData = id => (dispatch) => {
+  dispatch(getMovieById(id));
+  dispatch(getSpReviews(id));
+  dispatch(getSpCast(id));
+  dispatch(getSpMediaMovies(id));
+  dispatch(getSpRelatedMovies(id));
+  dispatch(getSpKeyword(id));
 };

@@ -35,6 +35,21 @@ import {
   GET_MOVIE_BYID_START,
   GET_MOVIE_BYID_SUCCESS,
   GET_MOVIE_BYID_FAILURE,
+  GET_SP_REVIEWS_START,
+  GET_SP_REVIEWS_SUCCESS,
+  GET_SP_REVIEWS_FAILURE,
+  GET_SP_CAST_START,
+  GET_SP_CAST_SUCCESS,
+  GET_SP_CAST_FAILURE,
+  GET_SP_MEDIA_MOVIE_START,
+  GET_SP_MEDIA_MOVIE_SUCCESS,
+  GET_SP_MEDIA_MOVIE_FAILURE,
+  GET_SP_RELATED_MOVIES_START,
+  GET_SP_RELATED_MOVIES_SUCCESS,
+  GET_SP_RELATED_MOVIES_FAILURE,
+  GET_SP_KEYWORD_START,
+  GET_SP_KEYWORD_SUCCESS,
+  GET_SP_KEYWORD_FAILURE,
 } from '../actions/movieAction';
 
 const initialState = {
@@ -52,6 +67,11 @@ const initialState = {
   onAirTV: [],
   trendingPeople: [],
   spMovie: [],
+  spReviews: [],
+  spCast: [],
+  spMediamovie: [],
+  spRelatedMovie: [],
+  spKeyword: [],
 };
 
 export default function movieReducer(state = initialState, action) {
@@ -272,7 +292,97 @@ export default function movieReducer(state = initialState, action) {
         isLoading: false,
         errors: action.payload,
       };
+    // --------------------- SINGLE PAGE REVIEWS ---------------------
+    case GET_SP_REVIEWS_START:
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case GET_SP_REVIEWS_SUCCESS:
+      return {
+        ...state,
+        spReviews: action.payload,
+        isLoading: false,
+      };
+    case GET_SP_REVIEWS_FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+        errors: action.payload,
+      };
 
+    // --------------------- SINGLE PAGE CAST ---------------------
+    case GET_SP_CAST_START:
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case GET_SP_CAST_SUCCESS:
+      return {
+        ...state,
+        spCast: action.payload,
+        isLoading: false,
+      };
+    case GET_SP_CAST_FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+        errors: action.payload,
+      };
+    // --------------------- SINGLE PAGE MEDIA AND MOVIE ---------------------
+    case GET_SP_MEDIA_MOVIE_START:
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case GET_SP_MEDIA_MOVIE_SUCCESS:
+      return {
+        ...state,
+        spMediamovie: action.payload,
+        isLoading: false,
+      };
+    case GET_SP_MEDIA_MOVIE_FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+        errors: action.payload,
+      };
+    // --------------------- SINGLE PAGE RELATED MOVIES ---------------------
+    case GET_SP_RELATED_MOVIES_START:
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case GET_SP_RELATED_MOVIES_SUCCESS:
+      return {
+        ...state,
+        spRelatedMovie: action.payload,
+        isLoading: false,
+      };
+    case GET_SP_RELATED_MOVIES_FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+        errors: action.payload,
+      };
+    // --------------------- SINGLE PAGE KEYOWRD ---------------------
+    case GET_SP_KEYWORD_START:
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case GET_SP_KEYWORD_SUCCESS:
+      return {
+        ...state,
+        spKeyword: action.payload,
+        isLoading: false,
+      };
+    case GET_SP_KEYWORD_FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+        errors: action.payload,
+      };
     // ---------------------- RETURN STATE ----------------------
     default:
       return state;

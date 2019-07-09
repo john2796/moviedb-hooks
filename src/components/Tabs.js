@@ -23,7 +23,6 @@ function Tabs({ children }) {
 
   const dispatchActionAndSetActiveTab = (tab, state) => {
     // prevent from dispatching/ making request if the length of their array has item in it
-
     if (topRated.length <= 0 || nowPlaying.length <= 0 || upcoming.length <= 0) {
       if (state === 'upcoming') {
         dispatch(getUpcoming());
@@ -56,7 +55,7 @@ function Tabs({ children }) {
         {/* loop through the list of children */}
         {children.map((child) => {
           /* grab label from the children prop */
-          const { label, state } = child.props;
+          const { label, state, spId } = child.props;
           /* set default className */
           let className = 'tab-list-item';
           // if the label match with active tab update class/style
@@ -68,7 +67,7 @@ function Tabs({ children }) {
             <li
               key={label}
               className={className}
-              onClick={() => dispatchActionAndSetActiveTab(label, state)}
+              onClick={() => dispatchActionAndSetActiveTab(label, state, spId)}
             >
               {label}
             </li>

@@ -71,3 +71,14 @@ p {
 .selectedLink {
   color: $yellowGreen;
 }
+
+// youtube style
+.player-wrapper {
+  position: relative;
+  padding-top: 81.25%; /* Player ratio: 100 / (1280 / 720) */
+}
+.react-player {
+  position: absolute;
+  top: 0;
+  left: 0;
+}

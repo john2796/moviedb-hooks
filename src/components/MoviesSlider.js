@@ -27,5 +27,6 @@ function MoviesSlider({ state, label }) {
 
 MoviesSlider.propTypes = {
   state: PropTypes.instanceOf(Array).isRequired,
+  label: PropTypes.string,
 };
 export default MoviesSlider;

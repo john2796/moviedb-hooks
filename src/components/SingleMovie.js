@@ -1,13 +1,14 @@
 /* eslint-disable camelcase */
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React, { useEffect, memo } from 'react';
 import PropTypes from 'prop-types';
-import { getMovieById } from '../store/actions/movieAction';
-
 import '../SCSS/singlePageMovie.scss';
+
+import { useSelector, useDispatch } from 'react-redux';
+import { getSpOverviewData } from '../store/actions/movieAction';
+
+import Tabs from './Tabs';
 import Navbar from './Navbar';
 import Footer from './Footer';
-import Tabs from './Tabs';
 import SpmOverview from './SpmOverview';
 
 function SingleMovie({ match }) {
@@ -15,7 +16,7 @@ function SingleMovie({ match }) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getMovieById(Number(match.params.id)));
+    dispatch(getSpOverviewData(Number(match.params.id)));
   }, [dispatch, match.params.id]);
 
   const {
@@ -26,26 +27,33 @@ function SingleMovie({ match }) {
   }
   return (
     <div className="single-page-movie">
+      {/* ------- Top of the page navbar & search ------- */}
       <div className="spm-bg">
         <Navbar />
         <p>search movie</p>
       </div>
-      <div className="spm-wrap">
-        {/* ------------------ left section ------------------ */}
+
+      {/* ------- Wrapper for the whole main section  ------- */}
+      <div className="spm-wrap container">
+        {/* ------------------ Left side big image ,trailer & buy tickets buttons ------------------ */}
         <div className="spm-left">
           <img src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt={name} />
           <button type="button">watch trailer</button>
           <button type="button">buy ticket</button>
         </div>
-        {/* ------------------ right section ------------------ */}
+
+        {/* ------------------ Right side, Main Contents of the page ------------------ */}
         <div className="spm-right">
-          <h2>
-            {title}
-            <span>{release_date}</span>
-          </h2>
-          <p>add to favorite</p>
-          <p>share</p>
-          {/* ------------------ Rate section ------------------ */}
+          {/* ------------------ title ------------------ */}
+          <div className="spm-title">
+            <h2>
+              {title}
+              <span>{release_date}</span>
+            </h2>
+            <p>add to favorite</p>
+            <p>share</p>
+          </div>
+          {/* ------------------ Rate movie ------------------ */}
           <div className="spm-rate">
             <p>
               <span>star icon</span>
@@ -57,27 +65,30 @@ function SingleMovie({ match }) {
               <span>stars</span>
             </p>
           </div>
+
           {/* ------------------Tabs  ------------------ */}
           <Tabs>
-            <div label="overview" state="">
-              <SpmOverview movie={spMovie} />
+            <div label="overview" state="overview">
+              <SpmOverview />
             </div>
-            <div label="reviews" state="">
+            <div label="reviews" state="reviews">
               <p>reviews</p>
             </div>
-            <div label="cast & crew" state="">
+            <div label="cast & crew" state="cast & crew">
               <p>cast & crew</p>
             </div>
-            <div label="media" state="">
+            <div label="media" state="media">
               <p>media</p>
             </div>
-            <div label="related movies" state="">
+            <div label="related movies" state="related movies">
               <p>related movies</p>
             </div>
           </Tabs>
         </div>
-        {/* end of spm right */}
+        {/* end of spm right section */}
       </div>
+
+      {/* ------------------ Footer  ------------------ */}
 
       <Footer />
     </div>
@@ -95,4 +106,4 @@ SingleMovie.propTypes = {
     url: PropTypes.string,
   }),
 };
-export default SingleMovie;
+export default memo(SingleMovie);
