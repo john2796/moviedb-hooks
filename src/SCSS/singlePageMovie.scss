@@ -1,3 +1,4 @@
+// ----- SingleMovie page -----
 .single-page-movie {
   .spm-left {
     img {
@@ -7,13 +8,50 @@
     }
   }
 }
+// ----- overview -----
+.spm-overview {
+  .sp-videos-wrap {
+    display: flex;
+    button {
+      background: transparent;
+      border: inherit;
+      cursor: pointer;
+      width: 70px;
+    }
+    .modal-video-close-btn {
+      border-radius: 50%;
+      background: inherit;
+      background-image: url("../assets/youtube-close-btn.png");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      width: 50px;
+      height: 50px;
+      &::before,
+      &::after {
+        display: none;
+      }
+    }
 
-.sp-videos-wrap {
-  display: flex;
-}
-.sp-video-item {
-  border-radius: 5px;
-  width: 220px;
-  height: 220px;
-  margin: 10px;
+    .sp-video-item {
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: top;
+      padding: 30px;
+      border-radius: 5%;
+      margin: 10px;
+    }
+  }
+  .cast-content {
+    display: flex;
+    .movie-title {
+      margin-right: auto;
+    }
+    img {
+      object-fit: cover;
+      width: 60px;
+      height: 60px;
+      border-radius: 5px;
+    }
+  }
 }

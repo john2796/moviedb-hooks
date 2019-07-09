@@ -241,7 +241,7 @@ export const getSpCast = id => async (dispatch) => {
     const response = await axios(
       `https://api.themoviedb.org/3/movie/${id}/credits?api_key=64c2b191aa0739bffd252c8287ae39c1`,
     );
-    dispatch({ type: GET_SP_CAST_SUCCESS, payload: response.data });
+    dispatch({ type: GET_SP_CAST_SUCCESS, payload: response.data.cast });
   } catch (error) {
     dispatch({ type: GET_SP_CAST_FAILURE, payload: error });
   }
