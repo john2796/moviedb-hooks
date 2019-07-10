@@ -20,7 +20,7 @@ function SingleMovie({ match }) {
   }, [dispatch, match.params.id]);
 
   const {
-    poster_path, name, title, release_date, vote_average,
+    poster_path, name, title, release_date, vote_average, backdrop_path,
   } = spMovie;
   if (isLoading) {
     return <div>Loading...</div>;
@@ -28,9 +28,14 @@ function SingleMovie({ match }) {
   return (
     <div className="single-page-movie">
       {/* ------- Top of the page navbar & search ------- */}
-      <div className="spm-bg">
+      <div
+        className="hero spm-bg"
+        style={{
+          backgroundImage: `url(https://image.tmdb.org/t/p/w1280/${backdrop_path})`,
+        }}
+      >
         <Navbar />
-        <p>search movie</p>
+        <p className="container">search movie</p>
       </div>
 
       {/* ------- Wrapper for the whole main section  ------- */}
@@ -38,32 +43,59 @@ function SingleMovie({ match }) {
         {/* ------------------ Left side big image ,trailer & buy tickets buttons ------------------ */}
         <div className="spm-left">
           <img src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt={name} />
-          <button type="button">watch trailer</button>
-          <button type="button">buy ticket</button>
+          <div className="movie-btn">
+            <button className="redbtn" type="button">
+              watch trailer
+            </button>
+            <button className="yellowbtn" type="button">
+              buy ticket
+            </button>
+          </div>
         </div>
 
         {/* ------------------ Right side, Main Contents of the page ------------------ */}
         <div className="spm-right">
           {/* ------------------ title ------------------ */}
           <div className="spm-title">
-            <h2>
+            <h1 className="bd-hd">
               {title}
               <span>{release_date}</span>
-            </h2>
-            <p>add to favorite</p>
-            <p>share</p>
+            </h1>
+            {/* ------------------ 2 buttons underneath big image red & yellow  ------------------ */}
+            <div className="social-btn-parent">
+              <p className="social-btn">
+                <span>
+                  <i className="fa fa-heart" aria-hidden="true" />
+                </span>
+                add to favorite
+              </p>
+              <p className="social-btn">
+                <span>
+                  <i className="fa fa-share-alt" aria-hidden="true" />
+                </span>
+                share
+              </p>
+            </div>
           </div>
           {/* ------------------ Rate movie ------------------ */}
-          <div className="spm-rate">
-            <p>
-              <span>star icon</span>
-              {`${vote_average}/10`}
-              <span>56 reviews</span>
-            </p>
-            <p>
-              Rate This Movie:
-              <span>stars</span>
-            </p>
+          <div className="movie-rate">
+            <div className="rate">
+              <i className="fa fa-star yellowStar" aria-hidden="true" />
+              <p>
+                <span>{`${vote_average}`}</span>
+                /10
+                <br />
+                <span className="rv">56 reviews</span>
+              </p>
+            </div>
+            <div className="rate-star">
+              <p>Rate This Movie:</p>
+              <i className="fa fa-star yellowStar" aria-hidden="true" />
+              <i className="fa fa-star yellowStar" aria-hidden="true" />
+              <i className="fa fa-star yellowStar" aria-hidden="true" />
+              <i className="fa fa-star yellowStar" aria-hidden="true" />
+              <i className="fa fa-star-o outline" aria-hidden="true" />
+            </div>
           </div>
 
           {/* ------------------Tabs  ------------------ */}

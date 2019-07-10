@@ -57,10 +57,10 @@ function Tabs({ children }) {
           /* grab label from the children prop */
           const { label, state, spId } = child.props;
           /* set default className */
-          let className = 'tab-list-item';
+          let className = 'tab-list-item spm-tab-title ';
           // if the label match with active tab update class/style
           if (activeTab === label) {
-            className += ' tab-list-active';
+            className += ' tab-list-active spm-tab-title-active';
           }
           /* on user click update state with the new label  */
           return (

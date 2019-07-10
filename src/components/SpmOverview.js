@@ -13,7 +13,7 @@ function SpmOverview() {
     spReviews,
     spCast,
     spMediamovie,
-    spRelatedMovie,
+    // spRelatedMovie,
     spKeyword,
     spCrew,
   } = useSelector(state => state.movieReducer);
@@ -25,8 +25,6 @@ function SpmOverview() {
   const fourCast = spCast.filter((_, idx) => idx <= 4);
   const directors = spCrew.filter(item => item.department === 'Directing');
   const writers = spCrew.filter(item => item.department === 'Writing');
-
-  console.log(writers);
 
   const {
     overview, backdrop_path, runtime, genres, release_date,

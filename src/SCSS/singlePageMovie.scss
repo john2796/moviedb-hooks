@@ -1,13 +1,176 @@
-// ----- SingleMovie page -----
-.single-page-movie {
-  .spm-left {
-    img {
-      width: 330px;
-      height: 505px;
+@import "./variable";
+
+// ---- background image ----
+.spm-bg {
+  height: 598px;
+  background-position: top;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+}
+.hero:before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.75);
+}
+// ----- Wrapper for single page left and right section -----
+.spm-wrap {
+  display: flex;
+  margin-top: -415px;
+  position: relative;
+}
+
+// ----- Single page movie left Section big image & buttons -----
+.spm-wrap .spm-left {
+  margin-right: 50px;
+  img {
+    width: 330px;
+    height: 505px;
+    border-radius: 5px;
+  }
+  // -------- Buttons red & yellow  --------
+  .movie-btn {
+    text-align: center;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    background-color: $movie-btn-bg;
+    border: 3px solid $movie-btn-border;
+    margin-top: -6px;
+    button {
+      margin-bottom: 15px;
+      height: 45px;
+      font-family: "Dosis", sans-serif;
+      font-size: 1.4rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      padding: 13px 25px;
       border-radius: 5px;
+      border: none;
+      cursor: pointer;
+    }
+    .redbtn {
+      background-color: #dd003f;
+      color: #ffffff;
+    }
+    .yellowbtn {
+      color: #020d18;
+      background-color: #dcf836;
     }
   }
 }
+
+// ----- Single page movie right Section main content with tab -----
+.spm-wrap .spm-right {
+  // -------- movie title --------
+  .bd-hd {
+    margin-bottom: 25px;
+    // ---- year release ---
+    span {
+      margin-left: 10px;
+      font-family: "Dosis", sans-serif;
+      font-size: 24px;
+      color: $span-year-release;
+      font-weight: 300;
+      text-transform: uppercase;
+    }
+  }
+  // -------- Share & Add to favorites red circles  --------
+  .social-btn-parent {
+    display: flex;
+    margin-bottom: 40px;
+  }
+  .social-btn-parent .social-btn {
+    font-family: "Dosis", sans-serif;
+    font-size: 1.4rem;
+    color: $red;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-right: 35px;
+    i {
+      padding: 13px 14px;
+      text-align: center;
+      border-radius: 50%;
+      border: 1px solid $red;
+      margin-right: 10px;
+      font-size: 1.6rem;
+    }
+  }
+
+  // ----- Movie Rate -----
+  .movie-rate {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    border-top: 1px solid $border-gray;
+    border-bottom: 1px solid $border-gray;
+    margin-bottom: 70px;
+    // ----- Rate  -----
+    .rate {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      p {
+        font-family: "Nunito", sans-serif;
+        margin-bottom: 0;
+        margin-left: 10px;
+        font-size: 1.1rem;
+        color: $gray;
+        font-weight: 300;
+        text-transform: none;
+        line-height: 24px !important;
+        span {
+          color: $white;
+          font-size: 1.5rem;
+          font-weight: 400;
+        }
+        .rv {
+          font-size: 1.2rem;
+          color: $darkBlue;
+        }
+      }
+    }
+    // ----- Rate this movie -----
+    .rate-star {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      margin-left: 30px;
+      border-left: 1px solid #405266;
+      padding-left: 30px;
+      height: 54px;
+      p {
+        font-size: 1.8rem;
+        color: $gray;
+        margin-right: 15px;
+        margin-bottom: 0;
+      }
+      .outline {
+        font-size: 3.6rem;
+        color: $gray;
+      }
+    }
+  }
+  // ------- tab title --------
+  .spm-tab-title {
+    font-family: "Dosis", sans-serif;
+    margin-right: 50px;
+    font-size: 18px;
+    padding: 0;
+    padding-bottom: 15px;
+    border-bottom: 3px solid transparent;
+    font-weight: bold;
+    color: $gray;
+    text-transform: uppercase;
+  }
+  .spm-tab-title-active {
+    color: $yellowGreen;
+    border-bottom: 3px solid #dcf836;
+  }
+} // end of right section
+
 // ----- overview -----
 .spm-overview {
   .sp-videos-wrap {
