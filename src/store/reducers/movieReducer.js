@@ -68,10 +68,11 @@ const initialState = {
   trendingPeople: [],
   spMovie: [],
   spReviews: [],
-  spCast: [],
   spMediamovie: [],
   spRelatedMovie: [],
   spKeyword: [],
+  spCast: [],
+  spCrew: [],
 };
 
 export default function movieReducer(state = initialState, action) {
@@ -320,7 +321,8 @@ export default function movieReducer(state = initialState, action) {
     case GET_SP_CAST_SUCCESS:
       return {
         ...state,
-        spCast: action.payload,
+        spCast: action.cast,
+        spCrew: action.crew,
         isLoading: false,
       };
     case GET_SP_CAST_FAILURE:

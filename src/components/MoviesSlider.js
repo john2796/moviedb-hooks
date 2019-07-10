@@ -13,7 +13,6 @@ function MoviesSlider({ state, label }) {
     slidesToScroll: 5,
     arrows: false,
   };
-
   return (
     <Slider {...settings}>
       {state.map(item => (

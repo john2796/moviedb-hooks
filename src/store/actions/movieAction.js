@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-// const GENRES = 'https://api.themoviedb.org/3/genre/movie/list?api_key=64c2b191aa0739bffd252c8287ae39c1&language=en-US';
 
 // ------------------------------------ GET TOP_RATED ------------------------------------
 const TOP_RATED = 'https://api.themoviedb.org/3/movie/top_rated?api_key=64c2b191aa0739bffd252c8287ae39c1&language=en-US&page=1';
@@ -241,7 +240,11 @@ export const getSpCast = id => async (dispatch) => {
     const response = await axios(
       `https://api.themoviedb.org/3/movie/${id}/credits?api_key=64c2b191aa0739bffd252c8287ae39c1`,
     );
-    dispatch({ type: GET_SP_CAST_SUCCESS, payload: response.data.cast });
+    dispatch({
+      type: GET_SP_CAST_SUCCESS,
+      cast: response.data.cast,
+      crew: response.data.crew,
+    });
   } catch (error) {
     dispatch({ type: GET_SP_CAST_FAILURE, payload: error });
   }
@@ -289,7 +292,7 @@ export const getSpKeyword = id => async (dispatch) => {
     const response = await axios(
       `https://api.themoviedb.org/3/movie/${id}/keywords?api_key=64c2b191aa0739bffd252c8287ae39c1`,
     );
-    dispatch({ type: GET_SP_KEYWORD_SUCCESS, payload: response.data });
+    dispatch({ type: GET_SP_KEYWORD_SUCCESS, payload: response.data.keywords });
   } catch (error) {
     dispatch({ type: GET_SP_KEYWORD_FAILURE, payload: error });
   }

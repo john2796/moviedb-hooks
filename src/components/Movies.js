@@ -15,6 +15,7 @@ function Movies() {
     airingToday,
     onAirTV,
   } = useSelector(state => state.movieReducer);
+
   return (
     <>
       <section className="movie-wrap container">
