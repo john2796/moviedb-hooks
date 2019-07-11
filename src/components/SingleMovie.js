@@ -34,8 +34,10 @@ function SingleMovie({ match }) {
           backgroundImage: `url(https://image.tmdb.org/t/p/w1280/${backdrop_path})`,
         }}
       >
-        <Navbar />
-        <p className="container">search movie</p>
+        <div className="hero-content">
+          <Navbar />
+          <p className="container">search movie</p>
+        </div>
       </div>
 
       {/* ------- Wrapper for the whole main section  ------- */}

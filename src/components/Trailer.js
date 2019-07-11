@@ -77,7 +77,7 @@ function Trailer() {
     focusOnSelect: true,
     afterChange(currentSlide) {
       const { key } = dummyTrailer[currentSlide];
-      setCurrTrailer(`https://www.youtube.com/watch?v=${key}`);
+      setCurrTrailer(`https://www.youtube.com/watch?v=$${key}`);
     },
   };
 

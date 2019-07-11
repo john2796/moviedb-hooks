@@ -1,8 +1,11 @@
 import axios from 'axios';
 
 
-// ------------------------------------ GET TOP_RATED ------------------------------------
-const TOP_RATED = 'https://api.themoviedb.org/3/movie/top_rated?api_key=64c2b191aa0739bffd252c8287ae39c1&language=en-US&page=1';
+const key = process.env.REACT_APP_SECRET_KEY;
+console.log(key);
+
+// -------------- GET TOP_RATED --------------
+const TOP_RATED = `https://api.themoviedb.org/3/movie/top_rated?api_key=${key}&language=en-US&page=1`;
 export const GET_TOP_RATED_START = 'GET_TOP_RATED_START';
 export const GET_TOP_RATED_SUCCESS = 'GET_TOP_RATED_SUCCESS';
 export const GET_TOP_RATED_FAILURE = 'GET_TOP_RATED_FAILURE';
@@ -18,9 +21,9 @@ export const getTopRated = () => async (dispatch) => {
   }
 };
 
-// ------------------------------------ GET NOW_PLAYING ------------------------------------
+// -------------- GET NOW_PLAYING --------------
 
-const NOW_PLAYING = 'https://api.themoviedb.org/3/movie/now_playing?api_key=64c2b191aa0739bffd252c8287ae39c1&language=en-US&page=1';
+const NOW_PLAYING = `https://api.themoviedb.org/3/movie/now_playing?api_key=${key}&language=en-US&page=1`;
 export const GET_NOW_PLAYING_START = 'GET_NOW_PLAYING_START';
 export const GET_NOW_PLAYING_SUCCESS = 'GET_NOW_PLAYING_SUCCESS';
 export const GET_NOW_PLAYING_FAILURE = 'GET_NOW_PLAYING_FAILURE';
@@ -36,9 +39,9 @@ export const getNowPlaying = () => async (dispatch) => {
   }
 };
 
-// ------------------------------------ GET UPCOMING ------------------------------------
+// -------------- GET UPCOMING --------------
 
-const UPCOMING = 'https://api.themoviedb.org/3/movie/upcoming?api_key=64c2b191aa0739bffd252c8287ae39c1&language=en-US&page=1';
+const UPCOMING = `https://api.themoviedb.org/3/movie/upcoming?api_key=${key}&language=en-US&page=1`;
 export const GET_UPCOMING_START = 'GET_UPCOMING_START';
 export const GET_UPCOMING_SUCCESS = 'GET_UPCOMING_SUCCESS';
 export const GET_UPCOMING_FAILURE = 'GET_UPCOMING_FAILURE';
@@ -54,9 +57,9 @@ export const getUpcoming = () => async (dispatch) => {
   }
 };
 
-// ------------------------------------ GET POPULAR ------------------------------------
+// -------------- GET POPULAR --------------
 
-const POPULAR = 'https://api.themoviedb.org/3/movie/popular?api_key=64c2b191aa0739bffd252c8287ae39c1&language=en-US&page=1';
+const POPULAR = `https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=en-US&page=1`;
 export const GET_POPULAR_START = 'GET_POPULAR_START';
 export const GET_POPULAR_SUCCESS = 'GET_POPULAR_SUCCESS';
 export const GET_POPULAR_FAILURE = 'GET_POPULAR_FAILURE';
@@ -72,7 +75,7 @@ export const getPopular = () => async (dispatch) => {
   }
 };
 
-// ------------------------------------ GET_SINGLE_MOVIE ------------------------------------
+// -------------- GET_SINGLE_MOVIE --------------
 
 export const GET_SINGLE_MOVIE_START = 'GET_SINGLE_MOVIE_START';
 export const GET_SINGLE_MOVIE_SUCCESS = 'GET_SINGLE_MOVIE_SUCCESS';
@@ -82,14 +85,14 @@ export const getSingleMovie = title => async (dispatch) => {
   try {
     dispatch({ type: GET_SINGLE_MOVIE_START });
     const response = await axios(
-      `https://api.themoviedb.org/3/search/movie?api_key=64c2b191aa0739bffd252c8287ae39c1&language=en-US&query=${title}`,
+      `https://api.themoviedb.org/3/search/movie?api_key=${key}&language=en-US&query=${title}`,
     );
     dispatch({ type: GET_SINGLE_MOVIE_SUCCESS, payload: response.data.results });
   } catch (error) {
     dispatch({ type: GET_SINGLE_MOVIE_FAILURE, payload: error });
   }
 };
-// ------------------------------------ GET_SINGLE_QUERy ------------------------------------
+// -------------- GET_SINGLE_QUERy --------------
 
 export const GET_SINGLE_QUERY_START = 'GET_SINGLE_QUERY_START';
 export const GET_SINGLE_QUERY_SUCCESS = 'GET_SINGLE_QUERY_SUCCESS';
@@ -99,7 +102,7 @@ export const getSingleQuery = () => async (dispatch) => {
   try {
     dispatch({ type: GET_SINGLE_QUERY_START });
     const response = await axios(
-      'https://api.themoviedb.org/3/movie/429617/videos?api_key=64c2b191aa0739bffd252c8287ae39c1&language=en-US',
+      `https://api.themoviedb.org/3/movie/429617/videos?api_key=${key}&language=en-US`,
     );
     dispatch({ type: GET_SINGLE_QUERY_SUCCESS, payload: response.data.results });
   } catch (error) {
@@ -107,9 +110,9 @@ export const getSingleQuery = () => async (dispatch) => {
   }
 };
 
-// ------------------------------------ GET POPULAR TV SHOWS ------------------------------------
+// -------------- GET POPULAR TV SHOWS --------------
 
-const POPULAR_TV = 'https://api.themoviedb.org/3/tv/popular?api_key=64c2b191aa0739bffd252c8287ae39c1&language=en-US&page=1';
+const POPULAR_TV = `https://api.themoviedb.org/3/tv/popular?api_key=${key}&language=en-US&page=1`;
 export const GET_POPULAR_TV_START = 'GET_POPULAR_TV_START';
 export const GET_POPULAR_TV_SUCCESS = 'GET_POPULAR_TV_SUCCESS';
 export const GET_POPULAR_TV_FAILURE = 'GET_POPULAR_TV_FAILURE';
@@ -124,9 +127,9 @@ export const getPopularTv = () => async (dispatch) => {
     dispatch({ type: GET_POPULAR_TV_FAILURE, payload: error });
   }
 };
-// ------------------------------------ GET TOP_RATED TV SHOWS ------------------------------------
+// -------------- GET TOP_RATED TV SHOWS --------------
 
-const TOP_RATED_TV = 'https://api.themoviedb.org/3/tv/top_rated?api_key=64c2b191aa0739bffd252c8287ae39c1&language=en-US&page=1';
+const TOP_RATED_TV = `https://api.themoviedb.org/3/tv/top_rated?api_key=${key}&language=en-US&page=1`;
 export const GET_TOP_RATED_TV_START = 'GET_TOP_RATED_TV_START';
 export const GET_TOP_RATED_TV_SUCCESS = 'GET_TOP_RATED_TV_SUCCESS';
 export const GET_TOP_RATED_TV_FAILURE = 'GET_TOP_RATED_TV_FAILURE';
@@ -142,8 +145,8 @@ export const getTopRatedTv = () => async (dispatch) => {
   }
 };
 
-// ------------------------------------ GET AIRING_TODAY TV SHOWS --------------------------------
-const AIRING_TODAY_TV = 'https://api.themoviedb.org/3/tv/airing_today?api_key=64c2b191aa0739bffd252c8287ae39c1&language=en-US&page=1';
+// -------------- GET AIRING_TODAY TV SHOWS --------------------------------
+const AIRING_TODAY_TV = `https://api.themoviedb.org/3/tv/airing_today?api_key=${key}&language=en-US&page=1`;
 export const GET_AIRING_TODAY_TV_START = 'GET_AIRING_TODAY_TV_START';
 export const GET_AIRING_TODAY_TV_SUCCESS = 'GET_AIRING_TODAY_TV_SUCCESS';
 export const GET_AIRING_TODAY_TV_FAILURE = 'GET_AIRING_TODAY_TV_FAILURE';
@@ -158,9 +161,9 @@ export const getAiringTodayTV = () => async (dispatch) => {
     dispatch({ type: GET_AIRING_TODAY_TV_FAILURE, payload: error });
   }
 };
-// ------------------------------------ GET ONTHEAIR TV SHOWS ------------------------------------
+// -------------- GET ONTHEAIR TV SHOWS --------------
 
-const ONTHEAIR_TV = 'https://api.themoviedb.org/3/tv/on_the_air?api_key=64c2b191aa0739bffd252c8287ae39c1&language=en-US&page=1';
+const ONTHEAIR_TV = `https://api.themoviedb.org/3/tv/on_the_air?api_key=${key}&language=en-US&page=1`;
 export const GET_ONTHEAIR_TV_START = 'GET_ONTHEAIR_TV_START';
 export const GET_ONTHEAIR_TV_SUCCESS = 'GET_ONTHEAIR_TV_SUCCESS';
 export const GET_ONTHEAIR_TV_FAILURE = 'GET_COMING_SOON_TV_FAILURE';
@@ -176,9 +179,9 @@ export const getOntheAir = () => async (dispatch) => {
   }
 };
 
-// ------------------------------------ GET TRENDING PEOPLE ------------------------------------
+// -------------- GET TRENDING PEOPLE --------------
 
-const TRENDING_PEOPLE = 'https://api.themoviedb.org/3/trending/person/day?api_key=64c2b191aa0739bffd252c8287ae39c1';
+const TRENDING_PEOPLE = `https://api.themoviedb.org/3/trending/person/day?api_key=${key}`;
 export const GET_TRENDING_PEOPLE_START = 'GET_TRENDING_PEOPLE_START';
 export const GET_TRENDING_PEOPLE_SUCCESS = 'GET_TRENDING_PEOPLE_SUCCESS';
 export const GET_TRENDING_PEOPLE_FAILURE = 'GET_COMING_SOON_TV_FAILURE';
@@ -194,7 +197,7 @@ export const getTrendingPeople = () => async (dispatch) => {
   }
 };
 
-// ------------------------------------ GET MOVIE BY ID  ------------------------------------
+// -------------- GET MOVIE BY ID  --------------
 export const GET_MOVIE_BYID_START = 'GET_MOVIE_BYID_START';
 export const GET_MOVIE_BYID_SUCCESS = 'GET_MOVIE_BYID_SUCCESS';
 export const GET_MOVIE_BYID_FAILURE = 'GET_MOVIE_BYID_FAILURE';
@@ -203,7 +206,7 @@ export const getMovieById = id => async (dispatch) => {
   try {
     dispatch({ type: GET_MOVIE_BYID_START });
     const response = await axios(
-      `https://api.themoviedb.org/3/movie/${id}?api_key=64c2b191aa0739bffd252c8287ae39c1&language=en-US`,
+      `https://api.themoviedb.org/3/movie/${id}?api_key=${key}&language=en-US`,
     );
     dispatch({ type: GET_MOVIE_BYID_SUCCESS, payload: response.data });
   } catch (error) {
@@ -222,7 +225,7 @@ export const getSpReviews = id => async (dispatch) => {
   try {
     dispatch({ type: GET_SP_REVIEWS_START });
     const response = await axios(
-      `https://api.themoviedb.org/3/movie/${id}/reviews?api_key=64c2b191aa0739bffd252c8287ae39c1&language=en-US&page=1`,
+      `https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${key}&language=en-US&page=1`,
     );
     dispatch({ type: GET_SP_REVIEWS_SUCCESS, payload: response.data.results });
   } catch (error) {
@@ -237,8 +240,10 @@ export const GET_SP_CAST_FAILURE = 'GET_SP_CAST_FAILURE';
 export const getSpCast = id => async (dispatch) => {
   try {
     dispatch({ type: GET_SP_CAST_START });
+
+
     const response = await axios(
-      `https://api.themoviedb.org/3/movie/${id}/credits?api_key=64c2b191aa0739bffd252c8287ae39c1`,
+      `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${key}`,
     );
     dispatch({
       type: GET_SP_CAST_SUCCESS,
@@ -258,7 +263,7 @@ export const getSpMediaMovies = id => async (dispatch) => {
   try {
     dispatch({ type: GET_SP_MEDIA_MOVIE_START });
     const response = await axios(
-      ` https://api.themoviedb.org/3/movie/${id}/videos?api_key=64c2b191aa0739bffd252c8287ae39c1&language=en-US`,
+      ` https://api.themoviedb.org/3/movie/${id}/videos?api_key=${key}&language=en-US`,
     );
     dispatch({ type: GET_SP_MEDIA_MOVIE_SUCCESS, payload: response.data.results });
   } catch (error) {
@@ -274,7 +279,7 @@ export const getSpRelatedMovies = id => async (dispatch) => {
   try {
     dispatch({ type: GET_SP_RELATED_MOVIES_START });
     const response = await axios(
-      `https://api.themoviedb.org/3/movie/${id}/similar?api_key=64c2b191aa0739bffd252c8287ae39c1&language=en-US&page=1`,
+      `https://api.themoviedb.org/3/movie/${id}/similar?api_key=${key}&language=en-US&page=1`,
     );
     dispatch({ type: GET_SP_RELATED_MOVIES_SUCCESS, payload: response.data });
   } catch (error) {
@@ -290,7 +295,7 @@ export const getSpKeyword = id => async (dispatch) => {
   try {
     dispatch({ type: GET_SP_KEYWORD_START });
     const response = await axios(
-      `https://api.themoviedb.org/3/movie/${id}/keywords?api_key=64c2b191aa0739bffd252c8287ae39c1`,
+      `https://api.themoviedb.org/3/movie/${id}/keywords?api_key=${key}`,
     );
     dispatch({ type: GET_SP_KEYWORD_SUCCESS, payload: response.data.keywords });
   } catch (error) {
@@ -298,7 +303,7 @@ export const getSpKeyword = id => async (dispatch) => {
   }
 };
 
-// ------------------------------------  Dispatch All Movies ------------------------------------
+// --------------  Dispatch All Movies --------------
 export const getAllMovies = () => (dispatch) => {
   dispatch(getPopular());
   dispatch(getUpcoming());
