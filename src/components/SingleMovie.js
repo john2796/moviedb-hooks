@@ -13,6 +13,7 @@ import SpmOverview from './SpmOverview';
 import SpmReviews from './SpmReviews';
 import SpmCrew from './SpmCrew';
 import SpmMedia from './SpmMedia';
+import SpmRelatedMovies from './SpmRelatedMovies';
 
 function SingleMovie({ match }) {
   const {
@@ -126,7 +127,10 @@ function SingleMovie({ match }) {
               <SpmMedia title={title} media={spMediamovie} backdrop_path={backdrop_path} />
             </div>
             <div label="related movies" state="related movies">
-              <p>related movies</p>
+              <SpmRelatedMovies
+                title={title}
+                relatedMovies={spRelatedMovie}
+              />
             </div>
           </Tabs>
         </div>

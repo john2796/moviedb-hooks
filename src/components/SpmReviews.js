@@ -2,7 +2,6 @@ import React from 'react';
 import '../SCSS/spmReview.scss';
 
 function SpmReviews({ reviews, title }) {
-  console.log(reviews);
   return (
     <>
       <div className="tab-header">

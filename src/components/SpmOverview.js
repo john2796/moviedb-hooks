@@ -17,7 +17,7 @@ function SpmOverview() {
   // desctructure spMovie
   const { author, content, url } = spReviews.length && spReviews[0];
   const filteredVideos = spMediamovie.filter((_, idx) => idx <= 3);
-  const filteredCast = spCast.filter((_, idx) => idx <= 7);
+  const filteredCast = spCast.filter((_, idx) => idx <= 7).filter(x => x.profile_path !== null);
   const fourCast = spCast.filter((_, idx) => idx <= 4);
   const directors = spCrew.filter(item => item.department === 'Directing');
   const writers = spCrew.filter(item => item.department === 'Writing');

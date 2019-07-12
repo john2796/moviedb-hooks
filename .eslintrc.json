@@ -7,6 +7,7 @@
   "plugins": ["react", "jsx-a11y", "import", "react-hooks"],
   "extends": "airbnb",
   "rules": {
+    "semi": 0,
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "react/jsx-filename-extension": [
