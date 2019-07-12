@@ -93,3 +93,24 @@ p {
   font-size: 3.6rem;
   color: $yellowStar;
 }
+// ------ blue text ------
+.blue-text {
+  color: $darkBlue;
+  &:hover {
+    color: $yellowGreen;
+  }
+}
+
+// ------ Blue border | T | R | B | L --------
+.brT {
+  border-top: 1px solid $border-gray;
+}
+.brR {
+  border-right: 1px solid $border-gray;
+}
+.brB {
+  border-bottom: 1px solid $border-gray;
+}
+.brL {
+  border-left: 1px solid $border-gray;
+}

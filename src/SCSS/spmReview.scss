@@ -1,0 +1,12 @@
+@import "./variable";
+.tab-header {
+  h3 {
+    font-size: 1.8rem;
+    color: $gray;
+    margin-bottom: 15px;
+  }
+
+  .rev-item {
+    margin-bottom: 110px;
+  }
+}

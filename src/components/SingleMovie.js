@@ -10,9 +10,10 @@ import Tabs from './Tabs';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import SpmOverview from './SpmOverview';
+import SpmReviews from './SpmReviews';
 
 function SingleMovie({ match }) {
-  const { spMovie, isLoading } = useSelector(state => state.movieReducer);
+  const { spMovie, isLoading, spReviews } = useSelector(state => state.movieReducer);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -106,7 +107,7 @@ function SingleMovie({ match }) {
               <SpmOverview />
             </div>
             <div label="reviews" state="reviews">
-              <p>reviews</p>
+              <SpmReviews reviews={spReviews} title={title} />
             </div>
             <div label="cast & crew" state="cast & crew">
               <p>cast & crew</p>

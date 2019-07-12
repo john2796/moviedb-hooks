@@ -176,48 +176,149 @@
 
 // ----- overview -----
 .spm-overview {
-  .sp-videos-wrap {
-    display: flex;
-    button {
-      background: transparent;
-      border: inherit;
-      cursor: pointer;
-      width: 70px;
-    }
-    .modal-video-close-btn {
-      border-radius: 50%;
-      background: inherit;
-      background-image: url("../assets/youtube-close-btn.png");
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      width: 50px;
-      height: 50px;
-      &::before,
-      &::after {
-        display: none;
-      }
-    }
-
-    .sp-video-item {
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: top;
-      padding: 30px;
-      border-radius: 5%;
-      margin: 10px;
+  display: flex;
+}
+// -------- single page ptag style ------
+// i am using it for overview, review
+.spm-paragraph {
+  font-family: "Nunito", sans-serif;
+  font-size: 1.4rem;
+  color: $gray;
+  font-weight: 300;
+  text-transform: none;
+  line-height: 24px !important;
+  margin-bottom: 10px;
+}
+//  ----- Videos trailer carousel -----
+.sp-videos-wrap {
+  display: flex;
+  button {
+    background: transparent;
+    border: inherit;
+    cursor: pointer;
+    width: 70px;
+  }
+  .modal-video-close-btn {
+    border-radius: 50%;
+    background: inherit;
+    background-image: url("../assets/youtube-close-btn.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 50px;
+    height: 50px;
+    &::before,
+    &::after {
+      display: none;
     }
   }
-  .cast-content {
+  .sp-video-item {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+    padding: 30px;
+    border-radius: 5%;
+    margin: 10px;
+  }
+}
+//  ----- Cast -----
+.cast-content {
+  display: flex;
+  align-items: center;
+  padding: 15px 0;
+  .movie-title {
+    margin-right: auto;
+  }
+  img {
+    margin-right: 15px;
+    object-fit: cover;
+    width: 60px;
+    height: 60px;
+    border-radius: 5px;
+  }
+  .movie-title {
+    color: $darkBlue;
+    font-size: 1.5rem;
+  }
+}
+// ------- this is the h4 title and all anchor blue text --
+// --- I'm reusing this for All title ---
+.title-all-video {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 25px;
+  border-bottom: 1px solid #233a50;
+  padding-bottom: 8px;
+  margin-top: 30px;
+  h4 {
+    text-transform: uppercase;
+  }
+  .sub-heading {
+    color: $darkBlue;
+    font-family: "Nunito", sans-serif;
+    font-size: 1.2rem;
+    font-weight: 300;
+    text-transform: none;
+    cursor: pointer;
+    &:hover {
+      color: $yellowGreen;
+    }
+  }
+  i {
+    margin-left: 5px;
+  }
+}
+
+// ------ Reviews ------
+.sp-reviews {
+  .readmore {
+    color: $darkBlue;
+  }
+  h3 {
+    font-family: "Dosis", sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: none;
+    color: #abb7c4;
+    margin-bottom: 15px;
+  }
+}
+
+// ---------- single page overview right side ----------
+.spm-overview-right {
+  width: 100%;
+  margin-left: 50px;
+  .spr-item {
+    margin-bottom: 30px;
+    margin-left: 30px;
+  }
+  h6 {
+    font-family: "Dosis", sans-serif;
+    font-size: 14px;
+    color: $gray;
+    font-weight: bold;
+    text-transform: capitalize;
+    margin-bottom: 10px;
+  }
+  p {
+    font-family: "Nunito", sans-serif;
+    font-size: 14px;
+    color: #abb7c4;
+    font-weight: 300;
+    text-transform: none;
+    line-height: 24px !important;
+  }
+  .keyword-parent {
     display: flex;
-    .movie-title {
-      margin-right: auto;
-    }
-    img {
-      object-fit: cover;
-      width: 60px;
-      height: 60px;
-      border-radius: 5px;
-    }
+    flex-wrap: wrap;
+  }
+  .keywords {
+    font-size: 1.2rem;
+    background-color: #233a50;
+    color: #abb7c4;
+    padding: 1px 8px;
+    border-radius: 2px;
+    margin: 4px;
   }
 }
