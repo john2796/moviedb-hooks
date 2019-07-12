@@ -198,6 +198,13 @@
     cursor: pointer;
     width: 70px;
   }
+  button img {
+    opacity: 0.5;
+  }
+  button img:hover {
+    opacity: 1;
+    filter: alpha(opacity=50); /* For IE8 and earlier */
+  }
   .modal-video-close-btn {
     border-radius: 50%;
     background: inherit;

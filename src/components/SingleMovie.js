@@ -11,9 +11,19 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import SpmOverview from './SpmOverview';
 import SpmReviews from './SpmReviews';
+import SpmCrew from './SpmCrew';
+import SpmMedia from './SpmMedia';
 
 function SingleMovie({ match }) {
-  const { spMovie, isLoading, spReviews } = useSelector(state => state.movieReducer);
+  const {
+    isLoading,
+    spMovie,
+    spReviews,
+    spCrew,
+    spCast,
+    spMediamovie,
+    spRelatedMovie,
+  } = useSelector(state => state.movieReducer);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -110,10 +120,10 @@ function SingleMovie({ match }) {
               <SpmReviews reviews={spReviews} title={title} />
             </div>
             <div label="cast & crew" state="cast & crew">
-              <p>cast & crew</p>
+              <SpmCrew crew={spCrew} cast={spCast} title={title} />
             </div>
             <div label="media" state="media">
-              <p>media</p>
+              <SpmMedia title={title} media={spMediamovie} backdrop_path={backdrop_path} />
             </div>
             <div label="related movies" state="related movies">
               <p>related movies</p>

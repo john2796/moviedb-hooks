@@ -10,20 +10,16 @@ function SpmReviews({ reviews, title }) {
         <h2 className="blue-text">{title}</h2>
       </div>
 
-      <div className="brT brB">
-        <div className="brR">
-          <p>{`Found ${reviews.length} reviews in total`}</p>
-          <p>Filter by:</p>
-        </div>
-
-        {/* ----- right side of filter ----  */}
-        <div>
-          <p>Popularity Descending</p>
-        </div>
+      <div className="brT brB review-total">
+        <p>
+          Found
+          <span className="blue-text">{reviews.length}</span>
+          reviews in total
+        </p>
       </div>
 
       {/* ---------- review content ----------- */}
-      <div className="sp-reviews">
+      <div className="sp-reviews tab-reviews">
         {/* ------- title with view all option ------- */}
         {reviews.map(item => (
           <div className="rev-item" key={item.id}>

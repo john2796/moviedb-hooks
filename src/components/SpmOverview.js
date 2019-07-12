@@ -9,14 +9,10 @@ import youtubebtn from '../assets/youtube-play-btn.png';
 function SpmOverview() {
   // Select all state from reducer
   const {
-    spMovie,
-    spReviews,
-    spCast,
-    spMediamovie,
-    // spRelatedMovie,
-    spKeyword,
-    spCrew,
-  } = useSelector(state => state.movieReducer);
+    spMovie, spReviews, spCast, spMediamovie, spKeyword, spCrew,
+  } = useSelector(
+    state => state.movieReducer,
+  );
   const [isOpen, setIsOpen] = useState(false);
   // desctructure spMovie
   const { author, content, url } = spReviews.length && spReviews[0];
@@ -99,18 +95,24 @@ function SpmOverview() {
           </div>
 
           {/* ------- Author ------- */}
-          <h3>{author}</h3>
-          <p className="spm-paragraph">
-            {`${content && content.substring(0, 400)}...`}
-            <a
-              href={url}
-              rel="noopener noreferrer"
-              target="_blank"
-              className="spm-paragraph readmore"
-            >
-              read more
-            </a>
-          </p>
+          {spReviews.length ? (
+            <>
+              <h3>{author}</h3>
+              <p className="spm-paragraph">
+                {`${content && content.substring(0, 400)}...`}
+                <a
+                  href={url}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  className="spm-paragraph readmore"
+                >
+                  read more
+                </a>
+              </p>
+            </>
+          ) : (
+            <p className="no-data-message">No reviews</p>
+          )}
         </div>
       </div>
 

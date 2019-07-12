@@ -3,10 +3,23 @@
   h3 {
     font-size: 1.8rem;
     color: $gray;
-    margin-bottom: 15px;
   }
+}
 
+.review-total {
+  margin-bottom: 50px;
+  padding: 10px;
+  p span {
+    margin: 0 5px;
+  }
+}
+
+.tab-reviews {
   .rev-item {
-    margin-bottom: 110px;
+    padding-bottom: 15px;
+    p a {
+      display: block;
+      padding-bottom: 15px;
+    }
   }
 }

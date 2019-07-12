@@ -66,6 +66,7 @@ function Trailer() {
   useEffect(() => {
     dispatch(getTrendingPeople());
   }, [dispatch]);
+  const filterTrendingPeople = trendingPeople.filter(o => o.profile_path !== null);
 
   const settings = {
     infinite: true,
@@ -133,7 +134,7 @@ function Trailer() {
           {/* ----- right side of trailer section ----- */}
           <div className="main-right-section">
             <h4 className="sb-title">Spotlight Celebrities</h4>
-            {trendingPeople.map(item => (
+            {filterTrendingPeople.map(item => (
               <div className="mr-content" key={item.id}>
                 <img src={`https://image.tmdb.org/t/p/w500${item.profile_path}`} alt={item.name} />
                 <div>

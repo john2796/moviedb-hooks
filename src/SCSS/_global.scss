@@ -3,9 +3,10 @@
 /*---------------------------*/
 
 .container {
-  width: 1250px;
-  margin-right: auto;
-  margin-left: auto;
+  // width: 1250px;
+  max-width: 1250px;
+  margin: 0 auto;
+
   padding-left: 15px;
   padding-right: 15px;
 }
@@ -113,4 +114,12 @@ p {
 }
 .brL {
   border-left: 1px solid $border-gray;
+}
+.no-data-message {
+  color: gray;
+  font-size: 1.5rem;
+  text-decoration: line-through;
+  &:hover {
+    text-decoration: none;
+  }
 }
