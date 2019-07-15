@@ -1,12 +1,22 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Pagination from './Pagination';
+import React, { memo } from 'react'
+import '../SCSS/spmRelatedMovie.scss'
+import PropTypes from 'prop-types'
 
-function SpmRelatedMovies({ relatedMovies, title }) {
+import { useDispatch } from 'react-redux'
+import { getSpRelatedMovies } from '../store/actions/movieAction'
+
+import Pagination from './Pagination'
+
+function SpmRelatedMovies({ relatedMovies, title, id }) {
+  // const { spRelatedMovie } = useSelector(state => state.movieReducer)
+  const dispatch = useDispatch()
   const onPageChanged = (data) => {
-    // update the action
-    console.log(data);
-  };
+    // Dispatch action here later
+    const { currentPage } = data
+    console.log(id, currentPage)
+    dispatch(getSpRelatedMovies(id, currentPage))
+  }
+  console.log(relatedMovies)
   return (
     <>
       <div className="tab-header">
@@ -21,15 +31,26 @@ function SpmRelatedMovies({ relatedMovies, title }) {
           reviews in total
         </p>
       </div>
-
-      <Pagination
-        totalRecords={relatedMovies.total_results}
-        pageLimit={18}
-        pageNeighbors={1}
-        onPageChanged={onPageChanged}
-      />
+      {/* <-- bottom of the page filter options && pagination --> */}
+      <div className="related-movies-filter-wrap brT brB">
+        <p className="brR">Movies per page:</p>
+        <div className="brR">
+          <select>
+            <option value="5">5 Movies</option>
+            <option value="10">10 Movies</option>
+          </select>
+        </div>
+        <div className="rmf-pagination">
+          <Pagination
+            totalRecords={relatedMovies.total_results}
+            pageLimit={18}
+            pageNeighbours={1}
+            onPageChanged={onPageChanged}
+          />
+        </div>
+      </div>
     </>
-  );
+  )
 }
 
 SpmRelatedMovies.propTypes = {
@@ -39,5 +60,5 @@ SpmRelatedMovies.propTypes = {
     total_pages: PropTypes.number,
     total_results: PropTypes.number,
   }),
-};
-export default SpmRelatedMovies;
+}
+export default SpmRelatedMovies

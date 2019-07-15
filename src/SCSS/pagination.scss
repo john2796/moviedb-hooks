@@ -1,0 +1,21 @@
+@import "./variable";
+.pagination-nav {
+  display: flex;
+  align-items: center;
+}
+.pag-total-page {
+  margin-right: 15px;
+}
+.pagination {
+  display: flex;
+  .page-item .active {
+    color: $yellowGreen;
+  }
+  .page-link {
+    padding-left: 5px;
+    padding-right: 5px;
+    display: inline-block;
+    font-size: 1.6rem;
+    color: $darkBlue;
+  }
+}

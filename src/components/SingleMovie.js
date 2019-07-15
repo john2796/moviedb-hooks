@@ -1,19 +1,20 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable camelcase */
-import React, { useEffect, memo } from 'react';
-import PropTypes from 'prop-types';
-import '../SCSS/singlePageMovie.scss';
+import React, { useEffect, memo } from 'react'
+import PropTypes from 'prop-types'
+import '../SCSS/singlePageMovie.scss'
 
-import { useSelector, useDispatch } from 'react-redux';
-import { getSpOverviewData } from '../store/actions/movieAction';
+import { useSelector, useDispatch } from 'react-redux'
+import { getSpOverviewData } from '../store/actions/movieAction'
 
-import Tabs from './Tabs';
-import Navbar from './Navbar';
-import Footer from './Footer';
-import SpmOverview from './SpmOverview';
-import SpmReviews from './SpmReviews';
-import SpmCrew from './SpmCrew';
-import SpmMedia from './SpmMedia';
-import SpmRelatedMovies from './SpmRelatedMovies';
+import Tabs from './Tabs'
+import Navbar from './Navbar'
+import Footer from './Footer'
+import SpmOverview from './SpmOverview'
+import SpmReviews from './SpmReviews'
+import SpmCrew from './SpmCrew'
+import SpmMedia from './SpmMedia'
+import SpmRelatedMovies from './SpmRelatedMovies'
 
 function SingleMovie({ match }) {
   const {
@@ -24,18 +25,18 @@ function SingleMovie({ match }) {
     spCast,
     spMediamovie,
     spRelatedMovie,
-  } = useSelector(state => state.movieReducer);
-  const dispatch = useDispatch();
+  } = useSelector(state => state.movieReducer)
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getSpOverviewData(Number(match.params.id)));
-  }, [dispatch, match.params.id]);
+    dispatch(getSpOverviewData(Number(match.params.id)))
+  }, [])
 
   const {
     poster_path, name, title, release_date, vote_average, backdrop_path,
-  } = spMovie;
+  } = spMovie
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div>Loading...</div>
   }
   return (
     <div className="single-page-movie">
@@ -129,6 +130,7 @@ function SingleMovie({ match }) {
             <div label="related movies" state="related movies">
               <SpmRelatedMovies
                 title={title}
+                id={Number(match.params.id)}
                 relatedMovies={spRelatedMovie}
               />
             </div>
@@ -141,7 +143,7 @@ function SingleMovie({ match }) {
 
       <Footer />
     </div>
-  );
+  )
 }
 
 SingleMovie.propTypes = {
@@ -154,5 +156,5 @@ SingleMovie.propTypes = {
     path: PropTypes.string,
     url: PropTypes.string,
   }),
-};
-export default memo(SingleMovie);
+}
+export default memo(SingleMovie)
