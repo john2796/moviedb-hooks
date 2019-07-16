@@ -5,9 +5,9 @@ import PropTypes from 'prop-types'
 import '../SCSS/singlePageMovie.scss'
 
 import { useSelector, useDispatch } from 'react-redux'
+import { Link, Route } from 'react-router-dom'
 import { getSpOverviewData } from '../store/actions/movieAction'
 
-import Tabs from './Tabs'
 import Navbar from './Navbar'
 import Footer from './Footer'
 import SpmOverview from './SpmOverview'
@@ -38,6 +38,7 @@ function SingleMovie({ match }) {
   if (isLoading) {
     return <div>Loading...</div>
   }
+  console.log(match, '......... match ......')
   return (
     <div className="single-page-movie">
       {/* ------- Top of the page navbar & search ------- */}
@@ -114,27 +115,39 @@ function SingleMovie({ match }) {
           </div>
 
           {/* ------------------Tabs  ------------------ */}
-          <Tabs>
-            <div label="overview" state="overview">
-              <SpmOverview />
-            </div>
-            <div label="reviews" state="reviews">
-              <SpmReviews reviews={spReviews} title={title} />
-            </div>
-            <div label="cast & crew" state="cast & crew">
-              <SpmCrew crew={spCrew} cast={spCast} title={title} />
-            </div>
-            <div label="media" state="media">
+          <nav>
+            <Link to={`${match.url}`}>overview</Link>
+            <Link to={`${match.url}/reviews`}>reviews</Link>
+            <Link to={`${match.url}/cast&crew`}>cast & crew</Link>
+            <Link to={`${match.url}/media`}>media</Link>
+            <Link to={`${match.url}/relatedmovies`}>related movies</Link>
+          </nav>
+
+          <Route exact path={`${match.path}`} component={SpmOverview} />
+          <Route
+            path={`${match.path}/reviews`}
+            render={() => <SpmReviews reviews={spReviews} title={title} />}
+          />
+          <Route
+            path={`${match.path}/cast&crew`}
+            render={() => <SpmCrew crew={spCrew} cast={spCast} title={title} />}
+          />
+          <Route
+            path={`${match.path}/media`}
+            render={() => (
               <SpmMedia title={title} media={spMediamovie} backdrop_path={backdrop_path} />
-            </div>
-            <div label="related movies" state="related movies">
+            )}
+          />
+          <Route
+            path={`${match.path}/relatedmovies`}
+            render={() => (
               <SpmRelatedMovies
                 title={title}
                 id={Number(match.params.id)}
                 relatedMovies={spRelatedMovie}
               />
-            </div>
-          </Tabs>
+            )}
+          />
         </div>
         {/* end of spm right section */}
       </div>

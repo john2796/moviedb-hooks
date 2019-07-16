@@ -8,7 +8,7 @@ export default function App() {
   return (
     <>
       <Route exact path="/" component={Home} />
-      <Route exact path="/movie/:label/:id" component={SingleMovie} />
+      <Route  path="/movie/:label/:id" component={SingleMovie} />
     </>
   );
 }
