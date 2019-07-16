@@ -36,19 +36,7 @@ main {
   padding-left: 0;
   cursor: pointer;
 }
-.tab-content {
-  min-height: 350px;
-}
-.tab-list-item {
-  display: inline-block;
-  list-style: none;
-  margin-bottom: 40px;
-  padding: 0.5rem 2rem;
-  padding-left: 0;
-}
-.tab-list-active {
-  color: $yellowGreen;
-}
+
 /* -------- MOVIE Trailer and CELEB section --------- */
 .main-flex {
   display: flex;

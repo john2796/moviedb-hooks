@@ -1,21 +1,20 @@
-import React, { memo } from 'react';
-import { useSelector } from 'react-redux';
+import React, { memo } from 'react'
+import { useSelector } from 'react-redux'
 
-import MoviesSlider from './MoviesSlider';
-import Tabs from './Tabs';
+import { Link, Route, withRouter } from 'react-router-dom'
+import MoviesSlider from './MoviesSlider'
 
-function Movies() {
+function Movies({ match }) {
   const {
     popular,
     topRated,
     nowPlaying,
     upcoming,
-    popularTV,
-    topRatedTV,
-    airingToday,
-    onAirTV,
-  } = useSelector(state => state.movieReducer);
-
+    // popularTV,
+    // topRatedTV,
+    // airingToday,
+    // onAirTV,
+  } = useSelector(state => state.movieReducer)
   return (
     <>
       <section className="movie-wrap container">
@@ -23,20 +22,32 @@ function Movies() {
           <h2>in theater</h2>
           <span>view all</span>
         </div>
-        <Tabs>
-          <div label="#popular" state="popular">
-            <MoviesSlider label="popular" state={popular} />
-          </div>
-          <div label="#coming soon" state="upcoming">
-            <MoviesSlider label="upcoming" state={upcoming} />
-          </div>
-          <div label="#top rated" state="topRated">
-            <MoviesSlider state={topRated} label="topRated" />
-          </div>
-          <div label="#most-reviewed" state="nowPlaying">
-            <MoviesSlider state={nowPlaying} label="nowPlaying" />
-          </div>
-        </Tabs>
+        <nav>
+          <Link to={`${match.url}`}>#popular</Link>
+          <Link to={`${match.url}movie/upcoming`}>#coming soon</Link>
+          <Link to={`${match.url}movie/topRated`}>#top rated</Link>
+          <Link to={`${match.url}movie/nowPlaying`}>#most-reviewed</Link>
+        </nav>
+        <Route
+          exact
+          path={`${match.path}`}
+          render={props => <MoviesSlider {...props} state={popular} />}
+        />
+        <Route
+          exact
+          path={`${match.path}movie/upcoming`}
+          render={props => <MoviesSlider {...props} state={upcoming} />}
+        />
+        <Route
+          exact
+          path={`${match.path}movie/topRated`}
+          render={props => <MoviesSlider {...props} state={topRated} />}
+        />
+        <Route
+          exact
+          path={`${match.path}movie/nowPlaying`}
+          render={props => <MoviesSlider {...props} state={nowPlaying} />}
+        />
       </section>
 
       <section className="onTV-wrap container">
@@ -44,7 +55,7 @@ function Movies() {
           <h2>on tv</h2>
           <span>view all</span>
         </div>
-        <Tabs>
+        {/* <Tabs>
           <div label="#popular" state="popularTV">
             <MoviesSlider state={popularTV} label="popularTV" />
           </div>
@@ -57,10 +68,10 @@ function Movies() {
           <div label="#on the air" state="onAirTV">
             <MoviesSlider state={onAirTV} label="onAirTV" />
           </div>
-        </Tabs>
+        </Tabs> */}
       </section>
     </>
-  );
+  )
 }
 
-export default memo(Movies);
+export default memo(withRouter(Movies))
