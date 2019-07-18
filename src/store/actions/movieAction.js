@@ -298,18 +298,6 @@ export const getSpKeyword = id => async (dispatch) => {
   }
 }
 
-// --------------  Dispatch All Movies --------------
-export const getAllMovies = () => (dispatch) => {
-  dispatch(getPopular())
-  dispatch(getUpcoming())
-  dispatch(getNowPlaying())
-  dispatch(getTopRated())
-}
-
-export const getPopularTVandMovies = () => (dispatch) => {
-  dispatch(getPopular())
-  dispatch(getPopularTv())
-}
 
 export const getSpOverviewData = id => (dispatch) => {
   dispatch(getMovieById(id))

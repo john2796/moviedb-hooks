@@ -1,8 +1,8 @@
-import React, { memo } from 'react';
+import React, { memo } from 'react'
 
-import Main from './Main';
-import Header from './Header';
-import Footer from './Footer';
+import Main from './Main'
+import Header from './Header'
+import Footer from './Footer'
 
 function Home() {
   return (
@@ -11,6 +11,6 @@ function Home() {
       <Main />
       <Footer />
     </>
-  );
+  )
 }
-export default memo(Home);
+export default memo(Home)

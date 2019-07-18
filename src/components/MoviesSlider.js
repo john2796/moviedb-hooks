@@ -1,10 +1,17 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-
-import Slider from 'react-slick'
+import React, { useEffect, memo } from 'react'
 import PropTypes from 'prop-types'
 
-function MoviesSlider({ state, match }) {
+import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+
+import Slider from 'react-slick'
+
+function MoviesSlider({ state, match, action }) {
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(action())
+  }, [action, dispatch])
+
   const settings = {
     dots: true,
     infinite: true,
@@ -13,11 +20,12 @@ function MoviesSlider({ state, match }) {
     slidesToScroll: 5,
     arrows: false,
   }
+  console.log(match)
   return (
     <Slider {...settings}>
       {state.map(item => (
-        <Link to={`${match}/${item.id}`} key={item.id}>
-          <img src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} alt="" />
+        <Link to={`${match.url}movie/${item.id}`} key={item.id}>
+          <img src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} alt="poster_path" />
         </Link>
       ))}
     </Slider>
@@ -27,4 +35,4 @@ function MoviesSlider({ state, match }) {
 MoviesSlider.propTypes = {
   state: PropTypes.instanceOf(Array).isRequired,
 }
-export default MoviesSlider
+export default memo(MoviesSlider)
