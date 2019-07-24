@@ -1,5 +1,5 @@
-import React from 'react';
-import '../SCSS/spmReview.scss';
+import React from 'react'
+import '../../SCSS/spmReview.scss'
 
 function SpmReviews({ reviews, title }) {
   return (
@@ -38,7 +38,7 @@ function SpmReviews({ reviews, title }) {
         ))}
       </div>
     </>
-  );
+  )
 }
 
-export default SpmReviews;
+export default SpmReviews

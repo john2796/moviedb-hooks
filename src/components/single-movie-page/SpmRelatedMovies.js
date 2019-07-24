@@ -1,11 +1,10 @@
-import React, { memo } from 'react'
-import '../SCSS/spmRelatedMovie.scss'
+import React from 'react'
+import '../../SCSS/spmRelatedMovie.scss'
 import PropTypes from 'prop-types'
 
 import { useDispatch } from 'react-redux'
-import { getSpRelatedMovies } from '../store/actions/movieAction'
-
-import Pagination from './Pagination'
+import { getSpRelatedMovies } from '../../store/actions/movieAction'
+import Pagination from '../Pagination'
 
 function SpmRelatedMovies({ relatedMovies, title, id }) {
   // const { spRelatedMovie } = useSelector(state => state.movieReducer)

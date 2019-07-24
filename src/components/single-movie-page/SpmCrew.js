@@ -1,14 +1,12 @@
-import React from 'react';
-import '../SCSS/spmCastCrew.scss';
+import React from 'react'
+import '../../SCSS/spmCastCrew.scss'
 
 function SpmCrew({ cast, crew, title }) {
   const filterDirectorsAndWriters = crew
     .filter(item => item.department === 'Directing' || item.department === 'Writing')
-    .filter(o => o.profile_path !== null);
+    .filter(o => o.profile_path !== null)
 
-  const producer = crew
-    .filter(item => item.job === 'Producer')
-    .filter(o => o.profile_path !== null);
+  const producer = crew.filter(item => item.job === 'Producer').filter(o => o.profile_path !== null)
 
   return (
     <div className="cast-crew-wrapper">
@@ -69,7 +67,7 @@ function SpmCrew({ cast, crew, title }) {
         </div>
       ) : null}
     </div>
-  );
+  )
 }
 
-export default SpmCrew;
+export default SpmCrew

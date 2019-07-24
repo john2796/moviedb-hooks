@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux'
 
 import Slider from 'react-slick'
 
-function MoviesSlider({ state, match, action }) {
+function MoviesSlider({ state, action }) {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(action())
@@ -20,13 +20,14 @@ function MoviesSlider({ state, match, action }) {
     slidesToScroll: 5,
     arrows: false,
   }
-  console.log(match)
   return (
     <Slider {...settings}>
       {state.map(item => (
-        <Link to={`${match.url}movie/${item.id}`} key={item.id}>
-          <img src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} alt="poster_path" />
-        </Link>
+        <div key={item.id} id="slider-image-wrap">
+          <Link to={`/movie/${item.id}`}>
+            <img src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} alt="poster_path" />
+          </Link>
+        </div>
       ))}
     </Slider>
   )
@@ -34,5 +35,6 @@ function MoviesSlider({ state, match, action }) {
 
 MoviesSlider.propTypes = {
   state: PropTypes.instanceOf(Array).isRequired,
+  action: PropTypes.func,
 }
 export default memo(MoviesSlider)

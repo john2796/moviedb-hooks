@@ -1,7 +1,7 @@
 @import "./variable";
 
 /* ---------------------
-                 MAIN
+ MAIN & MoviesSlider
 --------------------- */
 main {
   padding: 100px 0;
@@ -35,6 +35,29 @@ main {
 .tab-list {
   padding-left: 0;
   cursor: pointer;
+}
+
+// ---- Customizing MovieSlider Tabs ----
+.movieSlider-nav {
+  display: flex;
+  margin: 40px 0;
+  li {
+    margin-right: 25px;
+  }
+}
+// tab title
+.react-tabs__tab {
+  font-family: "Dosis", sans-serif;
+  font-size: 1.4rem;
+  color: $gray;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.react-tabs__tab--selected {
+  color: $yellowGreen;
+}
+.slider_wrap {
+  min-height: 250px;
 }
 
 /* -------- MOVIE Trailer and CELEB section --------- */

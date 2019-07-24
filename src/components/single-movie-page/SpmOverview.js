@@ -1,10 +1,10 @@
 /* eslint-disable camelcase */
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
 
-import ModalVideo from 'react-modal-video';
-import youtubebtn from '../assets/youtube-play-btn.png';
+import ModalVideo from 'react-modal-video'
+import youtubebtn from '../../assets/youtube-play-btn.png'
 
 function SpmOverview() {
   // Select all state from reducer
@@ -12,19 +12,19 @@ function SpmOverview() {
     spMovie, spReviews, spCast, spMediamovie, spKeyword, spCrew,
   } = useSelector(
     state => state.movieReducer,
-  );
-  const [isOpen, setIsOpen] = useState(false);
+  )
+  const [isOpen, setIsOpen] = useState(false)
   // desctructure spMovie
-  const { author, content, url } = spReviews.length && spReviews[0];
-  const filteredVideos = spMediamovie.filter((_, idx) => idx <= 3);
-  const filteredCast = spCast.filter((_, idx) => idx <= 7).filter(x => x.profile_path !== null);
-  const fourCast = spCast.filter((_, idx) => idx <= 4);
-  const directors = spCrew.filter(item => item.department === 'Directing');
-  const writers = spCrew.filter(item => item.department === 'Writing');
+  const { author, content, url } = spReviews.length && spReviews[0]
+  const filteredVideos = spMediamovie.filter((_, idx) => idx <= 3)
+  const filteredCast = spCast.filter((_, idx) => idx <= 7).filter(x => x.profile_path !== null)
+  const fourCast = spCast.filter((_, idx) => idx <= 4)
+  const directors = spCrew.filter(item => item.department === 'Directing')
+  const writers = spCrew.filter(item => item.department === 'Writing')
 
   const {
     overview, backdrop_path, runtime, genres, release_date,
-  } = spMovie;
+  } = spMovie
   return (
     <div className="spm-overview">
       {/* ----- left overview ----- */}
@@ -172,7 +172,7 @@ function SpmOverview() {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default SpmOverview;
+export default SpmOverview

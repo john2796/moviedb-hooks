@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import '../SCSS/spmMedia.scss';
+import React, { useState } from 'react'
+import '../../SCSS/spmMedia.scss'
 
-import ModalVideo from 'react-modal-video';
-import youtubebtn from '../assets/youtube-play-btn.png';
+import ModalVideo from 'react-modal-video'
+import youtubebtn from '../../assets/youtube-play-btn.png'
 
 function SpmMedia({ title, media, backdrop_path }) {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
 
-  console.log(media);
+  console.log(media)
   return (
     <div className="media-wrapper">
       {/* ------ tab header title ------ */}
@@ -46,7 +46,7 @@ function SpmMedia({ title, media, backdrop_path }) {
         ))}
       </div>
     </div>
-  );
+  )
 }
 
-export default SpmMedia;
+export default SpmMedia
