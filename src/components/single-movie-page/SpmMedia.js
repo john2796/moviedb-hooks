@@ -1,13 +1,21 @@
-import React, { useState } from 'react'
-import '../../SCSS/spmMedia.scss'
+import React, { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 
+import '../../SCSS/spmMedia.scss'
 import ModalVideo from 'react-modal-video'
 import youtubebtn from '../../assets/youtube-play-btn.png'
 
-function SpmMedia({ title, media, backdrop_path }) {
-  const [isOpen, setIsOpen] = useState(false)
+import { getSpMediaMovies } from '../../store/actions/movieAction'
 
-  console.log(media)
+function SpmMedia({ title, movieId, backdrop_path }) {
+  const [isOpen, setIsOpen] = useState(false)
+  const { spMediamovie } = useSelector(state => state.movieReducer)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getSpMediaMovies(movieId))
+  }, [dispatch, movieId])
+
   return (
     <div className="media-wrapper">
       {/* ------ tab header title ------ */}
@@ -18,7 +26,7 @@ function SpmMedia({ title, media, backdrop_path }) {
 
       {/* ----- movie video ----- */}
       <div className="sp-videos-wrap media-tab-videos-wrap">
-        {media.map(item => (
+        {spMediamovie.map(item => (
           <div key={item.id}>
             <div
               className="sp-video-item"

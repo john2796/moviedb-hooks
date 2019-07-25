@@ -134,7 +134,7 @@ function SingleMovie({ match }) {
           <Route
             path={`${match.path}/media`}
             render={() => (
-              <SpmMedia title={title} media={spMediamovie} backdrop_path={backdrop_path} />
+              <SpmMedia title={title} movieId={match.params.id} backdrop_path={backdrop_path} />
             )}
           />
           <Route
