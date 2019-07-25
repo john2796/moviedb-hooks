@@ -273,7 +273,6 @@ export const GET_SP_RELATED_MOVIES_FAILURE = 'GET_SP_RELATED_MOVIES_FAILURE'
 
 export const getSpRelatedMovies = (id, pageNum = 1) => async (dispatch) => {
   try {
-    console.log(pageNum, 'pageNum <------')
     dispatch({ type: GET_SP_RELATED_MOVIES_START })
     const response = await axios(
       `https://api.themoviedb.org/3/movie/${id}/similar?api_key=${key}&language=en-US&page=${pageNum}`,

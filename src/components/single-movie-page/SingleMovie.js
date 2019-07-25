@@ -3,31 +3,25 @@
 import React, { useEffect, memo } from 'react'
 import PropTypes from 'prop-types'
 import '../../SCSS/singlePageMovie.scss'
-import { useSelector, useDispatch } from 'react-redux'
 
-import {
-  Tab, Tabs, TabList, TabPanel,
-} from 'react-tabs'
+import { useSelector, useDispatch } from 'react-redux'
+import { NavLink, Route } from 'react-router-dom'
 import { getSpOverviewData } from '../../store/actions/movieAction'
 
-import Navbar from '../Navbar'
-import Footer from '../Footer'
 import SpmOverview from './SpmOverview'
 import SpmReviews from './SpmReviews'
+import SpmCrew from './SpmCrew'
 import SpmMedia from './SpmMedia'
 import SpmRelatedMovies from './SpmRelatedMovies'
-import SpmCrew from './SpmCrew'
+import Footer from '../Footer'
+import Navbar from '../Navbar'
 
 function SingleMovie({ match }) {
   const {
-    isLoading,
-    spMovie,
-    spReviews,
-    spCrew,
-    spCast,
-    spMediamovie,
-    spRelatedMovie,
-  } = useSelector(state => state.movieReducer)
+    spMovie, spReviews, spCrew, spCast, spMediamovie,
+  } = useSelector(
+    state => state.movieReducer,
+  )
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -37,9 +31,9 @@ function SingleMovie({ match }) {
   const {
     poster_path, name, title, release_date, vote_average, backdrop_path,
   } = spMovie
-  if (isLoading) {
-    return <div>Loading...</div>
-  }
+  // if (isLoading) {
+  //   return <div>Loading...</div>
+  // }
 
   return (
     <div className="single-page-movie">
@@ -117,38 +111,47 @@ function SingleMovie({ match }) {
           </div>
 
           {/* ------------------Tabs  ------------------ */}
-          <Tabs className="movie-tab">
-            <TabList className="movieSlider-nav">
-              <Tab>overview</Tab>
-              <Tab>reviews</Tab>
-              <Tab>cast & crew</Tab>
-              <Tab>media</Tab>
-              <Tab>related movies</Tab>
-            </TabList>
+          <nav className="single-page-movie-navTab">
+            <NavLink exact activeClassName="selected" to={`${match.url}`}>
+              overview
+            </NavLink>
+            <NavLink activeClassName="selected" to={`${match.url}/reviews`}>
+              reviews
+            </NavLink>
+            <NavLink activeClassName="selected" to={`${match.url}/cast&crew`}>
+              cast & crew
+            </NavLink>
+            <NavLink activeClassName="selected" to={`${match.url}/media`}>
+              media
+            </NavLink>
+            <NavLink activeClassName="selected" to={`${match.url}/relatedmovies`}>
+              related movies
+            </NavLink>
+          </nav>
 
-            <TabPanel>
-              <SpmOverview />
-            </TabPanel>
-            <TabPanel>
-              <SpmReviews reviews={spReviews} title={title} />
-            </TabPanel>
-            <TabPanel>
-              <SpmCrew crew={spCrew} cast={spCast} title={title} />
-            </TabPanel>
-            <TabPanel>
+          <Route exact path={`${match.path}`} component={SpmOverview} />
+          <Route
+            path={`${match.path}/reviews`}
+            render={() => <SpmReviews reviews={spReviews} title={title} />}
+          />
+          <Route
+            path={`${match.path}/cast&crew`}
+            render={() => <SpmCrew crew={spCrew} cast={spCast} title={title} />}
+          />
+          <Route
+            path={`${match.path}/media`}
+            render={() => (
               <SpmMedia title={title} media={spMediamovie} backdrop_path={backdrop_path} />
-            </TabPanel>
-            <TabPanel>
-              <SpmRelatedMovies
-                title={title}
-                id={Number(match.params.id)}
-                relatedMovies={spRelatedMovie}
-              />
-            </TabPanel>
-          </Tabs>
+            )}
+          />
+          <Route
+            path={`${match.path}/relatedmovies`}
+            render={() => <SpmRelatedMovies title={title} id={Number(match.params.id)} />}
+          />
         </div>
         {/* end of spm right section */}
       </div>
+
       {/* ------------------ Footer  ------------------ */}
 
       <Footer />

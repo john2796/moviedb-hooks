@@ -156,22 +156,6 @@
       }
     }
   }
-  // ------- tab title --------
-  .spm-tab-title {
-    font-family: "Dosis", sans-serif;
-    margin-right: 50px;
-    font-size: 18px;
-    padding: 0;
-    padding-bottom: 15px;
-    border-bottom: 3px solid transparent;
-    font-weight: bold;
-    color: $gray;
-    text-transform: uppercase;
-  }
-  .spm-tab-title-active {
-    color: $yellowGreen;
-    border-bottom: 3px solid #dcf836;
-  }
 } // end of right section
 
 // ----- overview -----
@@ -327,5 +311,29 @@
     padding: 1px 8px;
     border-radius: 2px;
     margin: 4px;
+  }
+}
+
+// single page navigation Title
+.single-page-movie-navTab {
+  margin-top: 20px;
+  margin-bottom: 50px;
+  a {
+    font-size: 1.8rem;
+    padding-bottom: 15px;
+    border-bottom: 3px solid transparent;
+    font-family: "Dosis", sans-serif;
+    color: #abb7c4;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-right: 20px;
+    &:hover {
+      border-bottom: 3px solid $yellowGreen;
+      color: $yellowGreen;
+    }
+  }
+  .selected {
+    border-bottom: 3px solid $yellowGreen;
+    color: $yellowGreen;
   }
 }

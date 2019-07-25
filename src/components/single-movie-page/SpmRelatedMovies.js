@@ -1,21 +1,31 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import '../../SCSS/spmRelatedMovie.scss'
 import PropTypes from 'prop-types'
 
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { getSpRelatedMovies } from '../../store/actions/movieAction'
-import Pagination from '../Pagination'
 
-function SpmRelatedMovies({ relatedMovies, title, id }) {
-  // const { spRelatedMovie } = useSelector(state => state.movieReducer)
+function SpmRelatedMovies({ title, id }) {
+  const [count, setCount] = useState(1)
+  const { spRelatedMovie, relatedMoviesIsLoading } = useSelector(state => state.movieReducer)
   const dispatch = useDispatch()
-  const onPageChanged = (e, data) => {
-    e.preventDefault()
-    // Dispatch action here later
-    const { currentPage } = data
-    dispatch(getSpRelatedMovies(id, currentPage))
+
+  useEffect(() => {
+    dispatch(getSpRelatedMovies(id, count))
+  }, [count, dispatch, id, spRelatedMovie.total_pages])
+
+  const goToNext = () => {
+    if (count >= spRelatedMovie.total_pages) return
+    setCount(count + 1)
   }
-  console.log(relatedMovies)
+  const goToPrev = () => {
+    if (count <= 1) return
+    setCount(count - 1)
+  }
+
+  if (relatedMoviesIsLoading) {
+    return <h2>Loading...</h2>
+  }
   return (
     <>
       <div className="tab-header">
@@ -26,8 +36,8 @@ function SpmRelatedMovies({ relatedMovies, title, id }) {
       <div className="brT brB review-total">
         <p>
           Found
-          <span className="blue-text">{relatedMovies.results.length}</span>
-          reviews in total
+          <span className="blue-text">{`${spRelatedMovie.total_results} movies`}</span>
+          in total
         </p>
       </div>
 
@@ -44,12 +54,13 @@ function SpmRelatedMovies({ relatedMovies, title, id }) {
           </select>
         </div>
         <div className="rmf-pagination">
-          <Pagination
-            totalRecords={relatedMovies.total_results}
-            pageLimit={18}
-            pageNeighbours={1}
-            onPageChanged={onPageChanged}
-          />
+          <p>{`Page ${count} of ${spRelatedMovie.total_pages}:`}</p>
+          <button type="button" onClick={goToPrev}>
+            prev
+          </button>
+          <button type="button" onClick={goToNext}>
+            next
+          </button>
         </div>
       </div>
     </>
