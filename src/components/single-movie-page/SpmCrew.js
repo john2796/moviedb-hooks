@@ -1,7 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import '../../SCSS/spmCastCrew.scss'
 
-function SpmCrew({ cast, crew, title }) {
+import { useSelector, useDispatch } from 'react-redux'
+import { getSpCast } from '../../store/actions/movieAction'
+
+function SpmCrew({ title, movieId }) {
+  const { spCast, spCrew } = useSelector(state => state.movieReducer)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getSpCast(Number(movieId)))
+  }, [dispatch, movieId])
+
   const filterDirectorsAndWriters = crew
     .filter(item => item.department === 'Directing' || item.department === 'Writing')
     .filter(o => o.profile_path !== null)

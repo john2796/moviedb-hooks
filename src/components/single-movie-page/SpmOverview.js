@@ -1,18 +1,23 @@
 /* eslint-disable camelcase */
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
-
+import React, { useState, useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import ModalVideo from 'react-modal-video'
+
+import { getSpOverviewData } from '../../store/actions/movieAction'
 import youtubebtn from '../../assets/youtube-play-btn.png'
 
-function SpmOverview() {
+function SpmOverview({ movieId }) {
   // Select all state from reducer
   const {
     spMovie, spReviews, spCast, spMediamovie, spKeyword, spCrew,
   } = useSelector(
     state => state.movieReducer,
   )
+  const dispatch = useDispatch()
+  useEffect(() => {
+    dispatch(getSpOverviewData(Number(movieId)))
+  }, [])
   const [isOpen, setIsOpen] = useState(false)
   // desctructure spMovie
   const { author, content, url } = spReviews.length && spReviews[0]

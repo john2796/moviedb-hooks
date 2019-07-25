@@ -6,7 +6,7 @@ import '../../SCSS/singlePageMovie.scss'
 
 import { useSelector, useDispatch } from 'react-redux'
 import { NavLink, Route } from 'react-router-dom'
-import { getSpOverviewData } from '../../store/actions/movieAction'
+import { getMovieById } from '../../store/actions/movieAction'
 
 import SpmOverview from './SpmOverview'
 import SpmReviews from './SpmReviews'
@@ -17,23 +17,16 @@ import Footer from '../Footer'
 import Navbar from '../Navbar'
 
 function SingleMovie({ match }) {
-  const {
-    spMovie, spReviews, spCrew, spCast, spMediamovie,
-  } = useSelector(
-    state => state.movieReducer,
-  )
+  const { spMovie } = useSelector(state => state.movieReducer)
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getSpOverviewData(Number(match.params.id)))
+    dispatch(getMovieById(Number(match.params.id)))
   }, [])
 
   const {
     poster_path, name, title, release_date, vote_average, backdrop_path,
   } = spMovie
-  // if (isLoading) {
-  //   return <div>Loading...</div>
-  // }
 
   return (
     <div className="single-page-movie">
@@ -132,11 +125,11 @@ function SingleMovie({ match }) {
           <Route exact path={`${match.path}`} component={SpmOverview} />
           <Route
             path={`${match.path}/reviews`}
-            render={() => <SpmReviews reviews={spReviews} title={title} />}
+            render={() => <SpmReviews movieId={match.params.id} title={title} />}
           />
           <Route
             path={`${match.path}/cast&crew`}
-            render={() => <SpmCrew crew={spCrew} cast={spCast} title={title} />}
+            render={() => <SpmCrew movieId={match.params.id} title={title} />}
           />
           <Route
             path={`${match.path}/media`}
