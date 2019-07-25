@@ -55,7 +55,7 @@ class Pagination extends Component {
       totalRecords: this.totalRecords,
     }
     // when goToPage is invoke it will update state, then update onPageChaned with the payload
-    this.setState({ currentPage }, () => onPageChanged(paginationData))
+    this.setState({ currentPage }, (e) => onPageChanged(e, paginationData))
   }
 
   // when clicking on nums it will invoke goToPage func

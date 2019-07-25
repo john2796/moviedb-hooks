@@ -9,10 +9,10 @@ import Pagination from '../Pagination'
 function SpmRelatedMovies({ relatedMovies, title, id }) {
   // const { spRelatedMovie } = useSelector(state => state.movieReducer)
   const dispatch = useDispatch()
-  const onPageChanged = (data) => {
+  const onPageChanged = (e, data) => {
+    e.preventDefault()
     // Dispatch action here later
     const { currentPage } = data
-    console.log(id, currentPage)
     dispatch(getSpRelatedMovies(id, currentPage))
   }
   console.log(relatedMovies)
@@ -30,6 +30,10 @@ function SpmRelatedMovies({ relatedMovies, title, id }) {
           reviews in total
         </p>
       </div>
+
+      {/* MAIN CONTENT for Single Page Movies */}
+      <h2>Main Content Here</h2>
+
       {/* <-- bottom of the page filter options && pagination --> */}
       <div className="related-movies-filter-wrap brT brB">
         <p className="brR">Movies per page:</p>
