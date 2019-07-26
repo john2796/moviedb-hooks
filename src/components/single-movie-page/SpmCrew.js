@@ -12,11 +12,13 @@ function SpmCrew({ title, movieId }) {
     dispatch(getSpCast(Number(movieId)))
   }, [dispatch, movieId])
 
-  const filterDirectorsAndWriters = crew
+  const filterDirectorsAndWriters = spCrew
     .filter(item => item.department === 'Directing' || item.department === 'Writing')
     .filter(o => o.profile_path !== null)
 
-  const producer = crew.filter(item => item.job === 'Producer').filter(o => o.profile_path !== null)
+  const producer = spCrew
+    .filter(item => item.job === 'Producer')
+    .filter(o => o.profile_path !== null)
 
   return (
     <div className="cast-crew-wrapper">
@@ -48,7 +50,7 @@ function SpmCrew({ title, movieId }) {
           <h4>cast</h4>
         </div>
 
-        {cast
+        {spCast
           .filter(o => o.profile_path !== null)
           .map(item => (
             <div className="cast-content" key={item.id}>

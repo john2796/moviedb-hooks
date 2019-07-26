@@ -70,11 +70,11 @@ export const CounterComponent = ({ value }) => {
 ```
 
 
+- [ ] Need to refactor single **page** application
 - [ ] 
+- [ ] \
 - [ ] 
-- [ ] 
-- [ ] 
-- [ ] 
+- [ ] ****
 - [ ] 
 - [ ] 
 - [ ] 

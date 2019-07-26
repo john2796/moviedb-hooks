@@ -1,7 +1,17 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import '../../SCSS/spmReview.scss'
 
-function SpmReviews({ reviews, title }) {
+import { useSelector, useDispatch } from 'react-redux'
+import { getSpReviews } from '../../store/actions/movieAction'
+
+function SpmReviews({ title, movieId }) {
+  const { spReviews } = useSelector(state => state.movieReducer)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getSpReviews(movieId))
+  }, [dispatch, movieId])
+
   return (
     <>
       <div className="tab-header">
@@ -12,7 +22,7 @@ function SpmReviews({ reviews, title }) {
       <div className="brT brB review-total">
         <p>
           Found
-          <span className="blue-text">{reviews.length}</span>
+          <span className="blue-text">{spReviews.length}</span>
           reviews in total
         </p>
       </div>
@@ -20,7 +30,7 @@ function SpmReviews({ reviews, title }) {
       {/* ---------- review content ----------- */}
       <div className="sp-reviews tab-reviews">
         {/* ------- title with view all option ------- */}
-        {reviews.map(item => (
+        {spReviews.map(item => (
           <div className="rev-item" key={item.id}>
             <h3>{item.author}</h3>
             <p className="spm-paragraph brB">
