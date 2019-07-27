@@ -5,6 +5,8 @@ import PropTypes from 'prop-types'
 import { useDispatch, useSelector } from 'react-redux'
 import { getSpRelatedMovies } from '../../store/actions/movieAction'
 
+import RelatedMovies from '../related-movies/RelatedMovies'
+
 function SpmRelatedMovies({ title, id }) {
   const [count, setCount] = useState(1)
   const { spRelatedMovie, relatedMoviesIsLoading } = useSelector(state => state.movieReducer)
@@ -12,7 +14,10 @@ function SpmRelatedMovies({ title, id }) {
 
   useEffect(() => {
     dispatch(getSpRelatedMovies(id, count))
-  }, [count, dispatch, id, spRelatedMovie.total_pages])
+    return () => {
+      window.scrollTo(0, 0)
+    }
+  }, [count, dispatch, id])
 
   const goToNext = () => {
     if (count >= spRelatedMovie.total_pages) return
@@ -26,6 +31,7 @@ function SpmRelatedMovies({ title, id }) {
   if (relatedMoviesIsLoading) {
     return <h2>Loading...</h2>
   }
+
   return (
     <>
       <div className="tab-header">
@@ -42,7 +48,11 @@ function SpmRelatedMovies({ title, id }) {
       </div>
 
       {/* MAIN CONTENT for Single Page Movies */}
-      <h2>Main Content Here</h2>
+
+      {spRelatedMovie.results
+        && spRelatedMovie.results.map((item) => {
+          return <RelatedMovies key={item.id} item={item} />
+        })}
 
       {/* <-- bottom of the page filter options && pagination --> */}
       <div className="related-movies-filter-wrap brT brB">
@@ -69,6 +79,7 @@ function SpmRelatedMovies({ title, id }) {
 
 SpmRelatedMovies.propTypes = {
   title: PropTypes.string,
+  id: PropTypes.number,
   relatedMovies: PropTypes.shape({
     page: PropTypes.number,
     total_pages: PropTypes.number,

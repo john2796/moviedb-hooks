@@ -70,8 +70,8 @@ export const CounterComponent = ({ value }) => {
 ```
 
 
-- [ ] Need to refactor single **page** application
-- [ ] 
+- [x] Need to refactor single **page** application
+- [ ] Update loading variable in reducer
 - [ ] \
 - [ ] 
 - [ ] ****
