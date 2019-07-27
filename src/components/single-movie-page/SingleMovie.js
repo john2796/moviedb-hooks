@@ -122,7 +122,11 @@ function SingleMovie({ match }) {
             </NavLink>
           </nav>
 
-          <Route exact path={`${match.path}`} component={SpmOverview} />
+          <Route
+            exact
+            path={`${match.path}`}
+            render={() => <SpmOverview movieId={match.params.id} />}
+          />
           <Route
             path={`${match.path}/reviews`}
             render={() => <SpmReviews movieId={match.params.id} title={title} />}

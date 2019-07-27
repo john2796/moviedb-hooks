@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { removeDups } from '../../helpers/index'
 
 const key = process.env.REACT_APP_SECRET_KEY
 console.log(key)
@@ -241,10 +242,14 @@ export const getSpCast = id => async (dispatch) => {
     dispatch({ type: GET_SP_CAST_START })
 
     const response = await axios(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${key}`)
+
+    // removing duplicate keys error
+    const cast = removeDups(response.data.cast)
+    const crew = removeDups(response.data.crew)
     dispatch({
       type: GET_SP_CAST_SUCCESS,
-      cast: response.data.cast,
-      crew: response.data.crew,
+      cast,
+      crew,
     })
   } catch (error) {
     dispatch({ type: GET_SP_CAST_FAILURE, payload: error })
@@ -299,6 +304,8 @@ export const getSpKeyword = id => async (dispatch) => {
 
 export const getSpOverviewData = id => (dispatch) => {
   // dispatch(getMovieById(id))
+  console.log('ACTION ID', id)
+
   dispatch(getSpReviews(id))
   dispatch(getSpCast(id))
   dispatch(getSpMediaMovies(id))
