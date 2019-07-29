@@ -23,7 +23,10 @@ function MoviesSlider({ state, action }) {
   return (
     <Slider {...settings}>
       {state.map((item) => {
-        console.log('debugging on tv single page -->', item.id)
+        {
+          /* console.log('debugging on tv single page -->', item.id) */
+        }
+        // NOTES: TV Tab is not working at the moment because of the endpoints in movie action files, the api is not correspond with the tv same thing with the single page for movies
         return (
           <div key={item.id} id="slider-image-wrap">
             <Link to={`/movie/${item.id}`}>

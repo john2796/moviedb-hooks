@@ -2,7 +2,7 @@ import axios from 'axios'
 import { removeDups } from '../../helpers/index'
 
 const key = process.env.REACT_APP_SECRET_KEY
-console.log(key)
+
 
 // -------------- GET TOP_RATED --------------
 const TOP_RATED = `https://api.themoviedb.org/3/movie/top_rated?api_key=${key}&language=en-US&page=1`
@@ -304,7 +304,6 @@ export const getSpKeyword = id => async (dispatch) => {
 
 export const getSpOverviewData = id => (dispatch) => {
   // dispatch(getMovieById(id))
-  console.log('ACTION ID', id)
 
   dispatch(getSpReviews(id))
   dispatch(getSpCast(id))
