@@ -41,7 +41,7 @@ function Movies() {
             <Tab>#popular</Tab>
             <Tab>#coming soon</Tab>
             <Tab>#most-reviewed</Tab>
-            <Tab>#most-reviewed</Tab>
+            <Tab>#now playing</Tab>
           </TabList>
 
           <TabPanel>

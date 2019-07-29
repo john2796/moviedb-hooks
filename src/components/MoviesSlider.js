@@ -22,13 +22,16 @@ function MoviesSlider({ state, action }) {
   }
   return (
     <Slider {...settings}>
-      {state.map(item => (
-        <div key={item.id} id="slider-image-wrap">
-          <Link to={`/movie/${item.id}`}>
-            <img src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} alt="poster_path" />
-          </Link>
-        </div>
-      ))}
+      {state.map((item) => {
+        console.log('debugging on tv single page -->', item.id)
+        return (
+          <div key={item.id} id="slider-image-wrap">
+            <Link to={`/movie/${item.id}`}>
+              <img src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} alt="poster_path" />
+            </Link>
+          </div>
+        )
+      })}
     </Slider>
   )
 }

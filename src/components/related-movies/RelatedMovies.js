@@ -4,7 +4,7 @@ import './relatedMovie.scss'
 
 const RelatedMovies = ({ item }) => {
   return (
-    <div>
+    <div className="related-movies-parent">
       <img src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} alt={item.title} />
       <div>
         <h3>
