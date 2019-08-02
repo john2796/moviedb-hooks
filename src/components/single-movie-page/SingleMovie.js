@@ -15,6 +15,7 @@ import SpmMedia from './SpmMedia'
 import SpmRelatedMovies from './SpmRelatedMovies'
 import Footer from '../Footer'
 import Navbar from '../Navbar'
+import SearchMovie from '../SearchMovie';
 
 function SingleMovie({ match }) {
   const { spMovie } = useSelector(state => state.movieReducer)
@@ -37,9 +38,9 @@ function SingleMovie({ match }) {
           backgroundImage: `url(https://image.tmdb.org/t/p/w1280/${backdrop_path})`,
         }}
       >
-        <div className="hero-content">
+        <div className="hero-content container">
           <Navbar />
-          <p className="container">search movie</p>
+          <SearchMovie />
         </div>
       </div>
 
