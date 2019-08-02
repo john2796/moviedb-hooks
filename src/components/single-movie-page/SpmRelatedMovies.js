@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import '../../SCSS/spmRelatedMovie.scss'
 import PropTypes from 'prop-types'
+import './spmRelatedMovies.scss'
+
 
 import { useDispatch, useSelector } from 'react-redux'
 import { getSpRelatedMovies } from '../../store/actions/movieAction'
