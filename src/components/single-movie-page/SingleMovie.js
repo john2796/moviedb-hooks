@@ -15,7 +15,7 @@ import SpmMedia from './SpmMedia'
 import SpmRelatedMovies from './SpmRelatedMovies'
 import Footer from '../Footer'
 import Navbar from '../Navbar'
-import SearchMovie from '../SearchMovie';
+import SearchMovie from '../SearchMovie'
 
 function SingleMovie({ match }) {
   const { spMovie } = useSelector(state => state.movieReducer)
@@ -23,6 +23,7 @@ function SingleMovie({ match }) {
 
   useEffect(() => {
     dispatch(getMovieById(Number(match.params.id)))
+    window.scrollTo(0, 0) // hacky
   }, [])
 
   const {
