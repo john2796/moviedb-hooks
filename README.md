@@ -72,7 +72,7 @@ export const CounterComponent = ({ value }) => {
 
 - [x] Need to refactor single **page** application
 - [ ] Update loading variable in reducer
-- [ ] add styling for modal
+- [x] add styling for modal
 - [ ] 
 - [ ] ****
 - [ ] 
