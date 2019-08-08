@@ -16,6 +16,7 @@ import SpmRelatedMovies from './SpmRelatedMovies'
 import Footer from '../Footer'
 import Navbar from '../Navbar'
 import SearchMovie from '../SearchMovie'
+import SocialsIcon from '../social-icons/SocialsIcon'
 
 function SingleMovie({ match }) {
   const { spMovie } = useSelector(state => state.movieReducer)
@@ -68,21 +69,8 @@ function SingleMovie({ match }) {
               {title}
               <span>{release_date}</span>
             </h1>
-            {/* ------------------ 2 buttons underneath big image red & yellow  ------------------ */}
-            <div className="social-btn-parent">
-              <p className="social-btn">
-                <span>
-                  <i className="fa fa-heart" aria-hidden="true" />
-                </span>
-                add to favorite
-              </p>
-              <p className="social-btn">
-                <span>
-                  <i className="fa fa-share-alt" aria-hidden="true" />
-                </span>
-                share
-              </p>
-            </div>
+            {/* SOCIAL ICONS */}
+            <SocialsIcon />
           </div>
           {/* ------------------ Rate movie ------------------ */}
           <div className="movie-rate">

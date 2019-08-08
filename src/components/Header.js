@@ -4,6 +4,7 @@ import Slider from 'react-slick'
 import { useSelector } from 'react-redux'
 
 import Navbar from './Navbar'
+import SocialsIcon from './social-icons/SocialsIcon'
 
 function Header() {
   const { popularTV } = useSelector(state => state.movieReducer)
@@ -27,21 +28,8 @@ function Header() {
               <div className="slider-item" key={item.id}>
                 <div className="slider-content">
                   <h2>{item.name}</h2>
-                  {/* ------------------ 2 buttons underneath big image red & yellow  ------------------ */}
-                  <div className="social-btn-parent">
-                    <p className="social-btn">
-                      <span>
-                        <i className="fa fa-heart" aria-hidden="true" />
-                      </span>
-                      add to favorite
-                    </p>
-                    <p className="social-btn">
-                      <span>
-                        <i className="fa fa-share-alt" aria-hidden="true" />
-                      </span>
-                      share
-                    </p>
-                  </div>
+                  {/* SOIAL ICONS */}
+                  <SocialsIcon />
                   <p>BIG IMAGE GOES HEREE</p>
                 </div>
 
