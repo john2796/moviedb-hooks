@@ -6,12 +6,25 @@
   background-position: center;
   background-size: cover;
 }
-.slider-item {
-  display: flex;
-  height: 500px;
-  align-items: center;
-  justify-content: space-between;
+
+/* ---------------------
+     HEADER SLIDER STYLES
+--------------------- */
+.header-slider .slider-item {
+  display: flex !important;
+  border: 1px solid red;
 }
+.header-slider .slider-content {
+  border: 1px solid pink;
+}
+
+.header-slider img {
+  width: 300px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
 /* ---------------------
                  NAV
 --------------------- */
