@@ -10,17 +10,45 @@
 /* ---------------------
      HEADER SLIDER STYLES
 --------------------- */
-.header-slider .slider-item {
-  display: flex !important;
-  border: 1px solid red;
-}
-.header-slider .slider-content {
-  border: 1px solid pink;
-}
 
+.header-slider {
+  .slider-item {
+    display: flex !important;
+    justify-content: center;
+    padding-top: 40px;
+  }
+  .slider-content {
+    width: 60%;
+  }
+  .slider-title {
+    font-family: "Dosis", sans-serif;
+    font-size: 60px;
+    color: #ffffff;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 60px;
+    span {
+      margin-left: 15px;
+      font-family: "Dosis", sans-serif;
+      font-size: 36px;
+      color: #abb7c4;
+      font-weight: 300;
+      text-transform: uppercase;
+    }
+  }
+}
+.slider-content-ul {
+  display: flex;
+  li {
+    padding-right: 15px;
+  }
+  li > i.fa-star {
+    font-size: 20px;
+  }
+}
 .header-slider img {
-  width: 300px;
-  height: 400px;
+  width: 270px;
+  height: 414px;
   object-fit: cover;
   border-radius: 5px;
 }

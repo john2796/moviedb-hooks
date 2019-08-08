@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 import React from 'react'
 import '../SCSS/header.scss'
 import Slider from 'react-slick'
@@ -23,17 +24,32 @@ function Header() {
       <Navbar />
       <header className="container">
         <Slider {...settings} className="header-slider">
-          {popularTV.map((item) => {
+          {popularTV.map(({
+            backdrop_path, first_air_date, id, name, vote_average,
+          }) => {
             return (
-              <div className="slider-item" key={item.id}>
+              <div className="slider-item" key={id}>
                 <div className="slider-content">
-                  <h2>{item.name}</h2>
+                  <h2 className="slider-title">
+                    {name}
+                    <span>{first_air_date.substring(0, 4)}</span>
+                  </h2>
                   {/* SOIAL ICONS */}
                   <SocialsIcon />
-                  <p>BIG IMAGE GOES HEREE</p>
+                  <ul className="slider-content-ul">
+                    <li>
+                      <i className="fa fa-star yellowStar" aria-hidden="true" />
+                      {`${vote_average}/10`}
+                    </li>
+                    <li>Run Time:</li>
+                    <li>Rated:</li>
+                    <li>
+                      <span>Release:</span>
+                      {first_air_date}
+                    </li>
+                  </ul>
                 </div>
-
-                <img src={`https://image.tmdb.org/t/p/w1280${item.backdrop_path}`} />
+                <img src={`https://image.tmdb.org/t/p/w1280${backdrop_path}`} alt="backdrop" />
               </div>
             )
           })}
