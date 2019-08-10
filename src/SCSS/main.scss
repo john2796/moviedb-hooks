@@ -6,10 +6,6 @@
 main {
   padding: 100px 0;
 }
-.title-view-wrap {
-  display: flex;
-  justify-content: space-between;
-}
 .slick-dots {
   position: absolute;
   top: -65px;
@@ -69,11 +65,6 @@ main {
 .main-left-section {
   min-width: 75%;
   margin-right: 10rem;
-
-  .title-wrap {
-    display: flex;
-    justify-content: space-between;
-  }
 }
 
 .main-right-section {

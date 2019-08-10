@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 function LatestNews() {
   return (
@@ -6,7 +6,7 @@ function LatestNews() {
       <div className="main-flex container">
         {/* ----- trailer carousel -------- */}
         <div className="main-left-section">
-          <div className="title-wrap">
+          <div className="title-wrap ">
             <h2>latest news</h2>
             <p>view all</p>
           </div>
@@ -31,7 +31,7 @@ function LatestNews() {
         </div>
       </div>
     </section>
-  );
+  )
 }
 
-export default LatestNews;
+export default LatestNews

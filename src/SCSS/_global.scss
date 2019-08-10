@@ -1,3 +1,5 @@
+@import "./mixins";
+
 /* ---------------------------*/
 /*                Global
 /*---------------------------*/
@@ -120,4 +122,75 @@ p {
   &:hover {
     text-decoration: none;
   }
+}
+
+.red-btn {
+  border: none;
+  background-color: #dd003f;
+  color: #ffffff;
+  padding: 11px 25px;
+  border-radius: 20px;
+  font-family: "Dosis", sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.blue-pills {
+  background-color: #1692bb;
+  @include pills;
+}
+.yellow-pills {
+  background-color: #f5b50a;
+  @include pills;
+}
+.orange-pills {
+  background-color: #ec5a1a;
+  @include pills;
+}
+
+.anchor {
+  @include anchor-links;
+  border: none;
+  background: inherit;
+  margin-right: 10px;
+  &:hover {
+    color: $yellowGreen;
+  }
+}
+
+.logo {
+  background-image: url("../assets/jblogo.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 50px;
+}
+.title-wrap {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.date {
+  margin-left: 15px;
+  font-family: "Dosis", sans-serif;
+  font-size: 36px;
+  color: #abb7c4;
+  font-weight: 300;
+  text-transform: uppercase;
+}
+
+.mTitle {
+  font-family: "Dosis", sans-serif;
+  font-size: 60px;
+  color: #ffffff;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 70px;
+  max-width: 550px;
+  margin-top: 10px;
+}
+.text-gray {
+  color: $gray;
 }

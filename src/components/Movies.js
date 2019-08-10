@@ -31,7 +31,7 @@ function Movies() {
   return (
     <>
       <section className="movie-wrap container">
-        <div className="title-view-wrap">
+        <div className="title-wrap">
           <h2>in theater</h2>
           <span>view all</span>
         </div>
@@ -61,7 +61,7 @@ function Movies() {
 
       {/* TV SHOW  */}
       <section className="onTV-wrap container">
-        <div className="title-view-wrap">
+        <div className="title-wrap">
           <h2>on tv</h2>
           <span>view all</span>
         </div>

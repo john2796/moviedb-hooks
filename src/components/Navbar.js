@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+
 import Modal from 'react-responsive-modal'
 import Login from './auth/Login'
 
@@ -15,18 +16,20 @@ function Navbar() {
     <>
       <nav className="header-nav container">
         <span>
-          <a href="/">logo</a>
+          <a href="/" className="logo" />
           <a href="/">home</a>
           <a href="/movies">movies</a>
           <a href="/celeb">celebrities</a>
           <a href="/news">news</a>
         </span>
         <span>
-          <button type="button" onClick={onOpenModal}>
+          <button type="button" onClick={onOpenModal} className="anchor">
             login
           </button>
 
-          <button type="button">sign up</button>
+          <button type="button" className="red-btn ">
+            sign up
+          </button>
         </span>
       </nav>
       <Modal open={open} onClose={onCloseModal} center>

@@ -1,10 +1,10 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useState, useEffect, memo } from 'react';
-import Slider from 'react-slick';
-import ReactPlayer from 'react-player';
-import { useDispatch, useSelector } from 'react-redux';
-import { getTrendingPeople } from '../store/actions/movieAction';
+import React, { useState, useEffect, memo } from 'react'
+import Slider from 'react-slick'
+import ReactPlayer from 'react-player'
+import { useDispatch, useSelector } from 'react-redux'
+import { getTrendingPeople } from '../store/actions/movieAction'
 
 const dummyTrailer = [
   {
@@ -57,16 +57,16 @@ const dummyTrailer = [
     poster_path: '/ziEuG1essDuWuC5lpWUaw1uXY2O.jpg',
     time: '2:30',
   },
-];
+]
 function Trailer() {
-  const { trendingPeople } = useSelector(state => state.movieReducer);
-  const [currTrailer, setCurrTrailer] = useState('https://www.youtube.com/watch?v=1Q8fG0TtVAY');
-  const dispatch = useDispatch();
+  const { trendingPeople } = useSelector(state => state.movieReducer)
+  const [currTrailer, setCurrTrailer] = useState('https://www.youtube.com/watch?v=1Q8fG0TtVAY')
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getTrendingPeople());
-  }, [dispatch]);
-  const filterTrendingPeople = trendingPeople.filter(o => o.profile_path !== null);
+    dispatch(getTrendingPeople())
+  }, [dispatch])
+  const filterTrendingPeople = trendingPeople.filter(o => o.profile_path !== null)
 
   const settings = {
     infinite: true,
@@ -77,10 +77,10 @@ function Trailer() {
     swipeToSlide: true,
     focusOnSelect: true,
     afterChange(currentSlide) {
-      const { key } = dummyTrailer[currentSlide];
-      setCurrTrailer(`https://www.youtube.com/watch?v=$${key}`);
+      const { key } = dummyTrailer[currentSlide]
+      setCurrTrailer(`https://www.youtube.com/watch?v=${key}`)
     },
-  };
+  }
 
   return (
     <>
@@ -147,7 +147,7 @@ function Trailer() {
         </div>
       </section>
     </>
-  );
+  )
 }
 
-export default memo(Trailer);
+export default memo(Trailer)

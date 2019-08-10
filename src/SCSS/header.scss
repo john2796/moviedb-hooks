@@ -1,3 +1,5 @@
+@import "./variable";
+@import "./mixins";
 /* ---------------------
                  HEADER 
 --------------------- */
@@ -12,33 +14,19 @@
 --------------------- */
 
 .header-slider {
+  padding-left: 40px;
   .slider-item {
     display: flex !important;
-    justify-content: center;
+    justify-content: space-between;
     padding-top: 40px;
   }
   .slider-content {
     width: 60%;
   }
-  .slider-title {
-    font-family: "Dosis", sans-serif;
-    font-size: 60px;
-    color: #ffffff;
-    font-weight: 700;
-    text-transform: uppercase;
-    line-height: 60px;
-    span {
-      margin-left: 15px;
-      font-family: "Dosis", sans-serif;
-      font-size: 36px;
-      color: #abb7c4;
-      font-weight: 300;
-      text-transform: uppercase;
-    }
-  }
 }
 .slider-content-ul {
   display: flex;
+  margin-bottom: 50px;
   li {
     padding-right: 15px;
   }
@@ -46,7 +34,10 @@
     font-size: 20px;
   }
 }
-.header-slider img {
+.slider-image-right {
+  width: 40%;
+}
+.header-slider .slider-image-right img {
   width: 270px;
   height: 414px;
   object-fit: cover;
@@ -62,5 +53,9 @@ nav.header-nav {
   padding: 40px 0;
   a {
     margin-right: 25px;
+    @include anchor-links;
+    &:hover {
+      color: $yellowGreen;
+    }
   }
 }

@@ -17,8 +17,6 @@ function Header() {
     slidesToShow: 1,
     slidesToScroll: 1,
   }
-  console.log('popularTV', popularTV)
-
   return (
     <div className="bg-overlay">
       <Navbar />
@@ -30,26 +28,35 @@ function Header() {
             return (
               <div className="slider-item" key={id}>
                 <div className="slider-content">
-                  <h2 className="slider-title">
+                  <span className="blue-pills">sci-fi</span>
+                  <span className="yellow-pills">action</span>
+                  <span className="orange-pills">adventure</span>
+                  <h2 className="mTitle">
                     {name}
-                    <span>{first_air_date.substring(0, 4)}</span>
+                    <span className="date">{first_air_date.substring(0, 4)}</span>
                   </h2>
                   {/* SOIAL ICONS */}
                   <SocialsIcon />
                   <ul className="slider-content-ul">
                     <li>
                       <i className="fa fa-star yellowStar" aria-hidden="true" />
-                      {`${vote_average}/10`}
+                      {`${vote_average}`}
+                      <span className="text-gray">/10</span>
                     </li>
-                    <li>Run Time:</li>
-                    <li>Rated:</li>
-                    <li>
+                    <li className="text-gray">Run Time:</li>
+                    <li className="text-gray">Rated:</li>
+                    <li className="text-gray">
                       <span>Release:</span>
                       {first_air_date}
                     </li>
                   </ul>
+                  <button type="button" className="red-btn">
+                    more detail
+                  </button>
                 </div>
-                <img src={`https://image.tmdb.org/t/p/w1280${backdrop_path}`} alt="backdrop" />
+                <div className="slider-image-right">
+                  <img src={`https://image.tmdb.org/t/p/w1280${backdrop_path}`} alt="backdrop" />
+                </div>
               </div>
             )
           })}
