@@ -36,7 +36,7 @@ main {
 // ---- Customizing MovieSlider Tabs ----
 .movieSlider-nav {
   display: flex;
-  margin: 40px 0;
+  margin-bottom: 40px;
   li {
     margin-right: 25px;
   }
@@ -115,7 +115,7 @@ main {
     text-align: center;
   }
   .slick-slide.slick-active.slick-current {
-    background: var(--blue);
+    background: $blue;
   }
 }
 .control {
