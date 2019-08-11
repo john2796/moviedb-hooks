@@ -1,3 +1,4 @@
+@import "./variable";
 /* ---------------------
                  FOOTER
 --------------------- */
@@ -10,13 +11,39 @@ footer {
 // footer ul
 .f-parent {
   display: flex;
+  justify-content: space-between;
   padding: 100px 0;
+
+  ul li {
+    margin-bottom: 8px;
+    font-family: "Nunito", sans-serif;
+    font-size: 14px;
+    color: #abb7c4;
+    text-transform: none;
+    &:hover {
+      color: $yellowGreen;
+    }
+  }
 }
-.f-ul {
-  padding-right: 70px;
+
+.ft-title {
+  font-family: "Dosis", sans-serif;
+  font-size: 18px;
+  color: #ffffff;
+  font-weight: bold;
+  text-transform: capitalize;
+  margin-bottom: 30px;
 }
 
 .ar-reserved {
   display: flex;
   padding-bottom: 30px;
+  justify-content: space-between;
+}
+
+.backtop {
+  cursor: pointer;
+  &:hover {
+    color: $yellowGreen;
+  }
 }

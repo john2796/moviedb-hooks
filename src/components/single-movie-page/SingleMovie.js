@@ -42,7 +42,8 @@ function SingleMovie({ match }) {
       >
         <div className="hero-content container">
           <Navbar />
-          <SearchMovie />
+         {/* HIDE it for now it looks weird */}
+          {/* <SearchMovie /> */}
         </div>
       </div>
 
