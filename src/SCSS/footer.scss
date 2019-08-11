@@ -5,5 +5,18 @@ footer {
   background-image: url("../assets/footerBg.jpg");
   background-position: center;
   background-size: cover;
-  min-height: 500px;
+}
+
+// footer ul
+.f-parent {
+  display: flex;
+  padding: 100px 0;
+}
+.f-ul {
+  padding-right: 70px;
+}
+
+.ar-reserved {
+  display: flex;
+  padding-bottom: 30px;
 }

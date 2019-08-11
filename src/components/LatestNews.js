@@ -1,5 +1,13 @@
 import React from 'react'
 
+const dummyLatestNews = [
+  {
+    img: '',
+    title: '',
+    date: '27 Mar 2019',
+  },
+]
+
 function LatestNews() {
   return (
     <section className="latest-news">
