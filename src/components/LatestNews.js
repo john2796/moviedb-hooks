@@ -31,7 +31,7 @@ function LatestNews() {
         </div>
         {/* ----- right side of trailer section ----- */}
         <div className="main-right-section">
-          <h4 className="sb-title">Spotlight Celebrities</h4>
+          <h4 className="sb-title">find us on facebook</h4>
           <p>
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque a amet saepe quam
             excepturi sed et doloremque aperiam cupiditate non. Inventore, sint.

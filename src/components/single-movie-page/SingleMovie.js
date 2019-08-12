@@ -5,18 +5,13 @@ import PropTypes from 'prop-types'
 import '../../SCSS/singlePageMovie.scss'
 
 import { useSelector, useDispatch } from 'react-redux'
-import { NavLink, Route } from 'react-router-dom'
 import { getMovieById } from '../../store/actions/movieAction'
 
-import SpmOverview from './SpmOverview'
-import SpmReviews from './SpmReviews'
-import SpmCrew from './SpmCrew'
-import SpmMedia from './SpmMedia'
-import SpmRelatedMovies from './SpmRelatedMovies'
 import Footer from '../Footer'
 import Navbar from '../Navbar'
 import SearchMovie from '../SearchMovie'
 import SocialsIcon from '../social-icons/SocialsIcon'
+import SpTab from '../single-page-tab/SpTab'
 
 function SingleMovie({ match }) {
   const { spMovie } = useSelector(state => state.movieReducer)
@@ -42,7 +37,7 @@ function SingleMovie({ match }) {
       >
         <div className="hero-content container">
           <Navbar />
-         {/* HIDE it for now it looks weird */}
+          {/* HIDE it for now it looks weird */}
           {/* <SearchMovie /> */}
         </div>
       </div>
@@ -95,53 +90,12 @@ function SingleMovie({ match }) {
           </div>
 
           {/* ------------------Tabs  ------------------ */}
-          <nav className="single-page-movie-navTab">
-            <NavLink exact activeClassName="selected" to={`${match.url}`}>
-              overview
-            </NavLink>
-            <NavLink activeClassName="selected" to={`${match.url}/reviews`}>
-              reviews
-            </NavLink>
-            <NavLink activeClassName="selected" to={`${match.url}/cast&crew`}>
-              cast & crew
-            </NavLink>
-            <NavLink activeClassName="selected" to={`${match.url}/media`}>
-              media
-            </NavLink>
-            <NavLink activeClassName="selected" to={`${match.url}/relatedmovies`}>
-              related movies
-            </NavLink>
-          </nav>
-
-          <Route
-            exact
-            path={`${match.path}`}
-            render={() => <SpmOverview movieId={match.params.id} />}
-          />
-          <Route
-            path={`${match.path}/reviews`}
-            render={() => <SpmReviews movieId={match.params.id} title={title} />}
-          />
-          <Route
-            path={`${match.path}/cast&crew`}
-            render={() => <SpmCrew movieId={match.params.id} title={title} />}
-          />
-          <Route
-            path={`${match.path}/media`}
-            render={() => (
-              <SpmMedia title={title} movieId={match.params.id} backdrop_path={backdrop_path} />
-            )}
-          />
-          <Route
-            path={`${match.path}/relatedmovies`}
-            render={() => <SpmRelatedMovies title={title} id={Number(match.params.id)} />}
-          />
+          <SpTab id={match.params.id} title={title} backdrop_path={backdrop_path} match={match} />
         </div>
         {/* end of spm right section */}
       </div>
 
       {/* ------------------ Footer  ------------------ */}
-
       <Footer />
     </div>
   )
