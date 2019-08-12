@@ -39,7 +39,8 @@
   width: 40%;
 }
 .header-slider .slider-image-right img {
-  width: 270px;
+  min-width: 200px;
+  max-width: 270px;
   height: 414px;
   object-fit: cover;
   border-radius: 5px;

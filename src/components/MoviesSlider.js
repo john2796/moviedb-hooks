@@ -39,5 +39,6 @@ function MoviesSlider({ state, action, name = '/movie' }) {
 MoviesSlider.propTypes = {
   state: PropTypes.instanceOf(Array).isRequired,
   action: PropTypes.func,
+  name: PropTypes.string,
 }
 export default memo(MoviesSlider)
