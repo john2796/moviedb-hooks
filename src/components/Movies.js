@@ -74,16 +74,16 @@ function Movies() {
           </TabList>
 
           <TabPanel>
-            <MoviesSlider action={getPopularTv} state={popularTV} />
+            <MoviesSlider name="/tv" action={getPopularTv} state={popularTV} />
           </TabPanel>
           <TabPanel>
-            <MoviesSlider action={getAiringTodayTV} state={airingToday} />
+            <MoviesSlider name="/tv" action={getAiringTodayTV} state={airingToday} />
           </TabPanel>
           <TabPanel>
-            <MoviesSlider action={getTopRatedTv} state={topRatedTV} />
+            <MoviesSlider name="/tv" action={getTopRatedTv} state={topRatedTV} />
           </TabPanel>
           <TabPanel>
-            <MoviesSlider action={getOntheAir} state={onAirTV} />
+            <MoviesSlider name="/tv" action={getOntheAir} state={onAirTV} />
           </TabPanel>
         </Tabs>
       </section>

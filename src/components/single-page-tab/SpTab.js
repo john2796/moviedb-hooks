@@ -33,19 +33,26 @@ const SpTab = ({
       <Route exact path={`${match.path}`} render={() => <SpmOverview movieId={id} />} />
       <Route
         path={`${match.path}/reviews`}
-        render={() => <SpmReviews movieId={id} title={title} />}
+        render={() => <SpmReviews type={match.params.type} movieId={id} title={title} />}
       />
       <Route
         path={`${match.path}/cast&crew`}
-        render={() => <SpmCrew movieId={id} title={title} />}
+        render={() => <SpmCrew movieId={id} title={title} type={match.params.type} />}
       />
       <Route
         path={`${match.path}/media`}
-        render={() => <SpmMedia title={title} movieId={id} backdrop_path={backdrop_path} />}
+        render={() => (
+          <SpmMedia
+            title={title}
+            movieId={id}
+            type={match.params.type}
+            backdrop_path={backdrop_path}
+          />
+        )}
       />
       <Route
         path={`${match.path}/relatedmovies`}
-        render={() => <SpmRelatedMovies title={title} id={Number(id)} />}
+        render={() => <SpmRelatedMovies type={match.params.type} title={title} id={Number(id)} />}
       />
     </>
   )

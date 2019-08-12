@@ -25,7 +25,6 @@ function SingleMovie({ match }) {
   const {
     poster_path, name, title, release_date, vote_average, backdrop_path,
   } = spMovie
-
   return (
     <div className="single-page-movie">
       {/* ------- Top of the page navbar & search ------- */}
@@ -85,7 +84,7 @@ function SingleMovie({ match }) {
               <i className="fa fa-star yellowStar" aria-hidden="true" />
               <i className="fa fa-star yellowStar" aria-hidden="true" />
               <i className="fa fa-star yellowStar" aria-hidden="true" />
-              <i className="fa fa-star-o outline" aria-hidden="true" />
+              <i className="fa fa-stark-o outline" aria-hidden="true" />
             </div>
           </div>
 
