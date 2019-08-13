@@ -90,8 +90,9 @@ function SingleMovie({ match }) {
 
           {/* ------------------Tabs  ------------------ */}
           <SpTab id={match.params.id} title={title} backdrop_path={backdrop_path} match={match} />
+          {/* end of right */}
         </div>
-        {/* end of spm right section */}
+        {/* end of single page wrap */}
       </div>
 
       {/* ------------------ Footer  ------------------ */}
