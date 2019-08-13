@@ -45,7 +45,7 @@ function Footer() {
 
         <ul>
           <h4 className="ft-title">Newsletter</h4>
-          <li>
+          <li className="newsletter">
             Subscribe to our newsletter system now
             <br />
             to get latest news from us.
