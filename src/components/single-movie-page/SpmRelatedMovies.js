@@ -31,7 +31,6 @@ function SpmRelatedMovies({ title, id }) {
   if (is_spRelatedMovie_loading) {
     return <h2>Loading...</h2>
   }
-
   return (
     <>
       <div className="tab-header">

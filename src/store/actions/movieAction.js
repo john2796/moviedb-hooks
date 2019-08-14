@@ -303,8 +303,6 @@ export const getSpKeyword = id => async (dispatch) => {
 }
 
 export const getSpOverviewData = id => (dispatch) => {
-  // dispatch(getMovieById(id))
-
   dispatch(getSpReviews(id))
   dispatch(getSpCast(id))
   dispatch(getSpMediaMovies(id))

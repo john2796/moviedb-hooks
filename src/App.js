@@ -8,7 +8,7 @@ export default function App() {
   return (
     <>
       <Switch>
-        <Route path="/:type/:id/" component={SingleMovie} />
+        <Route path="/:type/:id" component={SingleMovie} />
         <Route path="/" component={Home} />
       </Switch>
     </>

@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { NavLink, Route } from 'react-router-dom'
 
 import SpmOverview from '../single-movie-page/SpmOverview'
@@ -10,7 +11,6 @@ import SpmRelatedMovies from '../single-movie-page/SpmRelatedMovies'
 const SpTab = ({
   match, id, title, backdrop_path,
 }) => {
-  console.log('match', match)
 
   return (
     <>
@@ -35,8 +35,7 @@ const SpTab = ({
       <Route exact path={`${match.path}`} render={() => <SpmOverview movieId={id} />} />
       <Route
         path={`${match.path}/reviews`}
-        // render={() => <SpmReviews type={match.params.type} movieId={id} title={title} />}
-        render={() => <h2>test</h2>}
+        render={() => <SpmReviews type={match.params.type} movieId={id} title={title} />}
       />
       <Route
         path={`${match.path}/cast&crew`}
@@ -60,5 +59,19 @@ const SpTab = ({
     </>
   )
 }
-
+SpTab.propTypes = {
+  match: PropTypes.shape({
+    isExact: PropTypes.bool,
+    params: PropTypes.shape({
+      id: PropTypes.string,
+      label: PropTypes.string,
+      type: PropTypes.string,
+    }),
+    path: PropTypes.string,
+    url: PropTypes.string,
+  }),
+  id: PropTypes.string,
+  title: PropTypes.string,
+  backdrop_path: PropTypes.string,
+}
 export default SpTab

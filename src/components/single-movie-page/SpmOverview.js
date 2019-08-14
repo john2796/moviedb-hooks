@@ -14,11 +14,17 @@ function SpmOverview({ movieId }) {
   } = useSelector(
     state => state.movieReducer,
   )
+  const [isOpen, setIsOpen] = useState(false)
+
   const dispatch = useDispatch()
+
+
   useEffect(() => {
     dispatch(getSpOverviewData(Number(movieId)))
   }, [])
-  const [isOpen, setIsOpen] = useState(false)
+
+
+
   // desctructure spMovie
   const { author, content, url } = spReviews.length && spReviews[0]
   const filteredVideos = spMediamovie.filter((_, idx) => idx <= 3)
