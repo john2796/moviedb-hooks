@@ -53,8 +53,6 @@ import {
 } from '../actions/movieAction'
 
 const initialState = {
-  isLoading: false,
-  relatedMoviesIsLoading: false,
   errors: {},
   topRated: [],
   nowPlaying: [],
@@ -74,6 +72,23 @@ const initialState = {
   spKeyword: [],
   spCast: [],
   spCrew: [],
+  is_topRated_loading: false,
+  is_nowPlaying_loading: false,
+  is_upcoming_loading: false,
+  is_popular_loading: false,
+  is_movie_loading: false,
+  is_trailerQuery_loading: false,
+  is_popularTV_loading: false,
+  is_topRatedTV_loading: false,
+  is_airingToday_loading: false,
+  is_onAirTV_loading: false,
+  is_trendingPeople_loading: false,
+  is_spMovie_loading: false,
+  is_spReviews_loading: false,
+  is_spMediamovie_loading: false,
+  is_spRelatedMovie_loading: false,
+  is_spKeyword_loading: false,
+  is_spCastAndCrew_loading: false,
 }
 
 export default function movieReducer(state = initialState, action) {
@@ -82,234 +97,234 @@ export default function movieReducer(state = initialState, action) {
     case GET_TOP_RATED_START:
       return {
         ...state,
-        isLoading: true,
+        is_topRated_loading: true,
       }
     case GET_TOP_RATED_SUCCESS:
       return {
         ...state,
         topRated: action.payload,
-        isLoading: false,
+        is_topRated_loading: false,
       }
     case GET_TOP_RATED_FAILURE:
       return {
         ...state,
-        isLoading: false,
+        is_topRated_loading: false,
         errors: action.payload,
       }
     // ----------------- GET_NOW_PLAYING -----------------
     case GET_NOW_PLAYING_START:
       return {
         ...state,
-        isLoading: true,
+        is_nowPlaying_loading: true,
       }
     case GET_NOW_PLAYING_SUCCESS:
       return {
         ...state,
         nowPlaying: action.payload,
-        isLoading: false,
+        is_nowPlaying_loading: false,
       }
     case GET_NOW_PLAYING_FAILURE:
       return {
         ...state,
-        isLoading: false,
+        is_nowPlaying_loading: false,
         errors: action.payload,
       }
     // ----------------- GET_UPCOMING -----------------
     case GET_UPCOMING_START:
       return {
         ...state,
-        isLoading: true,
+        is_upcoming_loading: true,
       }
     case GET_UPCOMING_SUCCESS:
       return {
         ...state,
         upcoming: action.payload,
-        isLoading: false,
+        is_upcoming_loading: false,
       }
     case GET_UPCOMING_FAILURE:
       return {
         ...state,
-        isLoading: false,
+        is_upcoming_loading: false,
         errors: action.payload,
       }
     // ----------------- GET_POPULAR -----------------
     case GET_POPULAR_START:
       return {
         ...state,
-        isLoading: true,
+        is_popular_loading: true,
       }
     case GET_POPULAR_SUCCESS:
       return {
         ...state,
         popular: action.payload,
-        isLoading: false,
+        is_popular_loading: false,
       }
     case GET_POPULAR_FAILURE:
       return {
         ...state,
-        isLoading: false,
+        is_popular_loading: false,
         errors: action.payload,
       }
     // ----------------- GET_POPULAR -----------------
     case GET_SINGLE_MOVIE_START:
       return {
         ...state,
-        isLoading: true,
+        is_movie_loading: true,
       }
     case GET_SINGLE_MOVIE_SUCCESS:
       return {
         ...state,
         movie: action.payload,
-        isLoading: false,
+        is_movie_loading: false,
       }
     case GET_SINGLE_MOVIE_FAILURE:
       return {
         ...state,
-        isLoading: false,
+        is_movie_loading: false,
         errors: action.payload,
       }
     // --------------------- GET_POPULAR ---------------------
     case GET_SINGLE_QUERY_START:
       return {
         ...state,
-        isLoading: true,
+        is_trailerQuery_loading: true,
       }
     case GET_SINGLE_QUERY_SUCCESS:
       return {
         ...state,
         trailerQuery: action.payload,
-        isLoading: false,
+        is_trailerQuery_loading: false,
       }
     case GET_SINGLE_QUERY_FAILURE:
       return {
         ...state,
-        isLoading: false,
+        is_trailerQuery_loading: false,
         errors: action.payload,
       }
     // --------------------- GET_POPULAR_TV_ SHOWS ---------------------
     case GET_POPULAR_TV_START:
       return {
         ...state,
-        isLoading: true,
+        is_popularTV_loading: true,
       }
     case GET_POPULAR_TV_SUCCESS:
       return {
         ...state,
         popularTV: action.payload,
-        isLoading: false,
+        is_popularTV_loading: false,
       }
     case GET_POPULAR_TV_FAILURE:
       return {
         ...state,
-        isLoading: false,
+        is_popularTV_loading: false,
         errors: action.payload,
       }
     // --------------------- GET_TOP_RATED_ SHOWS ---------------------
     case GET_TOP_RATED_TV_START:
       return {
         ...state,
-        isLoading: true,
+        is_topRatedTV_loading: true,
       }
     case GET_TOP_RATED_TV_SUCCESS:
       return {
         ...state,
         topRatedTV: action.payload,
-        isLoading: false,
+        is_topRatedTV_loading: false,
       }
     case GET_TOP_RATED_TV_FAILURE:
       return {
         ...state,
-        isLoading: false,
+        is_topRatedTV_loading: false,
         errors: action.payload,
       }
     // --------------------- GET_AIRING_TODAY_TV SHOWS ---------------------
     case GET_AIRING_TODAY_TV_START:
       return {
         ...state,
-        isLoading: true,
+        is_airingToday_loading: true,
       }
     case GET_AIRING_TODAY_TV_SUCCESS:
       return {
         ...state,
         airingToday: action.payload,
-        isLoading: false,
+        is_airingToday_loading: false,
       }
     case GET_AIRING_TODAY_TV_FAILURE:
       return {
         ...state,
-        isLoading: false,
+        is_airingToday_loading: false,
         errors: action.payload,
       }
     // --------------------- GET_ONTHEAIR_TV SHOWS ---------------------
     case GET_ONTHEAIR_TV_START:
       return {
         ...state,
-        isLoading: true,
+        is_onAirTV_loading: true,
       }
     case GET_ONTHEAIR_TV_SUCCESS:
       return {
         ...state,
         onAirTV: action.payload,
-        isLoading: false,
+        is_onAirTV_loading: false,
       }
     case GET_ONTHEAIR_TV_FAILURE:
       return {
         ...state,
-        isLoading: false,
+        is_onAirTV_loading: false,
         errors: action.payload,
       }
     // --------------------- GET_TRENDING_PEOPLE SHOWS ---------------------
     case GET_TRENDING_PEOPLE_START:
       return {
         ...state,
-        isLoading: true,
+        is_trendingPeople_loading: true,
       }
     case GET_TRENDING_PEOPLE_SUCCESS:
       return {
         ...state,
         trendingPeople: action.payload,
-        isLoading: false,
+        is_trendingPeople_loading: false,
       }
     case GET_TRENDING_PEOPLE_FAILURE:
       return {
         ...state,
-        isLoading: false,
+        is_trendingPeople_loading: false,
         errors: action.payload,
       }
     // --------------------- GET_MOVIE_BYID SHOWS ---------------------
     case GET_MOVIE_BYID_START:
       return {
         ...state,
-        isLoading: true,
+        is_spMovie_loading: true,
       }
     case GET_MOVIE_BYID_SUCCESS:
       return {
         ...state,
         spMovie: action.payload,
-        isLoading: false,
+        is_spMovie_loading: false,
       }
     case GET_MOVIE_BYID_FAILURE:
       return {
         ...state,
-        isLoading: false,
+        is_spMovie_loading: false,
         errors: action.payload,
       }
     // --------------------- SINGLE PAGE REVIEWS ---------------------
     case GET_SP_REVIEWS_START:
       return {
         ...state,
-        isLoading: true,
+        is_spReviews_loading: true,
       }
     case GET_SP_REVIEWS_SUCCESS:
       return {
         ...state,
         spReviews: action.payload,
-        isLoading: false,
+        is_spReviews_loading: false,
       }
     case GET_SP_REVIEWS_FAILURE:
       return {
         ...state,
-        isLoading: false,
+        is_spReviews_loading: false,
         errors: action.payload,
       }
 
@@ -317,73 +332,73 @@ export default function movieReducer(state = initialState, action) {
     case GET_SP_CAST_START:
       return {
         ...state,
-        isLoading: true,
+        is_spCastAndCrew_loading: true,
       }
     case GET_SP_CAST_SUCCESS:
       return {
         ...state,
         spCast: action.cast,
         spCrew: action.crew,
-        isLoading: false,
+        is_spCastAndCrew_loading: false,
       }
     case GET_SP_CAST_FAILURE:
       return {
         ...state,
-        isLoading: false,
+        is_spCastAndCrew_loading: false,
         errors: action.payload,
       }
     // --------------------- SINGLE PAGE MEDIA AND MOVIE ---------------------
     case GET_SP_MEDIA_MOVIE_START:
       return {
         ...state,
-        isLoading: true,
+        is_spMediamovie_loading: true,
       }
     case GET_SP_MEDIA_MOVIE_SUCCESS:
       return {
         ...state,
         spMediamovie: action.payload,
-        isLoading: false,
+        is_spMediamovie_loading: false,
       }
     case GET_SP_MEDIA_MOVIE_FAILURE:
       return {
         ...state,
-        isLoading: false,
+        is_spMediamovie_loading: false,
         errors: action.payload,
       }
     // --------------------- SINGLE PAGE RELATED MOVIES ---------------------
     case GET_SP_RELATED_MOVIES_START:
       return {
         ...state,
-        relatedMoviesIsLoading: true,
+        is_spRelatedMovie_loading: true,
       }
     case GET_SP_RELATED_MOVIES_SUCCESS:
       return {
         ...state,
         spRelatedMovie: action.payload,
-        relatedMoviesIsLoading: false,
+        is_spRelatedMovie_loading: false,
       }
     case GET_SP_RELATED_MOVIES_FAILURE:
       return {
         ...state,
-        relatedMoviesIsLoading: false,
+        is_spRelatedMovie_loading: false,
         errors: action.payload,
       }
     // --------------------- SINGLE PAGE KEYOWRD ---------------------
     case GET_SP_KEYWORD_START:
       return {
         ...state,
-        isLoading: true,
+        is_spKeyword_loading: true,
       }
     case GET_SP_KEYWORD_SUCCESS:
       return {
         ...state,
         spKeyword: action.payload,
-        isLoading: false,
+        is_spKeyword_loading: false,
       }
     case GET_SP_KEYWORD_FAILURE:
       return {
         ...state,
-        isLoading: false,
+        is_spKeyword_loading: false,
         errors: action.payload,
       }
     // ---------------------- RETURN STATE ----------------------

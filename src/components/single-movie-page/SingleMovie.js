@@ -8,52 +8,34 @@ import { useSelector, useDispatch } from 'react-redux'
 import { getMovieById } from '../../store/actions/movieAction'
 
 import Footer from '../Footer'
-import Navbar from '../Navbar'
-import SearchMovie from '../SearchMovie'
 import SocialsIcon from '../social-icons/SocialsIcon'
 import SpTab from '../single-page-tab/SpTab'
+import SpNav from './SpNav'
+import SpMovieRate from './SpMovieRate'
+import SpLeftContent from './SpLeftContent'
 
 function SingleMovie({ match }) {
-  const { spMovie } = useSelector(state => state.movieReducer)
+  const { spMovie, is_spMovie_loading } = useSelector(state => state.movieReducer)
   const dispatch = useDispatch()
 
   useEffect(() => {
     dispatch(getMovieById(Number(match.params.id)))
     window.scrollTo(0, 0) // hacky
-  }, [])
+  }, [match.params.id])
 
   const {
     poster_path, name, title, release_date, vote_average, backdrop_path,
   } = spMovie
+
   return (
     <div className="single-page-movie">
       {/* ------- Top of the page navbar & search ------- */}
-      <div
-        className="hero spm-bg"
-        style={{
-          backgroundImage: `url(https://image.tmdb.org/t/p/w1280/${backdrop_path})`,
-        }}
-      >
-        <div className="hero-content container">
-          <Navbar />
-          {/* HIDE it for now it looks weird */}
-          {/* <SearchMovie /> */}
-        </div>
-      </div>
-
+      <SpNav backdrop_path={backdrop_path} />
       {/* ------- Wrapper for the whole main section  ------- */}
       <div className="spm-wrap container">
         {/* ------------------ Left side big image ,trailer & buy tickets buttons ------------------ */}
         <div className="spm-left">
-          <img src={`https://image.tmdb.org/t/p/w500${poster_path}`} alt={name} />
-          <div className="movie-btn">
-            <button className="redbtn" type="button">
-              watch trailer
-            </button>
-            <button className="yellowbtn" type="button">
-              buy ticket
-            </button>
-          </div>
+          <SpLeftContent poster_path={poster_path} name={name} />
         </div>
 
         {/* ------------------ Right side, Main Contents of the page ------------------ */}
@@ -62,39 +44,20 @@ function SingleMovie({ match }) {
           <div className="spm-title">
             <h1 className="bd-hd">
               {title}
+              {is_spMovie_loading && <span style={{ minHeight: '300px' }}>Loading...</span>}
               <span>{release_date}</span>
             </h1>
             {/* SOCIAL ICONS */}
             <SocialsIcon />
           </div>
           {/* ------------------ Rate movie ------------------ */}
-          <div className="movie-rate">
-            <div className="rate">
-              <i className="fa fa-star yellowStar" aria-hidden="true" />
-              <p>
-                <span>{`${vote_average}`}</span>
-                /10
-                <br />
-                <span className="rv">56 reviews</span>
-              </p>
-            </div>
-            <div className="rate-star">
-              <p>Rate This Movie:</p>
-              <i className="fa fa-star yellowStar" aria-hidden="true" />
-              <i className="fa fa-star yellowStar" aria-hidden="true" />
-              <i className="fa fa-star yellowStar" aria-hidden="true" />
-              <i className="fa fa-star yellowStar" aria-hidden="true" />
-              <i className="fa fa-stark-o outline" aria-hidden="true" />
-            </div>
-          </div>
-
+          <SpMovieRate vote_average={vote_average} />
           {/* ------------------Tabs  ------------------ */}
           <SpTab id={match.params.id} title={title} backdrop_path={backdrop_path} match={match} />
           {/* end of right */}
         </div>
         {/* end of single page wrap */}
       </div>
-
       {/* ------------------ Footer  ------------------ */}
       <Footer />
     </div>

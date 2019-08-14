@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import './spmRelatedMovies.scss'
 
-
 import { useDispatch, useSelector } from 'react-redux'
 import { getSpRelatedMovies } from '../../store/actions/movieAction'
 
@@ -10,7 +9,7 @@ import RelatedMovies from '../related-movies/RelatedMovies'
 
 function SpmRelatedMovies({ title, id }) {
   const [count, setCount] = useState(1)
-  const { spRelatedMovie, relatedMoviesIsLoading } = useSelector(state => state.movieReducer)
+  const { spRelatedMovie, is_spRelatedMovie_loading } = useSelector(state => state.movieReducer)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -29,7 +28,7 @@ function SpmRelatedMovies({ title, id }) {
     setCount(count - 1)
   }
 
-  if (relatedMoviesIsLoading) {
+  if (is_spRelatedMovie_loading) {
     return <h2>Loading...</h2>
   }
 

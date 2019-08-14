@@ -1,13 +1,15 @@
 import React, { useEffect, memo } from 'react'
 import PropTypes from 'prop-types'
 
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
 import Slider from 'react-slick'
 
-function MoviesSlider({ state, action, name = '/movie' }) {
-  const { isLoading } = useSelector(state => state.movieReducer)
+function MoviesSlider({
+  state, action, name = '/movie', match, history,
+}) {
+  const { is_spMovie_loading } = useSelector(state => state.movieReducer)
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(action())
@@ -47,13 +49,14 @@ function MoviesSlider({ state, action, name = '/movie' }) {
       },
     ],
   }
-  if (isLoading) {
-    return <h2 style={{ minHeight: '300px' }}>Loading...</h2>
-  }
+
+  // Load movie Lists
+  // if (is_spMovie_loading) {
+  //   return <h2 style={{ minHeight: '300px' }}>Loading...</h2>
+  // }
   return (
     <Slider {...settings}>
       {state.map((item) => {
-        // NOTES: TV Tab is not working at the moment because of the endpoints in movie action files, the api is not correspond with the tv same thing with the single page for movies .... remove this once it's done
         return (
           <div key={item.id} id="slider-image-wrap">
             <Link to={`${name}/${item.id}`}>
@@ -75,4 +78,4 @@ MoviesSlider.propTypes = {
   action: PropTypes.func,
   name: PropTypes.string,
 }
-export default memo(MoviesSlider)
+export default memo(withRouter(MoviesSlider))
