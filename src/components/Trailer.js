@@ -133,7 +133,7 @@ function Trailer() {
           </div>
           {/* ----- right side of trailer section ----- */}
           <div className="main-right-section">
-            <h4 className="sb-title  ">Spotlight Celebrities</h4>
+            <h4 className="sb-title spotlight-title ">Spotlight Celebrities</h4>
             {filterTrendingPeople.map(item => (
               <div className="mr-content" key={item.id}>
                 <img src={`https://image.tmdb.org/t/p/w500${item.profile_path}`} alt={item.name} />

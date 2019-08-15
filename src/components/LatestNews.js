@@ -18,15 +18,13 @@ function LatestNews() {
             <h2>latest news</h2>
             <p>view all</p>
           </div>
-          <div className="trailer-carousel">
-            <div className="control">
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequuntur itaque illum
-                similique quasi? Qui esse eveniet reprehenderit tempore. Placeat architecto ipsa
-                doloremque ipsum aut adipisci illo quibusdam. Inventore tempora voluptatibus
-                cupiditate!
-              </p>
-            </div>
+          <div className="latestnews-content">
+            <p>
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequuntur itaque illum
+              similique quasi? Qui esse eveniet reprehenderit tempore. Placeat architecto ipsa
+              doloremque ipsum aut adipisci illo quibusdam. Inventore tempora voluptatibus
+              cupiditate!
+            </p>
           </div>
         </div>
         {/* ----- right side of trailer section ----- */}

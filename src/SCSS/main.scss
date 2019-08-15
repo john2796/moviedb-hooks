@@ -99,14 +99,49 @@ main {
   justify-content: space-between;
   padding: 80px 0;
   @media (max-width: 1199px) {
+    border: 1px solid orange;
+  }
+  @media (max-width: 991px) {
+    border: 1px solid yellow;
     flex-wrap: wrap;
+    padding: 0;
+    padding-bottom: 25px;
+  }
+  @media (max-width: 767px) {
+    border: 1px solid blue;
+  }
+  @media (max-width: 600px) {
+    border: 1px solid pink;
+  }
+  @media (max-width: 480px) {
+    border: 1px solid purple;
+  }
+  @media (max-width: 380px) {
+    border: 1px solid darkturquoise;
   }
 }
 .main-left-section {
   min-width: 60%;
   margin-right: 10%;
   @media (max-width: 1199px) {
-    min-width: 100%;
+    border: 1px solid orange;
+    min-width: 50%;
+  }
+  @media (max-width: 991px) {
+    border: 1px solid yellow;
+    margin-right: 0;
+  }
+  @media (max-width: 767px) {
+    border: 1px solid blue;
+  }
+  @media (max-width: 600px) {
+    border: 1px solid pink;
+  }
+  @media (max-width: 480px) {
+    border: 1px solid purple;
+  }
+  @media (max-width: 380px) {
+    border: 1px solid darkturquoise;
   }
 }
 
@@ -114,7 +149,12 @@ main {
   width: 20%;
   @media (max-width: 1199px) {
     width: 100%;
-    margin-top: 50px;
+  }
+
+  .spotlight-title {
+    @media (max-width: 991px) {
+      margin-top: 20px;
+    }
   }
   .mr-content {
     display: flex;
@@ -144,11 +184,26 @@ main {
 }
 .trailer-carousel {
   display: flex;
-  justify-content: space-between;
+  @media (max-width: 1199px) {
+    border: 1px solid orange;
+  }
   @media (max-width: 991px) {
+    border: 1px solid yellow;
+    justify-content: center;
+  }
+  @media (max-width: 767px) {
+    border: 1px solid blue;
     flex-direction: column;
   }
-
+  @media (max-width: 600px) {
+    border: 1px solid pink;
+  }
+  @media (max-width: 480px) {
+    border: 1px solid purple;
+  }
+  @media (max-width: 380px) {
+    border: 1px solid darkturquoise;
+  }
   /* next and prev buttons  */
   .slick-prev,
   .slick-next {
@@ -169,8 +224,24 @@ main {
 }
 .control {
   width: 35%;
+  @media (max-width: 1199px) {
+    border: 1px solid orange;
+  }
   @media (max-width: 991px) {
+    border: 1px solid yellow;
+  }
+  @media (max-width: 767px) {
+    border: 1px solid blue;
     width: 100%;
+  }
+  @media (max-width: 600px) {
+    border: 1px solid pink;
+  }
+  @media (max-width: 480px) {
+    border: 1px solid purple;
+  }
+  @media (max-width: 380px) {
+    border: 1px solid darkturquoise;
   }
   .slide-item {
     width: 100%;
@@ -195,7 +266,31 @@ main {
 }
 .trailer-carousel .youtube {
   width: 65%;
+  @media (max-width: 1199px) {
+    border: 1px solid orange;
+  }
   @media (max-width: 991px) {
+    border: 1px solid yellow;
+    width: 60%;
+  }
+  @media (max-width: 767px) {
+    border: 1px solid blue;
     width: 100%;
   }
+  @media (max-width: 600px) {
+    border: 1px solid pink;
+  }
+  @media (max-width: 480px) {
+    border: 1px solid purple;
+  }
+  @media (max-width: 380px) {
+    border: 1px solid darkturquoise;
+  }
+  .player-wrapper {
+    height: 100%;
+  }
+}
+
+.latestnews-content {
+  margin-bottom: 20px;
 }
