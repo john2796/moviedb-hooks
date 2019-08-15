@@ -1,13 +1,13 @@
 /* eslint-disable camelcase */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react'
-import PropTypes from 'prop-types'
 import { useSelector, useDispatch } from 'react-redux'
 
+import PropTypes from 'prop-types'
 import ModalVideo from 'react-modal-video'
+import youtubebtn from '../../assets/youtube-play-btn.png'
 
 import { getSpOverviewData } from '../../store/actions/movieAction'
-import youtubebtn from '../../assets/youtube-play-btn.png'
 
 function SpmOverview({ movieId, type }) {
   // Select all state from reducer
@@ -17,21 +17,28 @@ function SpmOverview({ movieId, type }) {
     state => state.movieReducer,
   )
   const [isOpen, setIsOpen] = useState(false)
-
   const dispatch = useDispatch()
 
+  // fetch overview data
   useEffect(() => {
     dispatch(getSpOverviewData(Number(movieId), type))
   }, [movieId, type])
 
   // desctructure spMovie
   const { author, content, url } = spReviews.length && spReviews[0]
+
+  // filter the first 3 item
   const filteredVideos = spMediamovie.filter((_, idx) => idx <= 3)
+  // filter the first 7 cast
   const filteredCast = spCast.filter((_, idx) => idx <= 7).filter(x => x.profile_path !== null)
+  // filter the 4 cast
   const fourCast = spCast.filter((_, idx) => idx <= 4)
+  // filter directors
   const directors = spCrew.filter(item => item.department === 'Directing')
+  // filter writers
   const writers = spCrew.filter(item => item.department === 'Writing')
 
+  // desctructure SpMovie
   const {
     overview, backdrop_path, runtime, genres, release_date,
   } = spMovie

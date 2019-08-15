@@ -142,6 +142,7 @@
 .spm-overview {
   display: flex;
 }
+
 // -------- single page ptag style ------
 // i am using it for overview, review
 .spm-paragraph {
@@ -254,6 +255,11 @@
     color: #abb7c4;
     margin-bottom: 15px;
   }
+}
+
+// spm left content
+.spm-overview-left {
+  min-width: 70%;
 }
 
 // ---------- single page overview right side ----------

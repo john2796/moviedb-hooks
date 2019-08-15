@@ -16,7 +16,6 @@ import {
 } from '../store/actions/movieAction'
 
 import MoviesSlider from './MoviesSlider'
-import DelayedSpinner from './Spinner/DelayedSpinner'
 
 function Movies() {
   const {
@@ -28,16 +27,6 @@ function Movies() {
     topRatedTV,
     airingToday,
     onAirTV,
-    is_nowPlaying_loading,
-    is_upcoming_loading,
-    is_popular_loading,
-    is_movie_loading,
-    is_trailerQuery_loading,
-    is_popularTV_loading,
-    is_topRatedTV_loading,
-    is_airingToday_loading,
-    is_onAirTV_loading,
-    is_trendingPeople_loading,
   } = useSelector(state => state.movieReducer)
   return (
     <>
@@ -46,7 +35,7 @@ function Movies() {
           <h2>in theater</h2>
           <span>view all</span>
         </div>
-        {/* MOVIE TAB */}
+        {/* MOVIE TAB in home page */}
         <Tabs className="movie-tab">
           <TabList className="movieSlider-nav">
             <Tab>#popular</Tab>
@@ -56,10 +45,6 @@ function Movies() {
           </TabList>
 
           <TabPanel>
-            {/* {is_popular_loading ? (
-              <DelayedSpinner delay={750} />
-            ) : (
-            )} */}
             <MoviesSlider action={getPopular} state={popular} />
           </TabPanel>
           <TabPanel>
@@ -74,7 +59,7 @@ function Movies() {
         </Tabs>
       </section>
 
-      {/* TV SHOW  */}
+      {/* TV SHOW tabs in Home Page  */}
       <section className="onTV-wrap container">
         <div className="title-wrap">
           <h2>on tv</h2>

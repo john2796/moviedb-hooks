@@ -19,15 +19,19 @@ function SingleMovie({ match }) {
   const { spMovie, is_spMovie_loading } = useSelector(state => state.movieReducer)
   const dispatch = useDispatch()
 
+  // Fetch single movie
   useEffect(() => {
     dispatch(getMovieById(Number(match.params.id), match.params.type))
+    // when page first load or when id type changes move scroll to top page
     window.scrollTo(0, 0)
   }, [match.params.id, match.params.type])
 
+  // desctructure spMovie details
   const {
     poster_path, name, title, release_date, vote_average, backdrop_path,
   } = spMovie
 
+  // loader with delay
   if (is_spMovie_loading) {
     return <DelayedSpinner delay={750} />
   }

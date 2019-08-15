@@ -21,12 +21,29 @@ function MoviesSlider({ state, action, name = '/movie' }) {
     arrows: false,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1199,
+        settings: {
+          slidesToShow: 5,
+          slidesToScroll: 5,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 991,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 4,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 767,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 3,
-          infinite: true,
-          dots: true,
+          initialSlide: 2,
         },
       },
       {
@@ -46,27 +63,6 @@ function MoviesSlider({ state, action, name = '/movie' }) {
       },
     ],
   }
-  // if (is_nowPlaying_loading) {
-  //   return <DelayedSpinner delay={750} />
-  // } if (is_upcoming_loading) {
-  //   return <DelayedSpinner delay={750} />
-  // } if (is_popular_loading) {
-  //   return <DelayedSpinner delay={750} />
-  // } if (is_movie_loading) {
-  //   return <DelayedSpinner delay={750} />
-  // } if (is_trailerQuery_loading) {
-  //   return <DelayedSpinner delay={750} />
-  // } if (is_popularTV_loading) {
-  //   return <DelayedSpinner delay={750} />
-  // } if (is_topRatedTV_loading) {
-  //   return <DelayedSpinner delay={750} />
-  // } if (is_airingToday_loading) {
-  //   return <DelayedSpinner delay={750} />
-  // } if (is_onAirTV_loading) {
-  //   return <DelayedSpinner delay={750} />
-  // } if (is_trendingPeople_loading) {
-  //   return <DelayedSpinner delay={750} />
-  // }
 
   return (
     <Slider {...settings}>

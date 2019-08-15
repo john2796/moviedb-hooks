@@ -73,9 +73,9 @@ export const CounterComponent = ({ value }) => {
 - [x] Need to refactor single **page** application
 - [ ] Update loading variable in reducer
 - [x] add styling for modal
-- [ ] 
-- [ ] ****
-- [ ] 
+- [ ] Need to make full responsive
+- [ ] User can login/signup to favorites movies
+- [ ] Add testing (JEST)
 - [ ] 
 - [ ] 
 - [ ] 
