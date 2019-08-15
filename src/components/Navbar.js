@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 import Modal from 'react-responsive-modal'
 import Login from './auth/Login'
@@ -16,11 +17,11 @@ function Navbar() {
     <>
       <nav className="header-nav container">
         <span>
-          <a href="/" className="logo" />
-          <a href="/">home</a>
-          <a href="/movies">movies</a>
-          <a href="/celeb">celebrities</a>
-          <a href="/news">news</a>
+          <Link to="/" className="logo" />
+          <Link to="/">home</Link>
+          <Link to="/movies">movies</Link>
+          <Link to="/celeb">celebrities</Link>
+          <Link to="/news">news</Link>
         </span>
         <span>
           <button type="button" onClick={onOpenModal} className="anchor">

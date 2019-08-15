@@ -1,16 +1,17 @@
 import React, { useEffect } from 'react'
 import '../../SCSS/spmCastCrew.scss'
+import PropTypes from 'prop-types'
 
 import { useSelector, useDispatch } from 'react-redux'
 import { getSpCast } from '../../store/actions/movieAction'
 
-function SpmCrew({ title, movieId }) {
+function SpmCrew({ title, movieId, type }) {
   const { spCast, spCrew } = useSelector(state => state.movieReducer)
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getSpCast(Number(movieId)))
-  }, [dispatch, movieId])
+    dispatch(getSpCast(Number(movieId), type))
+  }, [dispatch, movieId, type])
 
   const filterDirectorsAndWriters = spCrew
     .filter(item => item.department === 'Directing' || item.department === 'Writing')
@@ -82,4 +83,9 @@ function SpmCrew({ title, movieId }) {
   )
 }
 
+SpmCrew.propTypes = {
+  title: PropTypes.string,
+  movieId: PropTypes.string,
+  type: PropTypes.string,
+}
 export default SpmCrew

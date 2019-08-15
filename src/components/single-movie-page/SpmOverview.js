@@ -1,13 +1,15 @@
 /* eslint-disable camelcase */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
 import { useSelector, useDispatch } from 'react-redux'
+
 import ModalVideo from 'react-modal-video'
 
 import { getSpOverviewData } from '../../store/actions/movieAction'
 import youtubebtn from '../../assets/youtube-play-btn.png'
 
-function SpmOverview({ movieId }) {
+function SpmOverview({ movieId, type }) {
   // Select all state from reducer
   const {
     spMovie, spReviews, spCast, spMediamovie, spKeyword, spCrew,
@@ -18,12 +20,9 @@ function SpmOverview({ movieId }) {
 
   const dispatch = useDispatch()
 
-
   useEffect(() => {
-    dispatch(getSpOverviewData(Number(movieId)))
-  }, [])
-
-
+    dispatch(getSpOverviewData(Number(movieId), type))
+  }, [movieId, type])
 
   // desctructure spMovie
   const { author, content, url } = spReviews.length && spReviews[0]
@@ -185,5 +184,8 @@ function SpmOverview({ movieId }) {
     </div>
   )
 }
-
+SpmOverview.propTypes = {
+  movieId: PropTypes.string,
+  type: PropTypes.string,
+}
 export default SpmOverview

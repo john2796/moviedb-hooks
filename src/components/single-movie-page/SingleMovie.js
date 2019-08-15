@@ -13,20 +13,24 @@ import SpTab from '../single-page-tab/SpTab'
 import SpNav from './SpNav'
 import SpMovieRate from './SpMovieRate'
 import SpLeftContent from './SpLeftContent'
+import DelayedSpinner from '../Spinner/DelayedSpinner'
 
 function SingleMovie({ match }) {
   const { spMovie, is_spMovie_loading } = useSelector(state => state.movieReducer)
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getMovieById(Number(match.params.id)))
-    window.scrollTo(0, 0) // hacky
-  }, [match.params.id])
+    dispatch(getMovieById(Number(match.params.id), match.params.type))
+    window.scrollTo(0, 0)
+  }, [match.params.id, match.params.type])
 
   const {
     poster_path, name, title, release_date, vote_average, backdrop_path,
   } = spMovie
 
+  if (is_spMovie_loading) {
+    return <DelayedSpinner delay={750} />
+  }
   return (
     <div className="single-page-movie">
       {/* ------- Top of the page navbar & search ------- */}
@@ -70,6 +74,7 @@ SingleMovie.propTypes = {
     params: PropTypes.shape({
       id: PropTypes.string,
       label: PropTypes.string,
+      type: PropTypes.string,
     }),
     path: PropTypes.string,
     url: PropTypes.string,

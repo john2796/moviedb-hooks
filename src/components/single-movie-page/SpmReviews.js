@@ -1,16 +1,17 @@
 import React, { useEffect } from 'react'
 import '../../SCSS/spmReview.scss'
+import PropTypes from 'prop-types'
 
 import { useSelector, useDispatch } from 'react-redux'
 import { getSpReviews } from '../../store/actions/movieAction'
 
-function SpmReviews({ title, movieId }) {
+function SpmReviews({ title, movieId, type }) {
   const { spReviews } = useSelector(state => state.movieReducer)
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getSpReviews(movieId))
-  }, [dispatch, movieId])
+    dispatch(getSpReviews(Number(movieId), type))
+  }, [dispatch, movieId, type])
 
   return (
     <>
@@ -51,4 +52,9 @@ function SpmReviews({ title, movieId }) {
   )
 }
 
+SpmReviews.propTypes = {
+  title: PropTypes.string,
+  movieId: PropTypes.string,
+  type: PropTypes.string,
+}
 export default SpmReviews

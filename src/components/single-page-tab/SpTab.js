@@ -11,7 +11,6 @@ import SpmRelatedMovies from '../single-movie-page/SpmRelatedMovies'
 const SpTab = ({
   match, id, title, backdrop_path,
 }) => {
-
   return (
     <>
       <nav className="single-page-movie-navTab">
@@ -32,7 +31,11 @@ const SpTab = ({
         </NavLink>
       </nav>
 
-      <Route exact path={`${match.path}`} render={() => <SpmOverview movieId={id} />} />
+      <Route
+        exact
+        path={`${match.path}`}
+        render={() => <SpmOverview type={match.params.type} movieId={id} />}
+      />
       <Route
         path={`${match.path}/reviews`}
         render={() => <SpmReviews type={match.params.type} movieId={id} title={title} />}
@@ -54,7 +57,7 @@ const SpTab = ({
       />
       <Route
         path={`${match.path}/relatedmovies`}
-        render={() => <SpmRelatedMovies type={match.params.type} title={title} id={Number(id)} />}
+        render={() => <SpmRelatedMovies type={match.params.type} title={title} id={id} />}
       />
     </>
   )

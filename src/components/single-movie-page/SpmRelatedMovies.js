@@ -6,18 +6,19 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getSpRelatedMovies } from '../../store/actions/movieAction'
 
 import RelatedMovies from '../related-movies/RelatedMovies'
+import DelayedSpinner from '../Spinner/DelayedSpinner'
 
-function SpmRelatedMovies({ title, id }) {
+function SpmRelatedMovies({ title, id, type }) {
   const [count, setCount] = useState(1)
   const { spRelatedMovie, is_spRelatedMovie_loading } = useSelector(state => state.movieReducer)
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getSpRelatedMovies(id, count))
+    dispatch(getSpRelatedMovies(Number(id), type, count))
     return () => {
       window.scrollTo(0, 0)
     }
-  }, [count, dispatch, id])
+  }, [count, dispatch, id, type])
 
   const goToNext = () => {
     if (count >= spRelatedMovie.total_pages) return
@@ -28,8 +29,9 @@ function SpmRelatedMovies({ title, id }) {
     setCount(count - 1)
   }
 
+  // if the loading take less than 750 ms it won't show loading
   if (is_spRelatedMovie_loading) {
-    return <h2>Loading...</h2>
+    return <DelayedSpinner delay={750} />
   }
   return (
     <>
@@ -77,8 +79,9 @@ function SpmRelatedMovies({ title, id }) {
 }
 
 SpmRelatedMovies.propTypes = {
+  type: PropTypes.string,
   title: PropTypes.string,
-  id: PropTypes.number,
+  id: PropTypes.string,
   relatedMovies: PropTypes.shape({
     page: PropTypes.number,
     total_pages: PropTypes.number,

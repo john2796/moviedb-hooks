@@ -2,14 +2,13 @@ import React, { useEffect, memo } from 'react'
 import PropTypes from 'prop-types'
 
 import { Link, withRouter } from 'react-router-dom'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 
 import Slider from 'react-slick'
 
 function MoviesSlider({
   state, action, name = '/movie', match, history,
 }) {
-  const { is_spMovie_loading } = useSelector(state => state.movieReducer)
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(action())
@@ -50,10 +49,6 @@ function MoviesSlider({
     ],
   }
 
-  // Load movie Lists
-  // if (is_spMovie_loading) {
-  //   return <h2 style={{ minHeight: '300px' }}>Loading...</h2>
-  // }
   return (
     <Slider {...settings}>
       {state.map((item) => {

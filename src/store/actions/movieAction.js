@@ -3,7 +3,6 @@ import { removeDups } from '../../helpers/index'
 
 const key = process.env.REACT_APP_SECRET_KEY
 
-
 // -------------- GET TOP_RATED --------------
 const TOP_RATED = `https://api.themoviedb.org/3/movie/top_rated?api_key=${key}&language=en-US&page=1`
 export const GET_TOP_RATED_START = 'GET_TOP_RATED_START'
@@ -202,11 +201,11 @@ export const GET_MOVIE_BYID_START = 'GET_MOVIE_BYID_START'
 export const GET_MOVIE_BYID_SUCCESS = 'GET_MOVIE_BYID_SUCCESS'
 export const GET_MOVIE_BYID_FAILURE = 'GET_MOVIE_BYID_FAILURE'
 
-export const getMovieById = id => async (dispatch) => {
+export const getMovieById = (id, type) => async (dispatch) => {
   try {
     dispatch({ type: GET_MOVIE_BYID_START })
     const response = await axios(
-      `https://api.themoviedb.org/3/movie/${id}?api_key=${key}&language=en-US`,
+      `https://api.themoviedb.org/3/${type}/${id}?api_key=${key}&language=en-US`,
     )
     dispatch({ type: GET_MOVIE_BYID_SUCCESS, payload: response.data })
   } catch (error) {
@@ -221,11 +220,11 @@ export const GET_SP_REVIEWS_START = 'GET_SP_REVIEWS_START'
 export const GET_SP_REVIEWS_SUCCESS = 'GET_SP_REVIEWS_SUCCESS'
 export const GET_SP_REVIEWS_FAILURE = 'GET_SP_REVIEWS_FAILURE'
 
-export const getSpReviews = id => async (dispatch) => {
+export const getSpReviews = (id, type) => async (dispatch) => {
   try {
     dispatch({ type: GET_SP_REVIEWS_START })
     const response = await axios(
-      `https://api.themoviedb.org/3/movie/${id}/reviews?api_key=${key}&language=en-US&page=1`,
+      `https://api.themoviedb.org/3/${type}/${id}/reviews?api_key=${key}&language=en-US&page=1`,
     )
     dispatch({ type: GET_SP_REVIEWS_SUCCESS, payload: response.data.results })
   } catch (error) {
@@ -237,11 +236,13 @@ export const GET_SP_CAST_START = 'GET_SP_CAST_START'
 export const GET_SP_CAST_SUCCESS = 'GET_SP_CAST_SUCCESS'
 export const GET_SP_CAST_FAILURE = 'GET_SP_CAST_FAILURE'
 
-export const getSpCast = id => async (dispatch) => {
+export const getSpCast = (id, type) => async (dispatch) => {
   try {
     dispatch({ type: GET_SP_CAST_START })
 
-    const response = await axios(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${key}`)
+    const response = await axios(
+      `https://api.themoviedb.org/3/${type}/${id}/credits?api_key=${key}`,
+    )
 
     // removing duplicate keys error
     const cast = removeDups(response.data.cast)
@@ -260,11 +261,11 @@ export const GET_SP_MEDIA_MOVIE_START = 'GET_SP_MEDIA_MOVIE_START'
 export const GET_SP_MEDIA_MOVIE_SUCCESS = 'GET_SP_MEDIA_MOVIE_SUCCESS'
 export const GET_SP_MEDIA_MOVIE_FAILURE = 'GET_SP_MEDIA_MOVIE_FAILURE'
 
-export const getSpMediaMovies = id => async (dispatch) => {
+export const getSpMediaMovies = (id, type) => async (dispatch) => {
   try {
     dispatch({ type: GET_SP_MEDIA_MOVIE_START })
     const response = await axios(
-      ` https://api.themoviedb.org/3/movie/${id}/videos?api_key=${key}&language=en-US`,
+      ` https://api.themoviedb.org/3/${type}/${id}/videos?api_key=${key}&language=en-US`,
     )
     dispatch({ type: GET_SP_MEDIA_MOVIE_SUCCESS, payload: response.data.results })
   } catch (error) {
@@ -276,11 +277,11 @@ export const GET_SP_RELATED_MOVIES_START = 'GET_SP_RELATED_MOVIES_START'
 export const GET_SP_RELATED_MOVIES_SUCCESS = 'GET_SP_RELATED_MOVIES_SUCCESS'
 export const GET_SP_RELATED_MOVIES_FAILURE = 'GET_SP_RELATED_MOVIES_FAILURE'
 
-export const getSpRelatedMovies = (id, pageNum = 1) => async (dispatch) => {
+export const getSpRelatedMovies = (id, type, pageNum = 1) => async (dispatch) => {
   try {
     dispatch({ type: GET_SP_RELATED_MOVIES_START })
     const response = await axios(
-      `https://api.themoviedb.org/3/movie/${id}/similar?api_key=${key}&language=en-US&page=${pageNum}`,
+      `https://api.themoviedb.org/3/${type}/${id}/similar?api_key=${key}&language=en-US&page=${pageNum}`,
     )
     dispatch({ type: GET_SP_RELATED_MOVIES_SUCCESS, payload: response.data })
   } catch (error) {
@@ -292,20 +293,22 @@ export const GET_SP_KEYWORD_START = 'GET_SP_KEYWORD_START'
 export const GET_SP_KEYWORD_SUCCESS = 'GET_SP_KEYWORD_SUCCESS'
 export const GET_SP_KEYWORD_FAILURE = 'GET_SP_KEYWORD_FAILURE'
 
-export const getSpKeyword = id => async (dispatch) => {
+export const getSpKeyword = (id, type) => async (dispatch) => {
   try {
     dispatch({ type: GET_SP_KEYWORD_START })
-    const response = await axios(`https://api.themoviedb.org/3/movie/${id}/keywords?api_key=${key}`)
+    const response = await axios(
+      `https://api.themoviedb.org/3/${type}/${id}/keywords?api_key=${key}`,
+    )
     dispatch({ type: GET_SP_KEYWORD_SUCCESS, payload: response.data.keywords })
   } catch (error) {
     dispatch({ type: GET_SP_KEYWORD_FAILURE, payload: error })
   }
 }
 
-export const getSpOverviewData = id => (dispatch) => {
-  dispatch(getSpReviews(id))
-  dispatch(getSpCast(id))
-  dispatch(getSpMediaMovies(id))
-  dispatch(getSpRelatedMovies(id))
-  dispatch(getSpKeyword(id))
+export const getSpOverviewData = (id, type) => (dispatch) => {
+  dispatch(getSpReviews(id, type))
+  dispatch(getSpCast(id, type))
+  dispatch(getSpMediaMovies(id, type))
+  dispatch(getSpRelatedMovies(id, type))
+  dispatch(getSpKeyword(id, type))
 }

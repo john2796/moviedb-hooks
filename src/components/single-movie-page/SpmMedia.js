@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import PropTypes from 'prop-types'
 
 import '../../SCSS/spmMedia.scss'
 import ModalVideo from 'react-modal-video'
@@ -7,14 +8,16 @@ import youtubebtn from '../../assets/youtube-play-btn.png'
 
 import { getSpMediaMovies } from '../../store/actions/movieAction'
 
-function SpmMedia({ title, movieId, backdrop_path }) {
+function SpmMedia({
+  title, movieId, backdrop_path, type,
+}) {
   const [isOpen, setIsOpen] = useState(false)
   const { spMediamovie } = useSelector(state => state.movieReducer)
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getSpMediaMovies(movieId))
-  }, [dispatch, movieId])
+    dispatch(getSpMediaMovies(Number(movieId), type))
+  }, [dispatch, movieId, type])
 
   return (
     <div className="media-wrapper">
@@ -55,6 +58,12 @@ function SpmMedia({ title, movieId, backdrop_path }) {
       </div>
     </div>
   )
+}
+SpmMedia.propTypes = {
+  title: PropTypes.string,
+  movieId: PropTypes.string,
+  type: PropTypes.string,
+  backdrop_path: PropTypes.string,
 }
 
 export default SpmMedia
