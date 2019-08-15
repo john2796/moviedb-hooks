@@ -6,9 +6,7 @@ import { useDispatch } from 'react-redux'
 
 import Slider from 'react-slick'
 
-function MoviesSlider({
-  state, action, name = '/movie', match, history,
-}) {
+function MoviesSlider({ state, action, name = '/movie' }) {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(action())
@@ -48,6 +46,27 @@ function MoviesSlider({
       },
     ],
   }
+  // if (is_nowPlaying_loading) {
+  //   return <DelayedSpinner delay={750} />
+  // } if (is_upcoming_loading) {
+  //   return <DelayedSpinner delay={750} />
+  // } if (is_popular_loading) {
+  //   return <DelayedSpinner delay={750} />
+  // } if (is_movie_loading) {
+  //   return <DelayedSpinner delay={750} />
+  // } if (is_trailerQuery_loading) {
+  //   return <DelayedSpinner delay={750} />
+  // } if (is_popularTV_loading) {
+  //   return <DelayedSpinner delay={750} />
+  // } if (is_topRatedTV_loading) {
+  //   return <DelayedSpinner delay={750} />
+  // } if (is_airingToday_loading) {
+  //   return <DelayedSpinner delay={750} />
+  // } if (is_onAirTV_loading) {
+  //   return <DelayedSpinner delay={750} />
+  // } if (is_trendingPeople_loading) {
+  //   return <DelayedSpinner delay={750} />
+  // }
 
   return (
     <Slider {...settings}>

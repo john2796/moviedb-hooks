@@ -30,7 +30,8 @@ main {
   color: $white;
 }
 .onTV-wrap {
-  margin-top: 130px;
+  margin-top: 70px;
+  margin-bottom: 40px;
 }
 .tab-list {
   padding-left: 0;
@@ -38,6 +39,9 @@ main {
 }
 
 // ---- Customizing MovieSlider Tabs ----
+.movie-tab {
+  min-height: 400px;
+}
 .movieSlider-nav {
   display: flex;
   margin-bottom: 40px;
