@@ -18,14 +18,14 @@ a {
   font-size: 1.5rem;
 }
 h1 {
-  font-family: "Dosis", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 3.6rem;
   color: $white;
   font-weight: 700;
   text-transform: none;
 }
 h2 {
-  font-family: "Dosis", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 2.4rem;
   color: $white;
   font-weight: bold;
@@ -34,7 +34,7 @@ h2 {
 
 /* spotlight celeb title */
 .sb-title {
-  font-family: "Dosis", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 1.8rem;
   color: $white;
   font-weight: bold;
@@ -44,7 +44,7 @@ h2 {
   border-bottom: 1px solid #405266;
 }
 h4 {
-  font-family: "Dosis", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 1.4rem;
   color: $white;
   font-weight: bold;
@@ -52,7 +52,7 @@ h4 {
 
 /* movie trailer title and spotlight celebrities*/
 h6 {
-  font-family: "Dosis", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 1.4rem;
   color: $white;
   font-weight: bold;
@@ -130,7 +130,7 @@ p {
   color: #ffffff;
   padding: 11px 25px;
   border-radius: 20px;
-  font-family: "Dosis", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 14px;
   font-weight: bold;
   text-transform: uppercase;
@@ -174,7 +174,7 @@ p {
 
 .date {
   margin-left: 15px;
-  font-family: "Dosis", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 36px;
   color: #abb7c4;
   font-weight: 300;
@@ -182,10 +182,11 @@ p {
 }
 
 .mTitle {
-  font-family: "Dosis", sans-serif;
-  font-size: 60px;
+  font-family: "Roboto", sans-serif;
+  font-size: 7rem;
   color: #ffffff;
   font-weight: 700;
+
   text-transform: uppercase;
   line-height: 70px;
   max-width: 550px;

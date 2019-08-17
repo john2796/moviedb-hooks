@@ -20,8 +20,8 @@ function Navbar() {
           <Link to="/" className="logo" />
           <Link to="/">home</Link>
           <Link to="/movies">movies</Link>
-          <Link to="/celeb">celebrities</Link>
-          <Link to="/news">news</Link>
+          <Link to="/show">tv shows</Link>
+          <Link to="/favorites">favorites</Link>
         </span>
         <span>
           <button type="button" onClick={onOpenModal} className="anchor">

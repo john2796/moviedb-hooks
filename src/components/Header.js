@@ -1,14 +1,21 @@
 /* eslint-disable camelcase */
 import React from 'react'
-import '../SCSS/header.scss'
-import Slider from 'react-slick'
 import { useSelector } from 'react-redux'
+import { withRouter } from 'react-router-dom'
+import '../SCSS/header.scss'
 
+import PropTypes from 'prop-types'
+import Slider from 'react-slick'
 import Navbar from './Navbar'
 import SocialsIcon from './social-icons/SocialsIcon'
 
-function Header() {
+function Header({ history }) {
   const { popularTV } = useSelector(state => state.movieReducer)
+
+  const sendToSinglePage = (movieId) => {
+    console.log(movieId, history)
+    history.push(`/tv/${movieId}`)
+  }
 
   const settings = {
     dots: false,
@@ -50,7 +57,7 @@ function Header() {
                       {first_air_date}
                     </li>
                   </ul>
-                  <button type="button" className="red-btn">
+                  <button type="button" className="red-btn" onClick={() => sendToSinglePage(id)}>
                     more detail
                   </button>
                 </div>
@@ -66,4 +73,9 @@ function Header() {
   )
 }
 
-export default Header
+Header.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }),
+}
+export default withRouter(Header)

@@ -19,10 +19,10 @@
   .slider-item {
     display: flex !important;
     justify-content: space-between;
-    padding-top: 40px;
+    padding-right: 5%;
   }
   .slider-content {
-    width: 60%;
+    min-width: 62%;
   }
 }
 .slider-content-ul {
@@ -35,15 +35,11 @@
     font-size: 20px;
   }
 }
-.slider-image-right {
-  width: 40%;
-}
 .header-slider .slider-image-right img {
-  min-width: 200px;
-  max-width: 270px;
   height: 414px;
   object-fit: cover;
   border-radius: 5px;
+  width: 100%;
 }
 
 /* ---------------------

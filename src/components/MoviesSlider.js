@@ -13,12 +13,14 @@ function MoviesSlider({ state, action, name = '/movie' }) {
   }, [action, dispatch])
 
   const settings = {
+    className: 'center',
     dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 6,
     slidesToScroll: 5,
     arrows: false,
+    centerPadding: '60px',
     responsive: [
       {
         breakpoint: 1199,
