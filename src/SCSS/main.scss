@@ -41,7 +41,7 @@ main {
 // ---- Customizing MovieSlider Tabs ----
 .movie-tab {
   min-height: 400px;
-  border: 1px solid red;
+  // border: 1px solid red;
   @media (max-width: 1199px) {
     border: 1px solid orange;
     min-height: 450px;

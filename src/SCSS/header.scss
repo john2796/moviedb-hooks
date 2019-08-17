@@ -22,7 +22,7 @@
     padding-right: 5%;
   }
   .slider-content {
-    min-width: 62%;
+    width: 80%;
   }
 }
 .slider-content-ul {
@@ -39,7 +39,7 @@
   height: 414px;
   object-fit: cover;
   border-radius: 5px;
-  width: 100%;
+  width: 270px;
 }
 
 /* ---------------------
@@ -49,6 +49,7 @@ nav.header-nav {
   display: flex;
   justify-content: space-between;
   padding: 40px 0;
+  align-items: center;
   a {
     margin-right: 25px;
     @include anchor-links;
@@ -56,4 +57,10 @@ nav.header-nav {
       color: $yellowGreen;
     }
   }
+}
+
+.header-overview {
+  width: 80%;
+  margin-bottom: 40px;
+  font-size: 1.5rem;
 }

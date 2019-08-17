@@ -61,6 +61,7 @@ h6 {
 p {
   color: $gray;
   font-size: 1.4rem;
+  line-height: 1.5;
 }
 
 /* movie vertical carousel */
@@ -197,4 +198,7 @@ p {
 }
 .text-red {
   color: $red;
+}
+#testing {
+  padding: 15px;
 }

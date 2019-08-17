@@ -20,7 +20,6 @@ function MoviesSlider({ state, action, name = '/movie' }) {
     slidesToShow: 6,
     slidesToScroll: 5,
     arrows: false,
-    centerPadding: '60px',
     responsive: [
       {
         breakpoint: 1199,
@@ -73,6 +72,7 @@ function MoviesSlider({ state, action, name = '/movie' }) {
           <div key={item.id} id="slider-image-wrap">
             <Link to={`${name}/${item.id}`}>
               <img
+                id="testing"
                 src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
                 alt="poster_path"
                 style={{ minHeight: '300px' }}
