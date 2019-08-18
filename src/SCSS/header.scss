@@ -15,11 +15,13 @@
 
 .header-slider {
   padding-left: 40px;
-  margin-top: 100px;
+  margin-top: 80px;
+  border: 1px solid red;
   .slider-item {
     display: flex !important;
     justify-content: space-between;
     padding-right: 5%;
+    padding-bottom: 50px;
   }
   .slider-content {
     width: 80%;
@@ -27,7 +29,7 @@
 }
 .slider-content-ul {
   display: flex;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
   li {
     padding-right: 15px;
   }
@@ -61,6 +63,6 @@ nav.header-nav {
 
 .header-overview {
   width: 80%;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   font-size: 1.5rem;
 }

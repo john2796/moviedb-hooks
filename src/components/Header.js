@@ -8,7 +8,6 @@ import PropTypes from 'prop-types'
 import Slider from 'react-slick'
 import Navbar from './Navbar'
 import SocialsIcon from './social-icons/SocialsIcon'
-import Spinner from './Spinner/Spinner'
 
 function Header({ history }) {
   const { headerPopularTv } = useSelector(state => state.movieReducer)
@@ -28,6 +27,7 @@ function Header({ history }) {
     <div className="bg-overlay">
       <Navbar />
       <header className="container">
+        {' '}
         <Slider {...settings} className="header-slider">
           {headerPopularTv.map(
             ({
