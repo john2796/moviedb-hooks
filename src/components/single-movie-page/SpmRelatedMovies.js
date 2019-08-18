@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import PropTypes from 'prop-types'
+
 import './spmRelatedMovies.scss'
+import PropTypes from 'prop-types'
 
 import { useDispatch, useSelector } from 'react-redux'
 import { getSpRelatedMovies } from '../../store/actions/movieAction'
@@ -15,6 +16,7 @@ function SpmRelatedMovies({ title, id, type }) {
 
   useEffect(() => {
     dispatch(getSpRelatedMovies(Number(id), type, count))
+
     return () => {
       window.scrollTo(0, 0)
     }

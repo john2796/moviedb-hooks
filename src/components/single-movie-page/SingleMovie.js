@@ -31,6 +31,8 @@ function SingleMovie({ match }) {
     poster_path, name, title, release_date, vote_average, backdrop_path,
   } = spMovie
 
+  console.log('spMovie', spMovie)
+
   // loader with delay
   if (is_spMovie_loading) {
     return <DelayedSpinner delay={750} />
@@ -51,7 +53,7 @@ function SingleMovie({ match }) {
           {/* ------------------ title ------------------ */}
           <div className="spm-title">
             <h1 className="bd-hd">
-              {title}
+              {title || name}
               {is_spMovie_loading && <span style={{ minHeight: '300px' }}>Loading...</span>}
               <span>{release_date}</span>
             </h1>
@@ -61,7 +63,12 @@ function SingleMovie({ match }) {
           {/* ------------------ Rate movie ------------------ */}
           <SpMovieRate vote_average={vote_average} />
           {/* ------------------Tabs  ------------------ */}
-          <SpTab id={match.params.id} title={title} backdrop_path={backdrop_path} match={match} />
+          <SpTab
+            id={match.params.id}
+            title={title || name}
+            backdrop_path={backdrop_path}
+            match={match}
+          />
           {/* end of right */}
         </div>
         {/* end of single page wrap */}

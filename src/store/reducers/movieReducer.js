@@ -50,6 +50,7 @@ import {
   GET_SP_KEYWORD_START,
   GET_SP_KEYWORD_SUCCESS,
   GET_SP_KEYWORD_FAILURE,
+  TRAILER_TOGGLE,
 } from '../actions/movieAction'
 
 const initialState = {
@@ -90,6 +91,7 @@ const initialState = {
   is_spRelatedMovie_loading: false,
   is_spKeyword_loading: false,
   is_spCastAndCrew_loading: false,
+  toggleTrailerState: false,
 }
 
 export default function movieReducer(state = initialState, action) {
@@ -402,6 +404,12 @@ export default function movieReducer(state = initialState, action) {
         ...state,
         is_spKeyword_loading: false,
         errors: action.payload,
+      }
+    case TRAILER_TOGGLE:
+      console.log('reducer', action)
+      return {
+        ...state,
+        toggleTrailerState: { ...state.toggleTrailerState, [action.id]: action.bool },
       }
     // ---------------------- RETURN STATE ----------------------
     default:

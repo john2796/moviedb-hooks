@@ -3,7 +3,6 @@ import { removeDups } from '../../helpers/index'
 
 const key = process.env.REACT_APP_SECRET_KEY
 
-
 // -------------- GET TOP_RATED --------------
 const TOP_RATED = `https://api.themoviedb.org/3/movie/top_rated?api_key=${key}&language=en-US&page=1`
 export const GET_TOP_RATED_START = 'GET_TOP_RATED_START'
@@ -316,4 +315,14 @@ export const getSpOverviewData = (id, type) => (dispatch) => {
   dispatch(getSpMediaMovies(id, type))
   dispatch(getSpRelatedMovies(id, type))
   dispatch(getSpKeyword(id, type))
+}
+
+export const TRAILER_TOGGLE = 'TRAILER_TOGGLE'
+export const toggleTrailer = (id, bool) => {
+  console.log('clicked', { id, bool })
+  return {
+    type: TRAILER_TOGGLE,
+    id,
+    bool,
+  }
 }
