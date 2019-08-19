@@ -22,9 +22,6 @@ const MovieSearchList = ({
 
   useEffect(() => {
     dispatch(getListing(topic, type, count))
-    return () => {
-      window.scrollTo(0, 0)
-    }
   }, [count, dispatch, topic, type])
 
   const goToNext = () => {

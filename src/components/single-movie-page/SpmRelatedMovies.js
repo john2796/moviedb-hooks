@@ -17,10 +17,6 @@ function SpmRelatedMovies({ title, id, type }) {
 
   useEffect(() => {
     dispatch(getSpRelatedMovies(Number(id), type, count))
-
-    return () => {
-      window.scrollTo(0, 0)
-    }
   }, [count, dispatch, id, type])
 
   const goToNext = () => {
