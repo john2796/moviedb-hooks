@@ -72,12 +72,13 @@ const MovieSearchList = ({
         .filter(res => res.poster_path !== null)
         .map((item) => {
           return (
-            <img
-              onClick={() => sendToSinglePage(item.id)}
-              key={item.id}
-              src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
-              alt={item.title}
-            />
+            <div className="listing-item" key={item.id}>
+              <img
+                onClick={() => sendToSinglePage(item.id)}
+                src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
+                alt={item.title}
+              />
+            </div>
           )
         })
   }

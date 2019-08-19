@@ -1,5 +1,4 @@
 import React from 'react'
-import '../SCSS/footer.scss'
 
 function Footer({ scrollToTop }) {
   return (

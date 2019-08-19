@@ -27,23 +27,13 @@
 
 .search-result {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
+  // grid-template-columns: repeat(6, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   margin: 2rem auto;
-  grid-gap: 3rem;
-  @media (max-width: 1199px) {
-    grid-template-columns: repeat(5, 1fr);
-  }
-  @media (max-width: 991px) {
-    grid-template-columns: repeat(4, 1fr);
-  }
-  @media (max-width: 767px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  @media (max-width: 600px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  @media (max-width: 480px) {
-    grid-template-columns: repeat(1, 1fr);
+  // min-width: 120rem;
+  // max-height: 122rem;
+  .listing-item {
+    padding: 1rem;
   }
   img {
     border-radius: 5px;

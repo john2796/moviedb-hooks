@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import '../../SCSS/spmCastCrew.scss'
 import PropTypes from 'prop-types'
 
 import { useSelector, useDispatch } from 'react-redux'

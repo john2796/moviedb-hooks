@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import '../SCSS/searchMovie.scss'
 
 const SearchMovie = ({ text = 'movie' }) => {
   return (

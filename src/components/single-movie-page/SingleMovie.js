@@ -2,7 +2,6 @@
 /* eslint-disable camelcase */
 import React, { useEffect, memo } from 'react'
 import PropTypes from 'prop-types'
-import '../../SCSS/singlePageMovie.scss'
 
 import { useSelector, useDispatch } from 'react-redux'
 import { getMovieById } from '../../store/actions/movieAction'

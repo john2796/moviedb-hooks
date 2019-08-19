@@ -2,7 +2,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import '../SCSS/header.scss'
 
 import PropTypes from 'prop-types'
 import Slider from 'react-slick'
@@ -22,10 +21,7 @@ function Header({ history, upEl }) {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    // lazyLoad: true,
     adaptiveHeight: true,
-    // fade: true,
-    // arrows: false,
   }
   return (
     <div className="bg-overlay" ref={upEl}>

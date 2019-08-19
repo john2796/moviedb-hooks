@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import PropTypes from 'prop-types'
 
-import '../../SCSS/spmMedia.scss'
 import ModalVideo from 'react-modal-video'
 import youtubebtn from '../../assets/youtube-play-btn.png'
 
