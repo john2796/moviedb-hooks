@@ -31,8 +31,6 @@ function SingleMovie({ match }) {
     poster_path, name, title, release_date, vote_average, backdrop_path,
   } = spMovie
 
-  console.log('spMovie', spMovie)
-
   // loader with delay
   if (is_spMovie_loading) {
     return <DelayedSpinner delay={750} />

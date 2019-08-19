@@ -19,23 +19,12 @@ const MovieSearchList = ({
 }) => {
   const [count, setCount] = useState(1)
   const { listing, is_listing_loading } = useSelector(state => state.movieReducer)
-  const [fHeight, setFHeight] = useState(true)
   const dispatch = useDispatch()
   const movieEl = useRef(null)
   const upEl = useRef(null)
 
   useEffect(() => {
-    let timer
-    setFHeight(true)
-    dispatch(getListing(topic, type, count)).then(() => {
-      timer = setTimeout(() => {
-        setFHeight(false)
-      }, 3000)
-    })
-
-    return () => {
-      clearTimeout(timer)
-    }
+    dispatch(getListing(topic, type, count))
   }, [count, dispatch, topic, type])
 
   const scrollToTop = () => {
@@ -92,7 +81,6 @@ const MovieSearchList = ({
           )
         })
   }
-  const fixedHeight = fHeight ? 'fake-height' : ''
   return (
     <>
       <div className="bg-overlay" ref={upEl}>
@@ -120,13 +108,12 @@ const MovieSearchList = ({
             </p>
           </div>
           {/* LISTING ITEMS */}
-          <div className={`search-result ${fixedHeight}`}>{results}</div>
+          <div className="search-result">{results}</div>
         </div>
 
         <CustomPagination count={count} data={listing} goToNext={goToNext} goToPrev={goToPrev} />
       </div>
       <Footer scrollToTop={scrollToTop} />
-      {' '}
     </>
   )
 }
