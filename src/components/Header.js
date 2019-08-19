@@ -16,25 +16,28 @@ function Header({ history }) {
     history.push(`/tv/${movieId}`)
   }
 
-  const settings = {
+  const headerSlider = {
     dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    // lazyLoad: true,
+    adaptiveHeight: true,
+    // fade: true,
+    // arrows: false,
   }
   return (
     <div className="bg-overlay">
       <Navbar />
       <header className="container">
-        {' '}
-        <Slider {...settings} className="header-slider">
+        <Slider {...headerSlider} className="slider-header-parent">
           {headerPopularTv.map(
             ({
               backdrop_path, first_air_date, id, name, vote_average, overview,
             }) => {
               return (
-                <div className="slider-item" key={id}>
+                <div key={id} className="slider-item">
                   <div className="slider-content">
                     <span className="blue-pills">sci-fi</span>
                     <span className="yellow-pills">action</span>
