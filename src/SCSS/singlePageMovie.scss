@@ -170,6 +170,7 @@
     opacity: 1;
     filter: alpha(opacity=50); /* For IE8 and earlier */
   }
+
   .modal-video-close-btn {
     border-radius: 50%;
     background: inherit;
@@ -184,6 +185,7 @@
       display: none;
     }
   }
+
   .sp-video-item {
     background-size: cover;
     background-repeat: no-repeat;

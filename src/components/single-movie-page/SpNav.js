@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Navbar from '../Navbar'
 
 const SpNav = ({ backdrop_path }) => {
@@ -11,10 +12,11 @@ const SpNav = ({ backdrop_path }) => {
     >
       <div className="hero-content container">
         <Navbar />
-        {/* <SearchMovie /> */}
       </div>
     </div>
   )
 }
-
+SpNav.propTypes = {
+  backdrop_path: PropTypes.string,
+}
 export default SpNav

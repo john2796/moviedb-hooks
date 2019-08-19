@@ -8,6 +8,7 @@ import { getSpRelatedMovies } from '../../store/actions/movieAction'
 
 import RelatedMovies from '../related-movies/RelatedMovies'
 import DelayedSpinner from '../Spinner/DelayedSpinner'
+import CustomPagination from '../Custom-pagination/CustomPagination'
 
 function SpmRelatedMovies({ title, id, type }) {
   const [count, setCount] = useState(1)
@@ -58,24 +59,12 @@ function SpmRelatedMovies({ title, id, type }) {
         })}
 
       {/* <-- bottom of the page filter options && pagination --> */}
-      <div className="related-movies-filter-wrap brT brB">
-        <p className="brR">Movies per page:</p>
-        <div className="brR">
-          <select>
-            <option value="5">5 Movies</option>
-            <option value="10">10 Movies</option>
-          </select>
-        </div>
-        <div className="rmf-pagination">
-          <p>{`Page ${count} of ${spRelatedMovie.total_pages}:`}</p>
-          <button type="button" onClick={goToPrev}>
-            prev
-          </button>
-          <button type="button" onClick={goToNext}>
-            next
-          </button>
-        </div>
-      </div>
+      <CustomPagination
+        count={count}
+        data={spRelatedMovie}
+        goToNext={goToNext}
+        goToPrev={goToPrev}
+      />
     </>
   )
 }

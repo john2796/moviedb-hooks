@@ -53,6 +53,7 @@ nav.header-nav {
 .slider-image-right {
   padding: 0 3%;
   img {
+    border-radius: 3px;
     width: 270px;
     height: 414px;
     object-fit: cover;
@@ -60,4 +61,7 @@ nav.header-nav {
 }
 .red-btn {
   margin-top: 20px;
+}
+.slick-arrow .slick-prev {
+  background: indianred;
 }

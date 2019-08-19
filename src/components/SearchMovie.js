@@ -1,20 +1,22 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import '../SCSS/searchMovie.scss'
 
-const SearchMovie = () => {
+const SearchMovie = ({ text = 'movie' }) => {
   return (
     <form className="search-wrapper">
       <select>
-        <option value="movies">Movies</option>
-        <option value="tv">TV Shows</option>
+        <option value={text}>{text}</option>
       </select>
       <input
         type="text"
-        placeholder="Search for a movie, TV Show or celebrity that you are looking for"
+        placeholder={`Search for a ${text}, that you are looking for`}
         name="name"
       />
     </form>
   )
 }
-
+SearchMovie.propTypes = {
+  text: PropTypes.string,
+}
 export default SearchMovie

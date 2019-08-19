@@ -58,15 +58,15 @@ export const getUpcoming = () => async (dispatch) => {
 
 // -------------- GET POPULAR --------------
 
-const POPULAR = `https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=en-US&page=1`
 export const GET_POPULAR_START = 'GET_POPULAR_START'
 export const GET_POPULAR_SUCCESS = 'GET_POPULAR_SUCCESS'
 export const GET_POPULAR_FAILURE = 'GET_POPULAR_FAILURE'
-
-export const getPopular = () => async (dispatch) => {
+export const getPopular = (type = 'movie') => async (dispatch) => {
   try {
     dispatch({ type: GET_POPULAR_START })
-    const response = await axios(POPULAR)
+    const response = await axios(
+      `https://api.themoviedb.org/3/${type}/popular?api_key=${key}&language=en-US&page=1`,
+    )
     const filtered = response.data.results.filter((_, idx) => idx <= 7)
     dispatch({ type: GET_POPULAR_SUCCESS, payload: filtered })
   } catch (error) {
@@ -319,10 +319,37 @@ export const getSpOverviewData = (id, type) => (dispatch) => {
 
 export const TRAILER_TOGGLE = 'TRAILER_TOGGLE'
 export const toggleTrailer = (id, bool) => {
-  console.log('clicked', { id, bool })
   return {
     type: TRAILER_TOGGLE,
     id,
     bool,
+  }
+}
+
+// options
+// - popular
+// - top_rated
+// - now_playing
+// -upcoming
+// - on_the_air
+// - airing_today
+// ------------------- GET SINGLE PAGE MOVIE KEYWORDS  ------------------
+export const LISTING_START = 'LISTING_START'
+export const LISTING_SUCCESS = 'LISTING_SUCCESS'
+export const LISTING_FAILURE = 'LISTING_FAILURE'
+
+// `https://api.themoviedb.org/3/${type}/${id}/similar?api_key=${key}&language=en-US&page=${pageNum}`,
+export const getListing = (topic, type, pageNum = 1) => async (dispatch) => {
+  try {
+    dispatch({ type: LISTING_START })
+    const response = await axios(
+      `https://api.themoviedb.org/3/${type}/${topic}?api_key=${key}&language=en-US&page=${pageNum}`,
+    )
+    console.log('response', response)
+    console.log('response.data', response.data)
+
+    dispatch({ type: LISTING_SUCCESS, payload: response.data })
+  } catch (error) {
+    dispatch({ type: LISTING_FAILURE, payload: error })
   }
 }

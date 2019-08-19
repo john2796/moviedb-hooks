@@ -51,6 +51,9 @@ import {
   GET_SP_KEYWORD_SUCCESS,
   GET_SP_KEYWORD_FAILURE,
   TRAILER_TOGGLE,
+  LISTING_START,
+  LISTING_SUCCESS,
+  LISTING_FAILURE,
 } from '../actions/movieAction'
 
 const initialState = {
@@ -74,6 +77,7 @@ const initialState = {
   spKeyword: [],
   spCast: [],
   spCrew: [],
+  listing: [],
   is_topRated_loading: false,
   is_nowPlaying_loading: false,
   is_upcoming_loading: false,
@@ -92,6 +96,7 @@ const initialState = {
   is_spKeyword_loading: false,
   is_spCastAndCrew_loading: false,
   toggleTrailerState: false,
+  is_listing_loading: false,
 }
 
 export default function movieReducer(state = initialState, action) {
@@ -405,8 +410,25 @@ export default function movieReducer(state = initialState, action) {
         is_spKeyword_loading: false,
         errors: action.payload,
       }
+    // --------------------- MOVE&SHOW LISTING ---------------------
+    case LISTING_START:
+      return {
+        ...state,
+        is_listing_loading: true,
+      }
+    case LISTING_SUCCESS:
+      return {
+        ...state,
+        listing: action.payload,
+        is_listing_loading: false,
+      }
+    case LISTING_FAILURE:
+      return {
+        ...state,
+        is_listing_loading: false,
+        errors: action.payload,
+      }
     case TRAILER_TOGGLE:
-      console.log('reducer', action)
       return {
         ...state,
         toggleTrailerState: { ...state.toggleTrailerState, [action.id]: action.bool },

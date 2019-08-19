@@ -1,0 +1,39 @@
+.search-content {
+  min-height: 400px;
+}
+
+.search-title-bg {
+  margin: 30px 0;
+  padding: 50px 0;
+}
+.search-title {
+  text-align: center;
+  font-family: "Dosis", sans-serif;
+  font-size: 5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin: 50px 0;
+  padding-bottom: 100px;
+  color: white;
+  mix-blend-mode: difference;
+}
+.search-found {
+  padding: 5px 0;
+}
+.search-span {
+  margin: 0 5px;
+}
+
+.search-result {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 30px 0;
+  img {
+    width: 200px;
+    object-fit: cover;
+    margin: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+}
