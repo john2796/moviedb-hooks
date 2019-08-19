@@ -1,10 +1,11 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import './searchList.scss'
 import PropTypes from 'prop-types'
 
 import { useSelector, useDispatch } from 'react-redux'
+import scrollToComponent from 'react-scroll-to-component'
 import { getListing } from '../../store/actions/movieAction'
 
 import Navbar from '../Navbar'
@@ -19,6 +20,7 @@ const MovieSearchList = ({
   const [count, setCount] = useState(1)
   const { listing, is_listing_loading } = useSelector(state => state.movieReducer)
   const dispatch = useDispatch()
+  const movieEl = useRef(null)
 
   useEffect(() => {
     dispatch(getListing(topic, type, count))
@@ -26,10 +28,22 @@ const MovieSearchList = ({
 
   const goToNext = () => {
     if (count >= listing.total_pages) return
+    scrollToComponent(movieEl.current, {
+      offset: 400,
+      align: 'bottom',
+      duration: 1000,
+      ease: 'inCirc',
+    })
     setCount(count + 1)
   }
   const goToPrev = () => {
     if (count <= 1) return
+    scrollToComponent(movieEl.current, {
+      offset: 400,
+      align: 'bottom',
+      duration: 1000,
+      ease: 'inCirc',
+    })
     setCount(count - 1)
   }
 
@@ -42,7 +56,7 @@ const MovieSearchList = ({
   return (
     <>
       <div className="bg-overlay">
-        <div className="container">
+        <div className="container" ref={movieEl}>
           <Navbar />
           <SearchMovie text={name} />
           <div

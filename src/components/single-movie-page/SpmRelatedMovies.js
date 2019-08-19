@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 import './spmRelatedMovies.scss'
 import PropTypes from 'prop-types'
 
 import { useDispatch, useSelector } from 'react-redux'
+import scrollToComponent from 'react-scroll-to-component'
 import { getSpRelatedMovies } from '../../store/actions/movieAction'
 
 import RelatedMovies from '../related-movies/RelatedMovies'
@@ -14,6 +15,7 @@ function SpmRelatedMovies({ title, id, type }) {
   const [count, setCount] = useState(1)
   const { spRelatedMovie, is_spRelatedMovie_loading } = useSelector(state => state.movieReducer)
   const dispatch = useDispatch()
+  const inputEl = useRef(null)
 
   useEffect(() => {
     dispatch(getSpRelatedMovies(Number(id), type, count))
@@ -21,10 +23,23 @@ function SpmRelatedMovies({ title, id, type }) {
 
   const goToNext = () => {
     if (count >= spRelatedMovie.total_pages) return
+
+    scrollToComponent(inputEl.current, {
+      offset: 0,
+      align: 'top',
+      duration: 1000,
+      ease: 'inCirc',
+    })
     setCount(count + 1)
   }
   const goToPrev = () => {
     if (count <= 1) return
+    scrollToComponent(inputEl.current, {
+      offset: 0,
+      align: 'top',
+      duration: 1000,
+      ease: 'inCirc',
+    })
     setCount(count - 1)
   }
 
@@ -34,7 +49,7 @@ function SpmRelatedMovies({ title, id, type }) {
   }
   return (
     <>
-      <div className="tab-header">
+      <div className="tab-header" ref={inputEl}>
         <h3>Related Movies To</h3>
         <h2 className="blue-text">{title}</h2>
       </div>
