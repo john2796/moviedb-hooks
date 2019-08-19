@@ -9,7 +9,7 @@ import Slider from 'react-slick'
 import Navbar from './Navbar'
 import SocialsIcon from './social-icons/SocialsIcon'
 
-function Header({ history }) {
+function Header({ history, upEl }) {
   const { headerPopularTv } = useSelector(state => state.movieReducer)
 
   const sendToSinglePage = (movieId) => {
@@ -28,7 +28,7 @@ function Header({ history }) {
     // arrows: false,
   }
   return (
-    <div className="bg-overlay">
+    <div className="bg-overlay" ref={upEl}>
       <Navbar />
       <header className="container">
         <Slider {...headerSlider} className="slider-header-parent">

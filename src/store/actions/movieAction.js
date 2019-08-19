@@ -345,9 +345,6 @@ export const getListing = (topic, type, pageNum = 1) => async (dispatch) => {
     const response = await axios(
       `https://api.themoviedb.org/3/${type}/${topic}?api_key=${key}&language=en-US&page=${pageNum}`,
     )
-    console.log('response', response)
-    console.log('response.data', response.data)
-
     dispatch({ type: LISTING_SUCCESS, payload: response.data })
   } catch (error) {
     dispatch({ type: LISTING_FAILURE, payload: error })

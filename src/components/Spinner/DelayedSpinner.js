@@ -20,7 +20,7 @@ class DelayedSpinner extends Component {
   render() {
     const { showSpinner } = this.state
 
-    return showSpinner && <h2>Loading Testing...</h2>
+    return showSpinner && <h2>Loading...</h2>
   }
 }
 

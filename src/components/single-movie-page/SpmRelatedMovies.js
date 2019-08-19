@@ -27,7 +27,7 @@ function SpmRelatedMovies({ title, id, type }) {
     scrollToComponent(inputEl.current, {
       offset: 0,
       align: 'top',
-      duration: 1000,
+      duration: 1500,
       ease: 'inCirc',
     })
     setCount(count + 1)
@@ -37,7 +37,7 @@ function SpmRelatedMovies({ title, id, type }) {
     scrollToComponent(inputEl.current, {
       offset: 0,
       align: 'top',
-      duration: 1000,
+      duration: 1500,
       ease: 'inCirc',
     })
     setCount(count - 1)

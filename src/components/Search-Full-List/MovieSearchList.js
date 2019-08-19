@@ -19,20 +19,40 @@ const MovieSearchList = ({
 }) => {
   const [count, setCount] = useState(1)
   const { listing, is_listing_loading } = useSelector(state => state.movieReducer)
+  const [fHeight, setFHeight] = useState(true)
   const dispatch = useDispatch()
   const movieEl = useRef(null)
+  const upEl = useRef(null)
 
   useEffect(() => {
-    dispatch(getListing(topic, type, count))
+    let timer
+    setFHeight(true)
+    dispatch(getListing(topic, type, count)).then(() => {
+      timer = setTimeout(() => {
+        setFHeight(false)
+      }, 3000)
+    })
+
+    return () => {
+      clearTimeout(timer)
+    }
   }, [count, dispatch, topic, type])
 
+  const scrollToTop = () => {
+    scrollToComponent(upEl.current, {
+      offset: 0,
+      align: 'bottom',
+      duration: 1000,
+      ease: 'inCirc',
+    })
+  }
   const goToNext = () => {
     if (count >= listing.total_pages) return
     scrollToComponent(movieEl.current, {
       offset: 400,
       align: 'bottom',
       duration: 1000,
-      ease: 'inCirc',
+      ease: 'linear',
     })
     setCount(count + 1)
   }
@@ -42,7 +62,7 @@ const MovieSearchList = ({
       offset: 400,
       align: 'bottom',
       duration: 1000,
-      ease: 'inCirc',
+      ease: 'linear',
     })
     setCount(count - 1)
   }
@@ -52,10 +72,30 @@ const MovieSearchList = ({
   }
   const img = listing && listing.results && listing.results[0].backdrop_path
   const poster = `https://image.tmdb.org/t/p/w1280${img}`
-
+  let results
+  if (listing.results && listing.results.length === 0) {
+    results = <h2>No Results Found...</h2>
+  } else if (is_listing_loading) {
+    results = <DelayedSpinner delay={750} />
+  } else {
+    results = listing.results
+      && listing.results
+        .filter(res => res.poster_path !== null)
+        .map((item) => {
+          return (
+            <img
+              onClick={() => sendToSinglePage(item.id)}
+              key={item.id}
+              src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
+              alt={item.title}
+            />
+          )
+        })
+  }
+  const fixedHeight = fHeight ? 'fake-height' : ''
   return (
     <>
-      <div className="bg-overlay">
+      <div className="bg-overlay" ref={upEl}>
         <div className="container" ref={movieEl}>
           <Navbar />
           <SearchMovie text={name} />
@@ -69,7 +109,7 @@ const MovieSearchList = ({
           </div>
         </div>
       </div>
-      <div className="container">
+      <div className="container search-container">
         <div className="search-content">
           {/* SEARCH FOUND info */}
           <div className="search-found brT brB">
@@ -80,28 +120,13 @@ const MovieSearchList = ({
             </p>
           </div>
           {/* LISTING ITEMS */}
-          <div className="search-result">
-            {is_listing_loading ? (
-              <DelayedSpinner delay={750} />
-            ) : (
-              listing.results
-              && listing.results.map((item) => {
-                return (
-                  <img
-                    onClick={() => sendToSinglePage(item.id)}
-                    key={item.id}
-                    src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
-                    alt={item.title}
-                  />
-                )
-              })
-            )}
-          </div>
+          <div className={`search-result ${fixedHeight}`}>{results}</div>
         </div>
 
         <CustomPagination count={count} data={listing} goToNext={goToNext} goToPrev={goToPrev} />
       </div>
-      <Footer />
+      <Footer scrollToTop={scrollToTop} />
+      {' '}
     </>
   )
 }

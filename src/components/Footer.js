@@ -1,7 +1,7 @@
 import React from 'react'
 import '../SCSS/footer.scss'
 
-function Footer() {
+function Footer({ scrollToTop }) {
   return (
     <footer>
       <div className="f-parent container">
@@ -55,7 +55,9 @@ function Footer() {
 
       <div className="ar-reserved container">
         <p className="text-gray">2019 Miranda. All Rights Reserved</p>
-        <p className="text-gray backtop">Back to top</p>
+        <button type="button" className="text-gray backtop" onClick={scrollToTop}>
+          Back to top
+        </button>
       </div>
     </footer>
   )
