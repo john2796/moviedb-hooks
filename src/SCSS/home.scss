@@ -50,7 +50,7 @@ main {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   grid-gap: 1rem;
-  // margin: 2rem auto 5rem auto;
+  grid-template-rows: minmax(30rem, auto);
   -webkit-box-shadow: 4px 16px 88px 53px rgba(2, 13, 24, 1);
   -moz-box-shadow: 4px 16px 88px 53px rgba(2, 13, 24, 1);
   box-shadow: 4px 16px 88px 53px rgba(2, 13, 24, 1);
@@ -75,6 +75,21 @@ main {
     grid-area: tcImg;
     width: 53.90625vw;
     min-height: 30.3125vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .youtube-playBtn {
+      font-size: 10rem;
+      opacity: 0.4;
+      transition: 300ms ease-out;
+      cursor: pointer;
+      color: white;
+      mix-blend-mode: difference;
+      &:hover {
+        opacity: 1;
+      }
+    }
   }
   .two-col-content {
     grid-area: tcContent;

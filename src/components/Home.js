@@ -2,7 +2,9 @@ import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import '../SCSS/home.scss'
 import { Link } from 'react-router-dom'
+import LazyLoad from 'react-lazyload'
 import { getPopular, getPopularTv } from '../store/actions/movieAction'
+import Placeholder from './placeholder/Placeholder'
 
 const Home = () => {
   const { popular, popularTV } = useSelector(state => state.movieReducer)
@@ -92,7 +94,9 @@ const Home = () => {
               background: `url(${`https://image.tmdb.org/t/p/w1280${popular[0]
                 && popular[4].poster_path}`}) no-repeat center top / cover`,
             }}
-          />
+          >
+            <i className="fa fa-youtube-play youtube-playBtn" aria-hidden="true" />
+          </div>
           <div className="two-col-content">
             <h2>{popular[0] && popular[4].title}</h2>
             <button type="button">play</button>
@@ -111,11 +115,18 @@ const Home = () => {
                 .filter((_, idx) => idx < 8)
                 .map((item) => {
                   return (
-                    <img
+                    <LazyLoad
                       key={item.id}
-                      src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
-                      alt={item.name}
-                    />
+                      once
+                      height={200}
+                      placeholder={<Placeholder />}
+                      debounce={500}
+                    >
+                      <img
+                        src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
+                        alt={item.name}
+                      />
+                    </LazyLoad>
                   )
                 })}
           </div>
@@ -128,11 +139,19 @@ const Home = () => {
                 .filter((_, idx) => idx > 9 && idx < 18)
                 .map((item) => {
                   return (
-                    <img
+                    <LazyLoad
                       key={item.id}
-                      src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
-                      alt={item.name}
-                    />
+                      once
+                      height={200}
+                      placeholder={<Placeholder />}
+                      debounce={500}
+                    >
+                      <img
+                        key={item.id}
+                        src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
+                        alt={item.name}
+                      />
+                    </LazyLoad>
                   )
                 })}
           </div>
