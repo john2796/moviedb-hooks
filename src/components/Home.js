@@ -44,30 +44,38 @@ const Home = () => {
 
       {/* Footer */}
       <footer>
-        {/* <div className="f-socials">
+        <div className="f-socials">
           <i className="fa fa-facebook-official" aria-hidden="true" />
           <i className="fa fa-instagram" aria-hidden="true" />
           <i className="fa fa-twitter" aria-hidden="true" />
           <i className="fa fa-youtube-play" aria-hidden="true" />
         </div>
         <ul className="f-content">
-          <li>Audio and Subtitles</li>
-          <li>Audio Description</li>
-          <li>Help Center</li>
-          <li>Gift Cards </li>
-          <li>Media Center</li>
-          <li>Investor Relations</li>
-          <li>Jobs </li>
-          <li>Terms of Use</li>
-          <li>Privacy</li>
-          <li>Legal Notices</li>
-          <li>Cookie Preferences</li>
-          <li>Corporate Information</li>
+          <span>
+            <li>Audio and Subtitles</li>
+            <li>Audio Description</li>
+            <li>Help Center</li>
+            <li>Gift Cards </li>
+          </span>
+          <span>
+            <li>Media Center</li>
+            <li>Investor Relations</li>
+            <li>Jobs </li>
+          </span>
+          <span>
+            <li>Terms of Use</li>
+            <li>Privacy</li>
+            <li>Legal Notices</li>
+          </span>
+          <span>
+            <li>Cookie Preferences</li>
+            <li>Corporate Information</li>
+          </span>
         </ul>
         <p className="f-copyright">
           <i className="fa fa-copyright" aria-hidden="true" />
           John Miranda
-        </p> */}
+        </p>
       </footer>
     </div>
   )

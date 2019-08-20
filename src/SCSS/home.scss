@@ -48,4 +48,15 @@ main {
 footer {
   grid-area: footer;
   border: 1px solid greenyellow;
+
+  .f-socials {
+    border: 1px solid red;
+  }
+  .f-content {
+    border: 1px solid red;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-gap: 3rem;
+    margin: 0 auto;
+  }
 }
