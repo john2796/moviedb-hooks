@@ -8,6 +8,15 @@
     ". moreSl moreSl ." minmax(20rem, auto)
     ". footer footer ." minmax(20rem, auto)
     / 3rem minmax(400px, 1fr) minmax(200px, 1fr) 3rem;
+  @media (max-width: 767px) {
+    grid-template:
+      "header header header header" minmax(20rem, auto)
+      ". main main ." minmax(40rem, auto)
+      "twoCol twoCol twoCol twoCol" minmax(20rem, auto)
+      ". moreSl moreSl ." minmax(20rem, auto)
+      ". footer footer ." minmax(20rem, auto)
+      / 3rem 1fr 1fr 3rem;
+  }
 }
 
 // --------------------- Header ---------------------
@@ -21,6 +30,12 @@ header {
     ". nav nav ." 10rem
     ". banner . ." auto
     / 2rem minmax(400px, 1fr) minmax(200px, 2fr) 2rem;
+  @media (max-width: 767px) {
+    grid-template:
+      ". nav nav ." 5rem
+      ". banner banner ." auto
+      / 2rem 1fr 1fr 2rem;
+  }
   nav {
     grid-area: nav;
     display: flex;
@@ -36,8 +51,14 @@ header {
   .banner {
     grid-area: banner;
     padding: 20rem 0;
+    @media (max-width: 767px) {
+      padding: 15rem 0;
+    }
     .overview {
       max-width: 45rem;
+      @media (max-width: 767px) {
+        max-width: 100%;
+      }
     }
   }
 }
@@ -47,17 +68,32 @@ main {
   margin-top: -2rem;
 }
 .slider-item {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  grid-gap: 1rem;
-  grid-template-rows: minmax(30rem, auto);
   -webkit-box-shadow: 4px 16px 88px 53px rgba(2, 13, 24, 1);
   -moz-box-shadow: 4px 16px 88px 53px rgba(2, 13, 24, 1);
   box-shadow: 4px 16px 88px 53px rgba(2, 13, 24, 1);
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  margin: 2rem auto 4rem auto;
+  grid-gap: 1rem;
+  @media (max-width: 1199px) {
+    grid-template-columns: repeat(8, 1fr);
+  }
+  @media (max-width: 991px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @media (max-width: 600px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  @media (max-width: 480px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: 380px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
 .slider-item img {
   object-fit: cover;
-  z-index: 10;
+  cursor: pointer;
 }
 // --------------------- Two Col Overlay ----------------
 .two-col-bgOverlay {
@@ -71,13 +107,25 @@ main {
     / 2rem minmax(400px, 3fr) minmax(200px, 2fr) 2rem;
   padding: 10rem 0;
   align-items: center;
+  @media (max-width: 767px) {
+    padding: 5rem 0;
+    grid-template:
+      ".   tcImg tcImg ."
+      ".   tcContent  tcContent ."
+      / 2rem 1fr 1fr 2rem;
+  }
   .two-col-img {
     grid-area: tcImg;
     width: 53.90625vw;
     min-height: 30.3125vw;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    @media (max-width: 767px) {
+      width: 100%;
+      margin-bottom: 4rem;
+    }
 
     .youtube-playBtn {
       font-size: 10rem;
@@ -86,6 +134,9 @@ main {
       cursor: pointer;
       color: white;
       mix-blend-mode: difference;
+      @media (max-width: 767px) {
+        font-size: 6rem;
+      }
       &:hover {
         opacity: 1;
       }
@@ -128,4 +179,27 @@ footer {
 
 .more-slider {
   grid-area: moreSl;
+}
+
+// Nav
+nav.desktop {
+  @media (max-width: 767px) {
+    display: none;
+  }
+}
+nav.tablet {
+  display: none;
+  @media (max-width: 767px) {
+    display: block;
+    grid-area: nav;
+    display: flex;
+    align-items: center;
+    a {
+      margin-right: 2rem;
+    }
+    .search {
+      margin-left: auto;
+      margin-right: 2rem;
+    }
+  }
 }

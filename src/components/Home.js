@@ -24,12 +24,17 @@ const Home = () => {
             && popular[1].backdrop_path}`}) no-repeat center top / cover`,
         }}
       >
-        <nav>
+        <nav className="desktop">
           <Link to="/">Home</Link>
           <Link to="/tv">TV Shows</Link>
           <Link to="/movie">Movies</Link>
           <Link to="/recent">Recently Added</Link>
           <Link to="/list">My List</Link>
+          <input type="text" placeholder="search" className="search" />
+        </nav>
+        <nav className="tablet">
+          <Link to="/">Logo</Link>
+          <Link to="/tv">Browse</Link>
           <input type="text" placeholder="search" className="search" />
         </nav>
         <div className="banner">
