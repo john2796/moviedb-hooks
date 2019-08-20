@@ -4,12 +4,17 @@
   grid-template:
     "header header header header" minmax(50rem, auto)
     ". main main ." minmax(40rem, auto)
-    "footer footer footer footer" minmax(20rem, auto)
-    / 2rem minmax(400px, 1fr) minmax(200px, 1fr) 2rem;
+    "twoCol twoCol twoCol twoCol" minmax(20rem, auto)
+    ". moreSl moreSl ." minmax(20rem, auto)
+    ". footer footer ." minmax(20rem, auto)
+    / 3rem minmax(400px, 1fr) minmax(200px, 1fr) 3rem;
 }
 
 // --------------------- Header ---------------------
 header {
+  -webkit-box-shadow: inset 15px -33px 111px 38px rgba(2, 13, 24, 1);
+  -moz-box-shadow: inset 15px -33px 111px 38px rgba(2, 13, 24, 1);
+  box-shadow: inset 15px -33px 111px 38px rgba(2, 13, 24, 1);
   grid-area: header;
   display: grid;
   grid-template:
@@ -20,7 +25,6 @@ header {
     grid-area: nav;
     display: flex;
     align-items: center;
-    border: 1px solid orange;
   }
   nav a {
     margin-right: 2rem;
@@ -32,7 +36,6 @@ header {
   .banner {
     grid-area: banner;
     padding: 20rem 0;
-    border: 1px solid red;
     .overview {
       max-width: 45rem;
     }
@@ -41,22 +44,73 @@ header {
 // --------------------- Main ---------------------
 main {
   grid-area: main;
-  border: 1px solid pink;
+  margin-top: -2rem;
 }
-
+.slider-item {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  grid-gap: 1rem;
+  // margin: 2rem auto 5rem auto;
+  -webkit-box-shadow: 4px 16px 88px 53px rgba(2, 13, 24, 1);
+  -moz-box-shadow: 4px 16px 88px 53px rgba(2, 13, 24, 1);
+  box-shadow: 4px 16px 88px 53px rgba(2, 13, 24, 1);
+}
+.slider-item img {
+  object-fit: cover;
+  z-index: 10;
+}
+// --------------------- Two Col Overlay ----------------
+.two-col-bgOverlay {
+  grid-area: twoCol;
+}
+.two-col-grid {
+  display: grid;
+  grid-template:
+    ".   tcImg tcContent ."
+    ".   tcImg  tcContent ."
+    / 2rem minmax(400px, 3fr) minmax(200px, 2fr) 2rem;
+  padding: 10rem 0;
+  align-items: center;
+  .two-col-img {
+    grid-area: tcImg;
+    width: 53.90625vw;
+    min-height: 30.3125vw;
+  }
+  .two-col-content {
+    grid-area: tcContent;
+  }
+}
 // --------------------- Footer ---------------------
 footer {
   grid-area: footer;
-  border: 1px solid greenyellow;
 
   .f-socials {
-    border: 1px solid red;
+    z-index: 10;
+    .fa {
+      padding: 2rem 2rem 2rem 0;
+      font-size: 3.5rem;
+      color: gray;
+      cursor: pointer;
+      &:hover {
+        color: rgb(219, 229, 198);
+      }
+    }
   }
   .f-content {
-    border: 1px solid red;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     grid-gap: 3rem;
     margin: 0 auto;
+    span li {
+      margin: 1rem auto;
+    }
   }
+  .f-copyright {
+    color: gray;
+    margin: 3rem 0 1rem 0;
+  }
+}
+
+.more-slider {
+  grid-area: moreSl;
 }

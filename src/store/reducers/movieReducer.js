@@ -64,7 +64,6 @@ const initialState = {
   popular: [],
   movie: [],
   trailerQuery: [],
-  headerPopularTv: [],
   popularTV: [],
   topRatedTV: [],
   airingToday: [],
@@ -219,7 +218,6 @@ export default function movieReducer(state = initialState, action) {
       return {
         ...state,
         popularTV: action.payload,
-        headerPopularTv: action.headerPopularTv,
         is_popularTV_loading: false,
       }
     case GET_POPULAR_TV_FAILURE:

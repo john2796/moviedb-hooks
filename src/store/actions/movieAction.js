@@ -119,11 +119,9 @@ export const getPopularTv = () => async (dispatch) => {
   try {
     dispatch({ type: GET_POPULAR_TV_START })
     const response = await axios(POPULAR_TV)
-    const filtered = response.data.results.filter((_, idx) => idx <= 7)
     dispatch({
       type: GET_POPULAR_TV_SUCCESS,
-      payload: filtered,
-      headerPopularTv: response.data.results,
+      payload: response.data.results,
     })
   } catch (error) {
     dispatch({ type: GET_POPULAR_TV_FAILURE, payload: error })

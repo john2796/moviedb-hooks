@@ -2,19 +2,20 @@ import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import '../SCSS/home.scss'
 import { Link } from 'react-router-dom'
-import { getPopular } from '../store/actions/movieAction'
+import { getPopular, getPopularTv } from '../store/actions/movieAction'
 
 const Home = () => {
-  const { popular } = useSelector(state => state.movieReducer)
+  const { popular, popularTV } = useSelector(state => state.movieReducer)
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getPopular())
+    dispatch(getPopular()).then(() => {
+      dispatch(getPopularTv())
+    })
   }, [dispatch])
 
   return (
     <div className="home-grid">
-      {/* Header */}
       <header
         style={{
           background: `url(${`https://image.tmdb.org/t/p/w1280${popular[0]
@@ -37,12 +38,107 @@ const Home = () => {
         </div>
       </header>
 
-      {/* main */}
       <main>
-        <p>main content here</p>
+        <div className="slider-parent">
+          <div className="slider-wrap">
+            <h3 className="slider-title">Popular Movies</h3>
+            <div className="slider-item">
+              {popular
+                && popular
+                  .filter((_, idx) => idx < 8)
+                  .map((item) => {
+                    return (
+                      <img
+                        key={item.id}
+                        src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
+                        alt={item.title}
+                      />
+                    )
+                  })}
+            </div>
+          </div>
+          <div className="slider-wrap">
+            <h3 className="slider-title">Trending Now</h3>
+            <div className="slider-item">
+              {popular
+                && popular
+                  .filter((_, idx) => idx > 9 && idx < 18)
+                  .map((item) => {
+                    return (
+                      <img
+                        key={item.id}
+                        src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
+                        alt={item.title}
+                      />
+                    )
+                  })}
+            </div>
+          </div>
+        </div>
       </main>
 
-      {/* Footer */}
+      {/* Two-column GRID */}
+      <section className="two-col-bgOverlay">
+        <div
+          className="two-col-grid"
+          style={{
+            background: `linear-gradient(rgba(0, 0, 0, 0.77), rgba(0, 0, 0, 0.81)), url(${`https://image.tmdb.org/t/p/w1280${popular[0]
+              && popular[4].backdrop_path}`}) no-repeat center top / cover`,
+          }}
+        >
+          <div
+            className="two-col-img"
+            style={{
+              background: `url(${`https://image.tmdb.org/t/p/w1280${popular[0]
+                && popular[4].poster_path}`}) no-repeat center top / cover`,
+            }}
+          />
+          <div className="two-col-content">
+            <h2>{popular[0] && popular[4].title}</h2>
+            <button type="button">play</button>
+            <button type="button">My List</button>
+            <p className="overview">{popular[0] && popular[4].overview}</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="more-slider">
+        <div className="slider-wrap">
+          <h3 className="slider-title">Popular TV Shows</h3>
+          <div className="slider-item">
+            {popularTV
+              && popularTV
+                .filter((_, idx) => idx < 8)
+                .map((item) => {
+                  return (
+                    <img
+                      key={item.id}
+                      src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
+                      alt={item.name}
+                    />
+                  )
+                })}
+          </div>
+        </div>
+        <div className="slider-wrap">
+          <h3 className="slider-title">Trending TV Shows</h3>
+          <div className="slider-item">
+            {popularTV
+              && popularTV
+                .filter((_, idx) => idx > 9 && idx < 18)
+                .map((item) => {
+                  return (
+                    <img
+                      key={item.id}
+                      src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
+                      alt={item.name}
+                    />
+                  )
+                })}
+          </div>
+        </div>
+      </section>
+
       <footer>
         <div className="f-socials">
           <i className="fa fa-facebook-official" aria-hidden="true" />
