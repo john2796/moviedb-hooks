@@ -67,8 +67,7 @@ export const getPopular = (type = 'movie') => async (dispatch) => {
     const response = await axios(
       `https://api.themoviedb.org/3/${type}/popular?api_key=${key}&language=en-US&page=1`,
     )
-    const filtered = response.data.results.filter((_, idx) => idx <= 7)
-    dispatch({ type: GET_POPULAR_SUCCESS, payload: filtered })
+    dispatch({ type: GET_POPULAR_SUCCESS, payload: response.data.results })
   } catch (error) {
     dispatch({ type: GET_POPULAR_FAILURE, payload: error })
   }

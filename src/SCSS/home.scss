@@ -1,0 +1,51 @@
+// --------------------- Home Grid ---------------------
+.home-grid {
+  display: grid;
+  grid-template:
+    "header header header header" minmax(50rem, auto)
+    ". main main ." minmax(40rem, auto)
+    "footer footer footer footer" minmax(20rem, auto)
+    / 2rem minmax(400px, 1fr) minmax(200px, 1fr) 2rem;
+}
+
+// --------------------- Header ---------------------
+header {
+  grid-area: header;
+  display: grid;
+  grid-template:
+    ". nav nav ." 10rem
+    ". banner . ." auto
+    / 2rem minmax(400px, 1fr) minmax(200px, 2fr) 2rem;
+  nav {
+    grid-area: nav;
+    display: flex;
+    align-items: center;
+    border: 1px solid orange;
+  }
+  nav a {
+    margin-right: 2rem;
+  }
+  .search {
+    margin-left: auto;
+    margin-right: 2rem;
+  }
+  .banner {
+    grid-area: banner;
+    padding: 20rem 0;
+    border: 1px solid red;
+    .overview {
+      max-width: 45rem;
+    }
+  }
+}
+// --------------------- Main ---------------------
+main {
+  grid-area: main;
+  border: 1px solid pink;
+}
+
+// --------------------- Footer ---------------------
+footer {
+  grid-area: footer;
+  border: 1px solid greenyellow;
+}
