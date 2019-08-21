@@ -1,4 +1,21 @@
+@import "./_mixins.scss";
+
 nav a {
   color: white;
   text-decoration: none;
+}
+
+.red-btn {
+  @include button;
+  background-color: #e50914;
+  border: none;
+  border: 1px solid #ff0a16;
+  &:hover {
+    background-color: #ff0a16;
+  }
+}
+.gray-btn {
+  @include button;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background-color: rgba(0, 0, 0, 0.4);
 }

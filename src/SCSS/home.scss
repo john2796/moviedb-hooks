@@ -44,6 +44,28 @@ header {
   nav a {
     margin-right: 2rem;
   }
+  // Nav
+  nav.desktop {
+    @media (max-width: 767px) {
+      display: none;
+    }
+  }
+  nav.tablet {
+    display: none;
+    @media (max-width: 767px) {
+      display: block;
+      grid-area: nav;
+      display: flex;
+      align-items: center;
+      a {
+        margin-right: 2rem;
+      }
+      .search {
+        margin-left: auto;
+        margin-right: 2rem;
+      }
+    }
+  }
   .search {
     margin-left: auto;
     margin-right: 2rem;
@@ -98,6 +120,11 @@ main {
 // --------------------- Two Col Overlay ----------------
 .two-col-bgOverlay {
   grid-area: twoCol;
+  margin: -4rem 0;
+  @media (max-width: 767px) {
+    margin-top: -4rem;
+    margin-bottom: -15px;
+  }
 }
 .two-col-grid {
   display: grid;
@@ -128,7 +155,7 @@ main {
     }
 
     .youtube-playBtn {
-      font-size: 10rem;
+      font-size: 8rem;
       opacity: 0.4;
       transition: 300ms ease-out;
       cursor: pointer;
@@ -179,27 +206,4 @@ footer {
 
 .more-slider {
   grid-area: moreSl;
-}
-
-// Nav
-nav.desktop {
-  @media (max-width: 767px) {
-    display: none;
-  }
-}
-nav.tablet {
-  display: none;
-  @media (max-width: 767px) {
-    display: block;
-    grid-area: nav;
-    display: flex;
-    align-items: center;
-    a {
-      margin-right: 2rem;
-    }
-    .search {
-      margin-left: auto;
-      margin-right: 2rem;
-    }
-  }
 }

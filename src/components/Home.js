@@ -25,10 +25,10 @@ const Home = () => {
         }}
       >
         <nav className="desktop">
+          <Link to="/">Logo</Link>
           <Link to="/">Home</Link>
           <Link to="/tv">TV Shows</Link>
           <Link to="/movie">Movies</Link>
-          <Link to="/recent">Recently Added</Link>
           <Link to="/list">My List</Link>
           <input type="text" placeholder="search" className="search" />
         </nav>
@@ -39,8 +39,12 @@ const Home = () => {
         </nav>
         <div className="banner">
           <h2>{popular[0] && popular[1].title}</h2>
-          <button type="button">play</button>
-          <button type="button">My List</button>
+          <button type="button" className="red-btn">
+            Play
+          </button>
+          <button type="button" className="gray-btn">
+            My List
+          </button>
           <p className="overview">{popular[0] && popular[1].overview}</p>
         </div>
       </header>

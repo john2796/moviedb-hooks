@@ -1,7 +1,13 @@
 import React from 'react'
+import './placeholder.scss'
 
 export default function Placeholder() {
   return (
-    <img src="https://via.placeholder.com/300C/O%20https://placeholder.com/" alt="placeholder" />
+    <div className="lds-ellipsis">
+      <div />
+      <div />
+      <div />
+      <div />
+    </div>
   )
 }
