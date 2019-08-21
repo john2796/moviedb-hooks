@@ -1,16 +1,29 @@
-import React, { useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useState, useEffect } from 'react'
 import '../SCSS/home.scss'
+
+import { useSelector, useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
-import LazyLoad from 'react-lazyload'
 import { getPopular, getPopularTv } from '../store/actions/movieAction'
-import Placeholder from './placeholder/Placeholder'
+
+import SliderItem from './Slider/SliderItem'
 
 const Home = () => {
   const { popular, popularTV } = useSelector(state => state.movieReducer)
   const dispatch = useDispatch()
+  const [movieState, setMovieState] = useState({
+    backdrop_path: '/hpgda6P9GutvdkDX5MUJ92QG9aj.jpg',
+    overview:
+      "A spinoff of The Fate of the Furious, focusing on Johnson's US Diplomatic Security Agent Luke Hobbs forming an unlikely alliance with Statham's Deckard Shaw.",
+    title: 'Fast & Furious Presents: Hobbs & Shaw',
+  })
 
   useEffect(() => {
+    // window.scroll({
+    //   top: 0,
+    //   left: 0,
+    //   behavior: 'smooth',
+    // })
     dispatch(getPopular()).then(() => {
       dispatch(getPopularTv())
     })
@@ -20,8 +33,9 @@ const Home = () => {
     <div className="home-grid">
       <header
         style={{
-          background: `url(${`https://image.tmdb.org/t/p/w1280${popular[0]
-            && popular[1].backdrop_path}`}) no-repeat center top / cover`,
+          background: ` linear-gradient(50deg, rgba(0, 0, 0, 0.66) 33%, rgba(0, 0, 0, 0) 70%), url(${`https://image.tmdb.org/t/p/w1280${
+            movieState.backdrop_path
+          }`}) no-repeat center top / cover`,
         }}
       >
         <nav className="desktop">
@@ -38,67 +52,32 @@ const Home = () => {
           <input type="text" placeholder="search" className="search" />
         </nav>
         <div className="banner">
-          <h2>{popular[0] && popular[1].title}</h2>
+          <h2>{movieState.title || movieState.name}</h2>
           <button type="button" className="red-btn">
             Play
           </button>
           <button type="button" className="gray-btn">
             My List
           </button>
-          <p className="overview">{popular[0] && popular[1].overview}</p>
+          <p className="overview">{movieState.overview.substring(0, 250)}</p>
         </div>
       </header>
 
       <main>
-        <div className="slider-parent">
-          <div className="slider-wrap">
-            <h3 className="slider-title">Popular Movies</h3>
-            <div className="slider-item">
-              {popular
-                && popular
-                  .filter((_, idx) => idx < 8)
-                  .map((item) => {
-                    return (
-                      <img
-                        key={item.id}
-                        src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
-                        alt={item.title}
-                      />
-                    )
-                  })}
-            </div>
-          </div>
-          <div className="slider-wrap">
-            <h3 className="slider-title">Trending Now</h3>
-            <div className="slider-item">
-              {popular
-                && popular
-                  .filter((_, idx) => idx > 9 && idx < 18)
-                  .map((item) => {
-                    return (
-                      <img
-                        key={item.id}
-                        src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
-                        alt={item.title}
-                      />
-                    )
-                  })}
-            </div>
-          </div>
-        </div>
+        <SliderItem state={popular} />
       </main>
 
       {/* Two-column GRID */}
       <section className="two-col-bgOverlay">
         <div
-          className="two-col-grid"
+          className="tc-grid"
           style={{
             background: `linear-gradient(rgba(0, 0, 0, 0.77), rgba(0, 0, 0, 0.81)), url(${`https://image.tmdb.org/t/p/w1280${popular[0]
               && popular[4].backdrop_path}`}) no-repeat center top / cover`,
           }}
         >
           <div
-            className="two-col-img"
+            className="tc-img"
             style={{
               background: `url(${`https://image.tmdb.org/t/p/w1280${popular[0]
                 && popular[4].poster_path}`}) no-repeat center top / cover`,
@@ -106,63 +85,51 @@ const Home = () => {
           >
             <i className="fa fa-youtube-play youtube-playBtn" aria-hidden="true" />
           </div>
-          <div className="two-col-content">
+          <div className="tc-content">
             <h2>{popular[0] && popular[4].title}</h2>
-            <button type="button">play</button>
-            <button type="button">My List</button>
+            <button type="button" className="red-btn">
+              play
+            </button>
+            <button type="button" className="gray-btn">
+              My List
+            </button>
             <p className="overview">{popular[0] && popular[4].overview}</p>
           </div>
         </div>
       </section>
 
       <section className="more-slider">
-        <div className="slider-wrap">
-          <h3 className="slider-title">Popular TV Shows</h3>
-          <div className="slider-item">
-            {popularTV
-              && popularTV
-                .filter((_, idx) => idx < 8)
-                .map((item) => {
-                  return (
-                    <LazyLoad
-                      key={item.id}
-                      once
-                      height={200}
-                      placeholder={<Placeholder />}
-                      debounce={500}
-                    >
-                      <img
-                        src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
-                        alt={item.name}
-                      />
-                    </LazyLoad>
-                  )
-                })}
+        <SliderItem state={popularTV} />
+        <SliderItem state={popularTV} />
+      </section>
+
+      {/* SECOND Two-column GRID */}
+      <section className="two-col-bgOverlay-bottom">
+        <div
+          className="tc-grid tcb-grid"
+          style={{
+            background: `linear-gradient(rgba(0, 0, 0, 0.77), rgba(0, 0, 0, 0.81)), url(${`https://image.tmdb.org/t/p/w1280${popular[0]
+              && popular[9].backdrop_path}`}) no-repeat center top / cover`,
+          }}
+        >
+          <div
+            className="tc-img"
+            style={{
+              background: `url(${`https://image.tmdb.org/t/p/w1280${popular[0]
+                && popular[9].poster_path}`}) no-repeat center top / cover`,
+            }}
+          >
+            <i className="fa fa-youtube-play youtube-playBtn" aria-hidden="true" />
           </div>
-        </div>
-        <div className="slider-wrap">
-          <h3 className="slider-title">Trending TV Shows</h3>
-          <div className="slider-item">
-            {popularTV
-              && popularTV
-                .filter((_, idx) => idx > 9 && idx < 18)
-                .map((item) => {
-                  return (
-                    <LazyLoad
-                      key={item.id}
-                      once
-                      height={200}
-                      placeholder={<Placeholder />}
-                      debounce={500}
-                    >
-                      <img
-                        key={item.id}
-                        src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
-                        alt={item.name}
-                      />
-                    </LazyLoad>
-                  )
-                })}
+          <div className="tc-content">
+            <h2>{popular[0] && popular[9].title}</h2>
+            <button type="button" className="red-btn">
+              play
+            </button>
+            <button type="button" className="gray-btn">
+              My List
+            </button>
+            <p className="overview">{popular[0] && popular[9].overview}</p>
           </div>
         </div>
       </section>
