@@ -11,7 +11,7 @@ const SliderItem = ({ state }) => {
           {state
             && state
               .filter((_, idx) => idx < 8)
-              .map((item, idx) => {
+              .map((item) => {
                 return (
                   <LazyLoad
                     key={item.id}
@@ -20,12 +20,10 @@ const SliderItem = ({ state }) => {
                     placeholder={<Placeholder />}
                     debounce={500}
                   >
-                    <div className="image-container">
-                      <img
-                        src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
-                        alt={item.title}
-                      />
-                    </div>
+                    <img
+                      src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
+                      alt={item.title}
+                    />
                   </LazyLoad>
                 )
               })}
@@ -37,7 +35,7 @@ const SliderItem = ({ state }) => {
           {state
             && state
               .filter((_, idx) => idx > 9 && idx < 18)
-              .map((item, idx) => {
+              .map((item) => {
                 return (
                   <LazyLoad
                     key={item.id}
@@ -46,12 +44,10 @@ const SliderItem = ({ state }) => {
                     placeholder={<Placeholder />}
                     debounce={500}
                   >
-                    <div className="image-container">
-                      <img
-                        src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
-                        alt={item.title}
-                      />
-                    </div>
+                    <img
+                      src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
+                      alt={item.title}
+                    />
                   </LazyLoad>
                 )
               })}

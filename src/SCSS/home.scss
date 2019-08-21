@@ -229,21 +229,3 @@ footer {
 .more-slider {
   grid-area: moreSl;
 }
-
-
-
-// PREVENT IMAGE FROM JUMPING AROUND Image height / Image width * 100
-.image-container {
-  border:1px solid red;
-  // position: relative;
-  // padding-bottom: 66.78082192%; /* ratio of image height to width */
-  // height: 0;
-  // overflow: hidden;
-  // img {
-  //   position: absolute;
-  //   top: 0;
-  //   left: 0;
-  //   width: 100%;
-  // }
-}
-
