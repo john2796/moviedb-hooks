@@ -2,7 +2,7 @@
 
 .sp-grid {
   // border: 1px solid white;
-  min-height: 100vh;
+  // min-height: 100vh;
   display: grid;
   grid-template-columns: 20rem minmax(40rem, 1fr) 20rem;
   grid-column-gap: 4rem;
@@ -40,10 +40,11 @@
 }
 
 .sp-grid > div {
-  border: 1px solid salmon;
+  border: 1px solid gray;
   &:nth-child(1) {
     grid-area: aside;
     background: $spBlackLighter;
+    min-height: 100vh;
     nav {
       display: flex;
       flex-direction: column;
@@ -59,9 +60,19 @@
   }
   &:nth-child(2) {
     grid-area: search;
+    input[type="text"] {
+      background: $spBlackLighter;
+      border: none;
+      color: white;
+      width: 35rem;
+      height: 4rem;
+      margin-top: 2rem;
+      padding-left: 1rem;
+    }
   }
   &:nth-child(3) {
     grid-area: account;
+    grid-row: auto;
   }
   &:nth-child(4) {
     grid-area: banner;

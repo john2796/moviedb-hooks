@@ -13,7 +13,9 @@ const SinglePage = () => {
           <a href="/">Colection</a>
         </nav>
       </div>
-      <div>search</div>
+      <div>
+        <input type="text" placeholder="search" />
+      </div>
       <div>acount settings</div>
       <div>banner</div>
       <div>weekly list</div>

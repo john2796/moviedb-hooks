@@ -7,10 +7,11 @@ import SinglePage from './components/single-page/SinglePage'
 export default function App() {
   return (
     <>
-      {/* <Switch>
-        <Route path="/" component={Home} />
-      </Switch> */}
-      <SinglePage />
+      <Switch>
+        {/* <Route path="/" component={Home} /> */}
+        <Route path="/" component={SinglePage} />
+        <SinglePage />
+      </Switch>
     </>
   )
 }
