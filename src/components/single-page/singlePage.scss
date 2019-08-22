@@ -1,0 +1,81 @@
+@import "../../SCSS/variable";
+
+.sp-grid {
+  // border: 1px solid white;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 20rem minmax(40rem, 1fr) 20rem;
+  grid-column-gap: 4rem;
+  grid-template-areas:
+    "aside search account"
+    "aside banner weekly"
+    "aside album sales "
+    "aside artist sales";
+
+  @media (max-width: 991px) {
+    border: 1px solid green;
+    grid-column-gap: 0;
+    grid-template-columns: 5rem 1fr 1fr;
+    grid-template-areas:
+      "aside account account"
+      "aside search search"
+      "aside banner banner"
+      "aside weekly weekly"
+      "aside album album "
+      "aside artist artist"
+      "aside sales sales ";
+  }
+  @media (max-width: 767px) {
+    border: 1px solid blue;
+  }
+  @media (max-width: 600px) {
+    border: 1px solid pink;
+  }
+  @media (max-width: 480px) {
+    border: 1px solid purple;
+  }
+  @media (max-width: 380px) {
+    border: 1px solid darkturquoise;
+  }
+}
+
+.sp-grid > div {
+  border: 1px solid salmon;
+  &:nth-child(1) {
+    grid-area: aside;
+    background: $spBlackLighter;
+    nav {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      a {
+        padding: 1.5rem 0;
+        &:nth-child(1) {
+          margin-bottom: 4rem;
+        }
+      }
+    }
+  }
+  &:nth-child(2) {
+    grid-area: search;
+  }
+  &:nth-child(3) {
+    grid-area: account;
+  }
+  &:nth-child(4) {
+    grid-area: banner;
+  }
+  &:nth-child(5) {
+    grid-area: weekly;
+  }
+  &:nth-child(6) {
+    grid-area: album;
+  }
+  &:nth-child(7) {
+    grid-area: sales;
+  }
+  &:nth-child(8) {
+    grid-area: artist;
+  }
+}

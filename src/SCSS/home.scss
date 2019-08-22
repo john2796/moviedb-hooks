@@ -126,7 +126,6 @@ main {
 
 .tc-grid {
   @include bn-shadow;
-
   display: grid;
   grid-template:
     ".   tcImg tcContent ."
