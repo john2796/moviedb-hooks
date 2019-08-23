@@ -1,7 +1,14 @@
 import React from 'react'
 import '../SCSS/footer.scss'
 
-function Footer({ scrollToTop }) {
+function Footer() {
+  const scrollTop = () => {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    })
+  }
   return (
     <footer>
       <div className="f-parent container">
@@ -55,7 +62,7 @@ function Footer({ scrollToTop }) {
 
       <div className="ar-reserved container">
         <p className="text-gray">2019 Miranda. All Rights Reserved</p>
-        <button type="button" className="text-gray backtop" onClick={scrollToTop}>
+        <button type="button" className="text-gray backtop" onClick={scrollTop}>
           Back to top
         </button>
       </div>
