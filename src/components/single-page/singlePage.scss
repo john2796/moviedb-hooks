@@ -14,7 +14,7 @@
 
   @media (max-width: 991px) {
     border: 1px solid green;
-    grid-column-gap: 0;
+    grid-column-gap: 3rem;
     grid-template-columns: 5rem 1fr 1fr;
     grid-template-areas:
       "aside account account"
@@ -40,7 +40,7 @@
 }
 
 .sp-grid > div {
-  border: 1px solid gray;
+  // border: 1px solid gray;
   &:nth-child(1) {
     grid-area: aside;
     background: $spBlackLighter;
