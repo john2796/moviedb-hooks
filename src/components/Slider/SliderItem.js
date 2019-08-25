@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import LazyLoad from 'react-lazyload'
 import Placeholder from '../placeholder/Placeholder'
 
@@ -57,4 +58,7 @@ const SliderItem = ({ state }) => {
   )
 }
 
+SliderItem.propTypes = {
+  state: PropTypes.array,
+}
 export default SliderItem
