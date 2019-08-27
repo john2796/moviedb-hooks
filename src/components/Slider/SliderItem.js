@@ -62,3 +62,11 @@ SliderItem.propTypes = {
   state: PropTypes.array,
 }
 export default SliderItem
+https://airtable.com/shrEawWXvMldYbm5Q?prefill_Project+Manager=John%20Benedict%20Miranda%20(WEBPT6)&prefill_Section=WEBPT6&prefill_Present+Students=Andrew %20Johnson,
+Cale %20Haug,
+Daniel %20Viera,
+DaQuan %20Freeman,
+Rachell %20Sincere,
+Sandy %20Jernigan,
+Shaun %20Kolich,
+Wayne Mittelstaedt
