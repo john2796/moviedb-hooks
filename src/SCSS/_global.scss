@@ -4,13 +4,6 @@
 /*                Global
 /*---------------------------*/
 
-.container {
-  max-width: 1250px;
-  width: 95%;
-  margin: 0 auto;
-  // overflow: hidden;
-}
-
 a {
   text-decoration: none;
   color: $white;
@@ -65,12 +58,6 @@ p {
 }
 
 /* movie vertical carousel */
-.time {
-  display: block;
-  font-size: 1rem;
-  margin-top: 4px;
-  font-weight: 100;
-}
 .darkbg {
   background: $darkGray;
 }
@@ -82,17 +69,17 @@ p {
 }
 
 // youtube style
-.player-wrapper {
-  position: relative;
-  padding-top: 81.25%; /* Player ratio: 100 / (1280 / 720) */
-}
-.react-player {
-  position: absolute;
-  top: 0;
-  left: 0;
-}
+// .player-wrapper {
+//   position: relative;
+//   padding-top: 81.25%; /* Player ratio: 100 / (1280 / 720) */
+// }
+// .react-player {
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+// }
 .yellowStar {
-  font-size: 3.6rem;
+  font-size: 2.6rem;
   color: $yellowStar;
 }
 // ------ blue text ------
@@ -122,42 +109,6 @@ p {
   text-decoration: line-through;
   &:hover {
     text-decoration: none;
-  }
-}
-
-.red-btn {
-  border: none;
-  background-color: #dd003f;
-  color: #ffffff;
-  padding: 11px 25px;
-  border-radius: 20px;
-  font-family: "Roboto", sans-serif;
-  font-size: 14px;
-  font-weight: bold;
-  text-transform: uppercase;
-  cursor: pointer;
-}
-
-.blue-pills {
-  background-color: #1692bb;
-  @include pills;
-}
-.yellow-pills {
-  background-color: #f5b50a;
-  @include pills;
-}
-.orange-pills {
-  background-color: #ec5a1a;
-  @include pills;
-}
-
-.anchor {
-  @include anchor-links;
-  border: none;
-  background: inherit;
-  margin-right: 10px;
-  &:hover {
-    color: $yellowGreen;
   }
 }
 
@@ -194,45 +145,6 @@ p {
 }
 .text-blue {
   color: $darkBlue;
-}
-#testing {
-  padding: 15px;
-}
-
-#preloader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #020d18;
-  z-index: 99999;
-  text-align: center;
-}
-#spinner {
-  position: relative;
-  width: 70px;
-  height: 70px;
-  top: 35%;
-  margin: 0 auto;
-  right: 35px;
-  span:nth-child(1) {
-    border: 5px solid #dcf836;
-    border-top: 5px solid transparent;
-    width: 70px;
-    height: 70px;
-    animation: spin1 2s infinite linear;
-  }
-  span:nth-child(2) {
-    border: 5px solid #dd003f;
-    border-top: 5px solid transparent;
-    top: 20px;
-    left: 20px;
-    width: 30px;
-    height: 30px;
-    animation: spin2 1s infinite linear;
-    margin-left: 35px;
-  }
 }
 .logo {
   background-image: url("../assets/jblogo.png");

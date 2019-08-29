@@ -8,7 +8,6 @@ import { useSelector, useDispatch } from 'react-redux'
 import { getListing } from '../../store/actions/movieAction'
 
 import Navbar from '../Navbar'
-import Footer from '../Footer'
 import SearchMovie from '../SearchMovie'
 import CustomPagination from '../Custom-pagination/CustomPagination'
 import DelayedSpinner from '../Spinner/DelayedSpinner'
@@ -96,7 +95,6 @@ const MovieSearchList = ({
 
         <CustomPagination count={count} data={listing} goToNext={goToNext} goToPrev={goToPrev} />
       </div>
-      <Footer />
     </>
   )
 }
