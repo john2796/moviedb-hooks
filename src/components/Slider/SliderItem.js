@@ -1,9 +1,15 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import React from 'react'
 import PropTypes from 'prop-types'
 import LazyLoad from 'react-lazyload'
+import { withRouter } from 'react-router-dom'
 import Placeholder from '../placeholder/Placeholder'
 
-const SliderItem = ({ state }) => {
+const SliderItem = ({ state, history, type }) => {
+  const sendToSinglePage = (id) => {
+    history.push(`/${type}/${id}`)
+  }
   return (
     <>
       <div className="slider-wrap">
@@ -22,6 +28,7 @@ const SliderItem = ({ state }) => {
                     debounce={500}
                   >
                     <img
+                      onClick={() => sendToSinglePage(item.id)}
                       src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
                       alt={item.title}
                     />
@@ -46,6 +53,7 @@ const SliderItem = ({ state }) => {
                     debounce={500}
                   >
                     <img
+                      onClick={() => sendToSinglePage(item.id)}
                       src={`https://image.tmdb.org/t/p/w500${item.poster_path}`}
                       alt={item.title}
                     />
@@ -61,4 +69,4 @@ const SliderItem = ({ state }) => {
 SliderItem.propTypes = {
   state: PropTypes.array,
 }
-export default SliderItem
+export default withRouter(SliderItem)

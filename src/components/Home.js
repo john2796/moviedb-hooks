@@ -62,7 +62,7 @@ const Home = () => {
       </header>
 
       <main>
-        <SliderItem state={popular} />
+        <SliderItem state={popular} type="movie" />
       </main>
 
       {/* Two-column GRID */}
@@ -97,8 +97,8 @@ const Home = () => {
       </section>
 
       <section className="more-slider">
-        <SliderItem state={popularTV} />
-        <SliderItem state={popularTV} />
+        <SliderItem state={popularTV} type="tv" />
+        <SliderItem state={popularTV} type="tv" />
       </section>
 
       {/* SECOND Two-column GRID */}

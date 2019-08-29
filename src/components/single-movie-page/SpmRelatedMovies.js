@@ -16,7 +16,13 @@ function SpmRelatedMovies({ title, id, type }) {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getSpRelatedMovies(Number(id), type, count))
+    dispatch(getSpRelatedMovies(Number(id), type, count)).then(() => {
+      window.scroll({
+        top: 0,
+        left: 0,
+        behavior: 'smooth',
+      })
+    })
   }, [count, dispatch, id, type])
 
   const goToNext = () => {

@@ -7,7 +7,6 @@ import '../../SCSS/singlePageMovie.scss'
 import { useSelector, useDispatch } from 'react-redux'
 import { getMovieById } from '../../store/actions/movieAction'
 
-import Footer from '../Footer'
 import SocialsIcon from '../social-icons/SocialsIcon'
 import SpTab from '../single-page-tab/SpTab'
 import SpNav from './SpNav'
@@ -23,7 +22,11 @@ function SingleMovie({ match }) {
   useEffect(() => {
     dispatch(getMovieById(Number(match.params.id), match.params.type))
     // when page first load or when id type changes move scroll to top page
-    window.scrollTo(0, 0)
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    })
   }, [match.params.id, match.params.type])
 
   // desctructure spMovie details
@@ -72,7 +75,6 @@ function SingleMovie({ match }) {
         {/* end of single page wrap */}
       </div>
       {/* ------------------ Footer  ------------------ */}
-      <Footer />
     </div>
   )
 }

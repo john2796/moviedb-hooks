@@ -121,7 +121,7 @@ export const getPopularTv = () => async (dispatch) => {
     const response = await axios(POPULAR_TV)
     dispatch({
       type: GET_POPULAR_TV_SUCCESS,
-      payload:response.data.results,
+      payload: response.data.results,
       headerPopularTv: response.data.results,
     })
   } catch (error) {
