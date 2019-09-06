@@ -88,22 +88,6 @@ export const CounterComponent = ({ value }) => {
 
 
 
-### API Info
-const UPCOMING =
-  "https://api.themoviedb.org/3/movie/upcoming?api_key=${key}&language=en-US&page=1";
-
-const POPULAR =
-  "https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=en-US&page=1";
-
-const GENRES =
-  "https://api.themoviedb.org/3/genre/movie/list?api_key=${key}&language=en-US";
-
-const NOW_PLAYING =
-  "https://api.themoviedb.org/3/movie/now_playing?api_key=${key}&language=en-US&page=1";
-
-const TOP_RATED =
-  "https://api.themoviedb.org/3/movie/top_rated?api_key=${key}&language=en-US&page=1";
-
 
 
 ### Author
