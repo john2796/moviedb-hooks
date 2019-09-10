@@ -1,9 +1,4 @@
 # 2019 _ MOVIEDB(19) 
-
-1. `useSelector()` = Allows you to extract data from the Redux store && EQUIVALENT to the mapStateToProps argument to connect , you may call useSelector multiple times within a single function compnent . Each call to useSelector() creates an individual subscription to the Redux store
- Use the shallowEqual function from React-Redux as the equalityFn argument to useSelector(),
-
-
  2. `useDispatch()` = This hook returns a reference to the dispatch function from the Redux store. You may use it to dispatch actions as needed.
  example:
  ```
