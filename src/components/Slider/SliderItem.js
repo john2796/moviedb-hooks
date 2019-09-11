@@ -67,6 +67,6 @@ const SliderItem = ({ state, history, type }) => {
 }
 
 SliderItem.propTypes = {
-  state: PropTypes.array,
+  // state: PropTypes.array,
 }
 export default withRouter(SliderItem)
