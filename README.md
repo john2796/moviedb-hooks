@@ -1,23 +1,5 @@
 # 2019 _ MOVIEDB(19) 
- 2. `useDispatch()` = This hook returns a reference to the dispatch function from the Redux store. You may use it to dispatch actions as needed.
- example:
- ```
- import React from 'react'
-import { useDispatch } from 'react-redux'
 
-export const CounterComponent = ({ value }) => {
-  const dispatch = useDispatch()
-
-  return (
-    <div>
-      <span>{value}</span>
-      <button onClick={() => dispatch({ type: 'increment-counter' })}>
-        Increment counter
-      </button>
-    </div>
-  )
-}
- ``` 
 
 
  3. `useCallback` = use this When passing a callback using dispatch to a child component, it is recommended to memoize it with useCallback, since otherwise child components may render unnecessarily due to the changed reference.  
