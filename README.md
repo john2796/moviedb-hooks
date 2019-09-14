@@ -7,14 +7,6 @@ This hook should probably not be used frequently. Prefer useSelector() as your p
 
 ```
 import React from 'react'
-import { useStore } from 'react-redux'
-
-export const CounterComponent = ({ value }) => {
-  const store = useStore()
-
-  // EXAMPLE ONLY! Do not do this in a real app.
-  // The component will not automatically update if the store state changes
-  return <div>{store.getState()}</div>
 }
 
 ```
