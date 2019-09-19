@@ -49,6 +49,7 @@ const Home = () => {
           <Link to="/tv">Browse</Link>
           <input type="text" placeholder="search" className="search" />
         </nav>
+
         <div className="banner">
           <h2>{movieState.title || movieState.name}</h2>
           <button type="button" className="red-btn">
