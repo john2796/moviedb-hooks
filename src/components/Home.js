@@ -10,13 +10,13 @@ import SliderItem from './Slider/SliderItem'
 
 const Home = () => {
   const { popular, popularTV } = useSelector(state => state.movieReducer)
-  const dispatch = useDispatch()
   const [movieState, setMovieState] = useState({
     backdrop_path: '/hpgda6P9GutvdkDX5MUJ92QG9aj.jpg',
     overview:
       "A spinoff of The Fate of the Furious, focusing on Johnson's US Diplomatic Security Agent Luke Hobbs forming an unlikely alliance with Statham's Deckard Shaw.",
     title: 'Fast & Furious Presents: Hobbs & Shaw',
   })
+  const dispatch = useDispatch()
 
   useEffect(() => {
     // window.scroll({
@@ -37,12 +37,13 @@ const Home = () => {
         }}
       >
         <nav className="desktop">
-          <Link to="/">Logo</Link>
+          <Link to="/" className="logo">
+            Logo
+          </Link>
           <Link to="/">Home</Link>
           <Link to="/show">TV Shows</Link>
           <Link to="/movies">Movies</Link>
           <Link to="/favorites">My List</Link>
-          <input type="text" placeholder="search" className="search" />
         </nav>
         <nav className="tablet">
           <Link to="/">Logo</Link>

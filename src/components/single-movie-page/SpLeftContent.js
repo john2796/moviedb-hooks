@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import ModalVideo from 'react-modal-video'
 
 import { useDispatch, useSelector } from 'react-redux'
-import ModalVideo from 'react-modal-video'
 import { toggleTrailer } from '../../store/actions/movieAction'
 
 const SpLeftContent = ({ poster_path, name }) => {

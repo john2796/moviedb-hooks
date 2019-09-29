@@ -7,10 +7,13 @@ import PropTypes from 'prop-types'
 import { useSelector, useDispatch } from 'react-redux'
 import { getListing } from '../../store/actions/movieAction'
 
-import Navbar from '../Navbar'
 import SearchMovie from '../SearchMovie'
 import CustomPagination from '../Custom-pagination/CustomPagination'
 import DelayedSpinner from '../Spinner/DelayedSpinner'
+
+
+
+
 
 const MovieSearchList = ({
   name, type, topic = 'popular', history,
@@ -67,7 +70,6 @@ const MovieSearchList = ({
     <>
       <div className="bg-overlay">
         <div className="container">
-          <Navbar />
           <SearchMovie text={name} />
           <div
             className="search-title-bg"

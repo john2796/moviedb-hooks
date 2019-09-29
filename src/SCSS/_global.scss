@@ -68,16 +68,6 @@ p {
   color: $yellowGreen;
 }
 
-// youtube style
-// .player-wrapper {
-//   position: relative;
-//   padding-top: 81.25%; /* Player ratio: 100 / (1280 / 720) */
-// }
-// .react-player {
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-// }
 .yellowStar {
   font-size: 2.6rem;
   color: $yellowStar;
@@ -150,7 +140,7 @@ p {
   background-image: url("../assets/jblogo.png");
   background-repeat: no-repeat;
   background-size: cover;
-  padding: 50px;
+  padding: 35px;
 }
 
 // Trailer Modal close button overide css
