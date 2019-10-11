@@ -9,6 +9,7 @@ Things todo
 - [] add arrow to go back once inside spa movie
 - [] Add back button on the single page movie 
 - [] Add due date
+- [] Change to flexbox/grid
 - [] Add Testing
 
 
