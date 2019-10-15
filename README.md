@@ -11,7 +11,7 @@ Things todo
 - [] Add due date
 - [] Change to flexbox/grid
 - [] Add Testing
-
+- [] User Test
 
 
 ### Author
